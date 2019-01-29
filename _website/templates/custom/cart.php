@@ -91,9 +91,9 @@
         <div class="page-content pt-0">
             <div class="container">
                 <?php 
-				$order_id='';
+                $order_id='';
                 $g_cart = g_cart();
-                if(count($g_cart)){					
+                if(count($g_cart)){                 
                 ?>
                 <div class="table-responsive">
                     
@@ -111,12 +111,12 @@
                         </thead>
                         <tbody>
                             <?php 
-							
-							
+                            
+                            
                             $totalPriceOut = 0;
                             $x=0;
                             foreach($g_cart as $item):
-							$x++;
+                            $x++;
                             $doubleWay = "";
                             $guests = "";
                             $totalPriceOut += $item['totalprice'];
@@ -261,10 +261,10 @@
                                 </td>
                             </tr>
                             <?php 
-							$order_id=$item['uniq'];
-							
-							endforeach; 
-							?>
+                            $order_id=$item['uniq'];
+                            
+                            endforeach; 
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -328,8 +328,8 @@
                                 <span class="d-block"><?=l("paywithcard")?></span>
                             </a>
                             <?php 
-							}
-							?>
+                            }
+                            ?>
                         </li>
                     </ul>
                     <!-- method payment -->

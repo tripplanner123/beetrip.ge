@@ -27,3 +27,5 @@
 [27-Jan-2019 13:25:06 America/Chicago] PHP Fatal error:  Call to a member function prepare() on null in /home4/tripplanner/beetrip.ge/pmt/check.php on line 40
 [27-Jan-2019 13:26:09 America/Chicago] PHP Notice:  Undefined variable: db_link in /home4/tripplanner/beetrip.ge/pmt/check.php on line 40
 [27-Jan-2019 13:26:09 America/Chicago] PHP Fatal error:  Call to a member function prepare() on null in /home4/tripplanner/beetrip.ge/pmt/check.php on line 40
+[29-Jan-2019 08:48:24 America/Chicago] PHP Notice:  Undefined variable: db_link in /home4/tripplanner/beetrip.ge/pmt/check.php on line 40
+[29-Jan-2019 08:48:24 America/Chicago] PHP Fatal error:  Call to a member function prepare() on null in /home4/tripplanner/beetrip.ge/pmt/check.php on line 40
