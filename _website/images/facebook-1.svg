@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1686.583 -1833.417 23.833 23.833">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #000a12;
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4 {
+        clip-path: url(#clip-path-2);
+      }
+
+      .cls-5 {
+        fill: rgba(0,0,0,0);
+      }
+
+      .cls-6 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Icon_box" data-name="Icon box" class="cls-1" width="23.833" height="23.833"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Facebook" class="cls-2" d="M1.315,0A1.315,1.315,0,0,0,0,1.315v21.2a1.315,1.315,0,0,0,1.315,1.315H12.73V14.6H9.624v-3.6H12.73V8.354c0-3.079,1.88-4.755,4.626-4.755a25.422,25.422,0,0,1,2.775.142V6.959h-1.9c-1.494,0-1.783.71-1.783,1.751v2.3h3.562l-.464,3.6h-3.1v9.23h6.073a1.316,1.316,0,0,0,1.316-1.315V1.311A1.312,1.312,0,0,0,22.518,0Z"/>
+    </clipPath>
+  </defs>
+  <g id="Icon" transform="translate(1686.583 -1833.417)">
+    <rect id="Icon_box-2" data-name="Icon box" class="cls-1" width="23.833" height="23.833"/>
+    <path id="Facebook-2" data-name="Facebook" class="cls-2" d="M1.315,0A1.315,1.315,0,0,0,0,1.315v21.2a1.315,1.315,0,0,0,1.315,1.315H12.73V14.6H9.624v-3.6H12.73V8.354c0-3.079,1.88-4.755,4.626-4.755a25.422,25.422,0,0,1,2.775.142V6.959h-1.9c-1.494,0-1.783.71-1.783,1.751v2.3h3.562l-.464,3.6h-3.1v9.23h6.073a1.316,1.316,0,0,0,1.316-1.315V1.311A1.312,1.312,0,0,0,22.518,0Z"/>
+    <g id="Icon-3" data-name="Icon" class="cls-4">
+      <g id="_Color" data-name="↳Color" transform="translate(-1.083 -1.083)">
+        <rect id="_Color_background" data-name="↳Color background" class="cls-5" width="26" height="26"/>
+        <g id="Fill_White" data-name="Fill / White">
+          <rect id="Fill" class="cls-6" width="26" height="26"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

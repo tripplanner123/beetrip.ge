@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="7807.75 -4202.417 19.5 23.833">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #ffcb24;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="Shape" class="cls-1" d="M1.393,23.833A1.375,1.375,0,0,1,0,22.479v-13A1.375,1.375,0,0,1,1.393,8.125H2.678V6.875A6.983,6.983,0,0,1,9.75,0a6.984,6.984,0,0,1,7.072,6.875v1.25h1.285A1.375,1.375,0,0,1,19.5,9.479v13a1.375,1.375,0,0,1-1.393,1.354ZM5.464,6.875v1.25h8.572V6.875A4.232,4.232,0,0,0,9.75,2.708,4.232,4.232,0,0,0,5.464,6.875Z" transform="translate(3.25 1.083)"/>
+    </clipPath>
+  </defs>
+  <g id="Icon" class="cls-2" transform="translate(7804.5 -4203.5)">
+    <g id="Fill_Blue" data-name="Fill / Blue">
+      <rect id="Fill" class="cls-3" width="26" height="26"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Lari";
+    src: url("../fonts/fonts/Lari.eot"); /* IE9 Compat Modes */
+    src: url("../fonts/fonts/Lari.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/fonts/Lari.woff2") format("woff2"), /* Super Modern Browsers */
+    url("../fonts/fonts/Lari.woff") format("woff"), /* Pretty Modern Browsers */
+    url("../fonts/fonts/Lari.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/fonts/Lari.svg#Lari") format("svg"); /* Legacy iOS */
+}
+
+$helvetica-neue-alternative: "Roboto", sans-serif;
+$averin-next-alternative: "Montserrat", sans-serif;
+$lari-symbol: "Lari";

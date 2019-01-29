@@ -1,0 +1,7 @@
+.menu__list-item{ font-size: 12px;  }
+.facebookLogin{ margin: 0; padding: 0; width: 100%; height: 45px; background-color:#395398; position: relative;  }
+.facebookLogin:after{ content: ''; margin: 0; padding: 0; width: 25px; height: 27px; position: absolute; background-image: url('../../../img/fbimage.png'); background-repeat: no-repeat; background-size: cover; right: 10px; top: 9px;  }
+.facebookLogin span{ display: block; text-align: center;  font-size: 18px; line-height: 45px; color: white; font-family: monospace,monospace; cursor: pointer; }
+.transport__list-item:not(:first-child){
+    margin-left:38px;
+}

@@ -1,0 +1,9 @@
+﻿User-agent: *
+Disallow: /_manager/
+Disallow: /_javascript/
+Disallow: /_modules/
+Disallow: /_players/
+Disallow: /_plugins/
+Disallow: /backup/
+Disallow: /crop.php
+Disallow: /resize.php

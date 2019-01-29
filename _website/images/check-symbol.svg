@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="365.374 -21.535 12.73 9.424">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <path id="Check" class="cls-1" d="M0,4.7,3.659,8.364l1.6-1.6L7.514,4.509,12.023,0" transform="translate(365.727 -21.182)"/>
+</svg>
