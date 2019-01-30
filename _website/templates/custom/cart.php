@@ -54,6 +54,23 @@
     </div>
 </div>
 
+<?php 
+$select = db_fetch("SELECT `content` FROM `pages` WHERE `id`=131 AND `language`='".l()."'");
+?>
+<div id="purchase-terms-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="max-height: 350px; overflow: auto;">
+                <div class="text-holder" style="font-size: 12px;color: #BABABA;">
+                    <?=strip_tags($select['content'], '<p><br>')?>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center pt-0" style="margin-top: 20px;">
+                <a href="#" class="button button--yellow button--small text-uppercase" data-dismiss="modal" aria-label="Close"><?=l("close")?></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <main class="site__content">
     <div class="content">
@@ -273,7 +290,7 @@
 
                     <div class="custom-checkbox-1 d-inline-block">
                         <input type="checkbox" class="custom-checkbox-1__input" name="siterules" id="siterules" <?=(isset($_SESSION["siterules"]) && $_SESSION["siterules"]=="checked") ? 'checked="checked"' : ''?>>
-                        <label for="siterules" class="custom-checkbox-1__label"><a href="/<?=l()?>/privacy-policy" target="_blank"><?=l("siterule")?></a></label>
+                        <label for="siterules" class="custom-checkbox-1__label"><a href="#" data-toggle="modal" data-target="#purchase-terms-modal"><?=l("siterule")?></a></label>
                     </div>
                     <script type="text/javascript">
                         <?php if(isset($_SESSION["siterules"]) && $_SESSION["siterules"]=="checked"): ?>

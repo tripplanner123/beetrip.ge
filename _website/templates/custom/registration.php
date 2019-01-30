@@ -7,29 +7,23 @@ if(isset($_SESSION["beetrip_user_info"])){
 	unset($_SESSION["beetrip_user_info"]);
 }
 ?>
+<?php 
+$select = db_fetch("SELECT `content` FROM `pages` WHERE `id`=218 AND `language`='".l()."'");
+?>
 <div id="terms-modal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="text-holder" style="font-size: 12px;color: #BABABA;">
-                            <p>Terms and conditions of using the registered personal data The tourist takes responsibility to fill in the information Terms and conditions of using the registered personal data The tourist takes responsibility to fill in the informationTerms and conditions of using the registered personal data The tourist takes responsibility to fill in the informationTerms and conditions of using the registered personal data The tourist takes responsibility to fill in the informationTerms and conditions of using the registered personal data The tourist takes responsibility to fill in the information
-                            </p>
-                            <br>
-                            <p>Terms and conditions of using the registered personal data The tourist takes responsibility to fill in the information Terms and conditions of using the registered personal data The tourist takes responsibility to fill in the informationTerms and conditions of using the registered personal data The tourist takes responsibility to fill in the informationTerms and conditions of using the registered personal data The tourist takes responsibility to fill in the informationTerms and conditions of using the registered personal data The tourist takes responsibility to fill in the information
-                            </p>
-                            <br>
-                            <p>Terms and conditions of using the registered personal data The tourist takes responsibility to fill in the information
-                            </p>
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-center pt-0">
-                        <a href="#" class="button button--yellow button--small text-uppercase" data-dismiss="modal" aria-label="Close">OK</a>
-                    </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="max-height: 350px; overflow: auto;">
+                <div class="text-holder" style="font-size: 12px;color: #BABABA;">
+                    <?=strip_tags($select['content'], '<p><br>')?>
                 </div>
             </div>
+            <div class="modal-footer justify-content-center pt-0" style="margin-top: 20px;">
+                <a href="#" class="button button--yellow button--small text-uppercase" data-dismiss="modal" aria-label="Close"><?=l("close")?></a>
+            </div>
         </div>
-        <!-- modals -->
-
+    </div>
+</div>
 
 <main class="site__content">
     <div class="content">
@@ -159,7 +153,7 @@ if(isset($_SESSION["beetrip_user_info"])){
                                 <div class="col-lg-12">
                                     <div class="form-group mb-0">
                                         <div class="custom-checkbox-1">
-                                            <input type="checkbox" class="agree-conditions-control custom-checkbox-1__input terms-conditions" id="agree-conditions-control-1" checked="checked" name="terms-conditions" />
+                                            <input type="checkbox" class="agree-conditions-control custom-checkbox-1__input terms-conditions" id="agree-conditions-control-1" name="terms-conditions" />
                                             <label for="agree-conditions-control-1" class="custom-checkbox-1__label">
                                                 <a href="#" class="text-yellow emphasized-link" data-toggle="modal" data-target="#terms-modal"><?=l("termcondition")?></a>
                                             </label>

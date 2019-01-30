@@ -2451,3 +2451,4 @@ a.emphasized-link:hover{
 .g-new-timepickbox table tr td span{ font-size: 16px !important; }
 .g-new-timepickbox table tr td a i{ margin: 0; padding: 0; color:#d8d8d8; font-size: 21px; }
 .g-new-timepickbox table tr td input{ margin: 0 auto; padding: 5px; border: solid 1px #d8d8d8; max-width: 50px; height: 50px; text-align: center; font-size: 21px; }
+.purchase-terms-modal .modal-dialog .modal-content .modal-body .text-holder p{ padding: 10px 0px !important; }
