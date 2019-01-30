@@ -2439,13 +2439,13 @@ a.emphasized-link:hover{
 .siterules label{ margin: 0px; padding-left: 30px; width: auto; line-height: 25px; font-size: 14px; color: #000000; cursor: pointer; }
 .siterules label a{ text-decoration: underline; }
 .g-new-timepicker{ margin: 0; padding: 0px; height: 50px; display: block; position: relative; }
-.g-new-timepicker .g-new-show-box{ margin: 0; padding: 0 15px; height: 50px; line-height: 50px; border-bottom: solid 2px rgb(148, 148, 148); cursor: pointer; }
+.g-new-timepicker .g-new-show-box{ margin: 0; padding: 0 10px; height: 50px; line-height: 50px; border-bottom: solid 2px rgb(148, 148, 148); cursor: pointer; }
 .g-new-timepicker:hover .g-new-show-box{ border-bottom: solid 2px rgb(255, 203, 36); }
-.g-new-timepicker .g-new-show-box .g-new-icon{ margin: 0; padding: 0; height: 50px; line-height: 50px;  display: inline-block; font-size: 22px !important; }
+.g-new-timepicker .g-new-show-box .g-new-icon{ margin: 0; padding: 0; height: 50px; line-height: 50px;  display: inline-block; font-size: 22px !important; float: right; }
 .g-new-timepicker .g-new-show-box .g-new-icon i{ font-size: 18px !important; }
-.g-new-timepicker .g-new-show-box .g-new-time{ margin: 0; padding: 0 0 0 15px; height: 50px; line-height: 50px;  display: inline-block; font-size: 18px; }
-.g-new-timepickbox{ margin: 0; padding: 10px; width: 165px; border: solid 2px rgb(148, 148, 148); position: absolute; top: 55px; left: 0px; background-color: #ffffff; display: none; z-index: 999; }
-.g-new-timepickbox:hover{ border: solid 2px rgb(255, 203, 36); }
+.g-new-timepicker .g-new-show-box .g-new-time{ margin: 0; padding: 0; height: 50px; line-height: 50px;  display: inline-block; font-size: 18px; }
+.g-new-timepickbox{ margin: 0; padding: 10px; width: 165px; position: absolute; top: 55px; left: 0px; background-color: #ffffff; display: none; z-index: 999; -webkit-box-shadow: 0 0 6px rgba(0,0,0,.4); -moz-box-shadow: 0 0 6px rgba(0,0,0,.4); box-shadow: 0 0 6px rgba(0,0,0,.4); }
+/*.g-new-timepickbox:hover{ border: solid 2px rgb(255, 203, 36); }*/
 .g-new-timepickbox table{ margin: 0; padding: 0; text-align: center; width: 100%; }
 .g-new-timepickbox table tr td{ font-size: 16px !important; }
 .g-new-timepickbox table tr td span{ font-size: 16px !important; }

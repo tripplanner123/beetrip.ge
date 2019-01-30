@@ -305,7 +305,7 @@
                                 <ul class="menu__list">
                                     <?php if(!isset($_SESSION["beetrip_user"])): ?>
                                     <li class="menu__list-item">
-                                        <a href="#" class="menu__link" data-toggle="modal" data-target="#auth-modal" style="min-width: 95px;"><?=l("profile")?></a>
+                                        <a href="#" class="menu__link" data-toggle="modal" data-target="#auth-modal" style="min-width: 95px;"><?=l("login")?></a>
                                     </li>
                                     <?php endif; ?>
 

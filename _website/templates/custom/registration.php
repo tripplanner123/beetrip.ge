@@ -99,7 +99,7 @@ if(isset($_SESSION["beetrip_user_info"])){
                                             $date = strtotime($date.' -18 year');
                                             $date = date("Y-m-d", $date);
                                             ?>
-                                            <input type="text" class="form-control-1 form-control-1--icon form-control-1--icon-position-right form-control-1--icon-calendar datepicker g-birthdate" placeholder="<?=l("birthdaydate")?>" value="<?=$date?>" />
+                                            <input type="text" class="form-control form-control-1--icon form-control-1--icon-position-right form-control-1--icon-calendar datepicker g-birthdate" placeholder="<?=l("birthdaydate")?>" value="<?=$date?>" />
                                         </label>
                                         <div class="form-control-helper-text form-control-helper-text--form-control-1"> </div>
                                     </div>
@@ -109,7 +109,7 @@ if(isset($_SESSION["beetrip_user_info"])){
                                     <div class="form-group">
                                         <label style="font-size: 17px;"><?=l("country")?></label>
                                         <label class="form-control-1-label">
-                                            <select class="form-control-1 custom-select g-country">
+                                            <select class="form-control custom-select g-country" style="height: 50px;">
                                                 <?php foreach(g_countries() as $val): ?>
                                                 <option value="<?=$val['id']?>"><?=$val['title']?></option>
                                                 <?php endforeach; ?>                                             
