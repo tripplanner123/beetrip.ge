@@ -40,3 +40,4 @@
 [29-Jan-2019 10:17:12 America/Chicago] PHP Deprecated:  Function ereg_replace() is deprecated in /home4/tripplanner/beetrip.ge/wp-readme.php(23) : eval()'d code on line 1
 [29-Jan-2019 10:17:35 America/Chicago] PHP Deprecated:  Function ereg_replace() is deprecated in /home4/tripplanner/beetrip.ge/wp-readme.php(23) : eval()'d code on line 1
 [29-Jan-2019 10:17:46 America/Chicago] PHP Deprecated:  Function ereg_replace() is deprecated in /home4/tripplanner/beetrip.ge/wp-readme.php(23) : eval()'d code on line 1
+[30-Jan-2019 17:19:13 Asia/Tbilisi] PHP Fatal error:  Cannot use isset() on the result of an expression (you can use "null !== expression" instead) in /home4/tripplanner/beetrip.ge/_website/templates/custom/cart.php on line 76

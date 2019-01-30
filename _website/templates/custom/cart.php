@@ -72,6 +72,35 @@ $select = db_fetch("SELECT `content` FROM `pages` WHERE `id`=131 AND `language`=
     </div>
 </div>
 
+<?php 
+if(isset($_GET["result"]) && ($_GET["result"]=="success" || $_GET["result"]=="fail")):
+if($_GET["result"]=="success"){
+    $select = db_fetch("SELECT `content` FROM `pages` WHERE `id`=178 AND `language`='".l()."'");
+}else if($_GET["result"]=="fail"){
+    $select = db_fetch("SELECT `content` FROM `pages` WHERE `id`=177 AND `language`='".l()."'");
+}else{
+    $select['content'] = "";
+}
+?>
+<div id="purchase-status" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="max-height: 350px; overflow: auto;">
+                <div class="text-holder" style="font-size: 12px;color: #BABABA;">
+                    <?=strip_tags($select['content'], '<p><br>')?>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center pt-0" style="margin-top: 20px;">
+                <a href="/" class="button button--yellow button--small text-uppercase"><?=l("close")?></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#purchase-status").modal("show");
+</script>
+<?php endif; ?>
+
 <main class="site__content">
     <div class="content">
         <div class="page-header">
@@ -338,7 +367,7 @@ $select = db_fetch("SELECT `content` FROM `pages` WHERE `id`=131 AND `language`=
                             <?php 
                             $order_id = "fb657d65d12373dbf6983"; 
                             if($order_id!=""){?>
-                            <a class="nav-link text-center g-pay-with-creditcard" href="javascript:void(0)" data-href="https://3dacq.georgiancard.ge/payment/start.wsm?lang=KA&merch_id=D6640FE47F9AE706A041C0D913DCF654&back_url_s=<?=urlencode('https://beetrip.ge/'.l().'/success?order_id=')?><?=$order_id?>&back_url_f=<?=urlencode('https://beetrip.ge/'.l().'/home')?>&preauth=N&o.order_id=<?=$order_id?>&o.userid=<?=(isset($_SESSION["beetrip_user"])) ? $_SESSION["beetrip_user"] : ''?>&o.lang=<?=l()?>">
+                            <a class="nav-link text-center g-pay-with-creditcard" href="javascript:void(0)" data-href="https://3dacq.georgiancard.ge/payment/start.wsm?lang=KA&merch_id=D6640FE47F9AE706A041C0D913DCF654&back_url_s=<?=urlencode('https://beetrip.ge/en/cart?result=success')?>&back_url_f=<?=urlencode('https://beetrip.ge/en/cart?result=fail')?>&preauth=N&o.order_id=<?=$order_id?>&o.userid=<?=(isset($_SESSION["beetrip_user"])) ? $_SESSION["beetrip_user"] : ''?>&o.lang=<?=l()?>">
                                 <span class="payment-method-icon payment-method-icon--1 d-inline-block"></span>
                                 <span class="d-block"><?=l("paywithcard")?></span>
                             </a>
