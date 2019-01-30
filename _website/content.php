@@ -393,7 +393,7 @@
                                     <a href="/<?=l()?>/favourite-asked-questions" class="footer__list-link"><?=menu_title(130)?></a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a href="/<?=l()?>/privacy-policy" class="footer__list-link"><?=menu_title(131)?></a>
+                                    <a href="/<?=l()?>/terms-conditions2" class="footer__list-link"><?=menu_title(131)?></a>
                                 </li>
                             </ul>
                         </div>

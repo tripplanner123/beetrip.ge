@@ -2266,7 +2266,8 @@ a.emphasized-link:hover{
     font-weight:500;
     padding:8px 10px;
     background-color:#fafafa;
-    vertical-align:middle
+    vertical-align:middle;
+    max-width: 200px;
 }
 .quantity--cart{
     width:120px
@@ -2433,7 +2434,7 @@ a.emphasized-link:hover{
 .new-v-button-registration{ margin-top:10px; padding: 0; height:45px; background-color: #ffffff; border: solid 1px #a1a1a1; color: #000000; text-transform: lowercase; border-radius: 0px; line-height: 45px; }
 .new-v-button-registration:hover{ background-color: #ffffff; }
 .new-v-button-recover{ margin: 0; padding: 0px; line-height: 45px; height:45px !important; text-align: center; width: 100% !important; color: #000000; border-radius: 0px !important;  }
-.pickupPlaceHtml{ margin: 0; padding: 0; text-align: center; font-size: 11px; line-height: 14px; width: auto; max-width: 120px;  overflow: hidden;  }
+.pickupPlaceHtml{ margin: 0; padding: 0; text-align: left; font-size: 11px; line-height: 14px; width: auto; overflow: hidden;  }
 .pickupPlaceHtml:not(:empty){ padding: 5px; }
 .siterules{ margin: 10px 0px; padding: 0; width: 100%; line-height: 25px; text-align: right; cursor: pointer; }
 .siterules label{ margin: 0px; padding-left: 30px; width: auto; line-height: 25px; font-size: 14px; color: #000000; cursor: pointer; }

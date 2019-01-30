@@ -217,11 +217,9 @@ $select = db_fetch("SELECT `content` FROM `pages` WHERE `id`=131 AND `language`=
                                     <span><?=$title?></span><?=$doubleWay.$guests?>
                                 </td>
                                 <td>
-                                    <p><?=$item['startdate']?></p>
-                                    <p><?=$item['timetrans']?></p>
+                                    <p><?=$item['startdate']?> <?=$item['timetrans']?></p>
                                     <?php if($item['startPlaceName2'] && $item['endPlaceName2']): ?>
-                                    <p><?=$item['startdate2']?></p>
-                                    <p><?=$item['timetrans2']?></p>
+                                    <p><?=$item['startdate2']?> <?=$item['timetrans2']?></p>
                                     <?php endif; ?>
                                 </td>                                
                                 
