@@ -90,3 +90,5 @@ h1,h2,h3,h4,h5,h6,label,p,ul{margin-bottom:0}button,hr,input{overflow:visible}pr
     margin-left:38px;
 }
 .page-content .container h5{ font-size: 1.25rem !important; font-family: 'NotoSansGeorgian' !important; }
+.order-details-headers{ font-family: 'NotoSansGeorgian' !important; }
+.order-details{ font-family: 'NotoSansGeorgian' !important; }

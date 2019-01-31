@@ -1,5 +1,5 @@
 <?php
-define('PRODUCTION', TRUE);
+define('PRODUCTION', FALSE);
 define('START_TIME', microtime(TRUE));
 define('START_MEMORY', memory_get_usage());
 

@@ -161,7 +161,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" style="padding: 0 30px;">
                             <div class="facebookLogin g-facebook-login" data-url="<?=$loginUrl?>">
                                 <span><?=l("continuewithfacebook")?></span> 
                             </div>

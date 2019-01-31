@@ -291,9 +291,10 @@ if(isset($_FILES["profile-photo"])){
                             <div class="section section--order-details">
                                 <div class="container">
                                     <div class="row order-details-headers text-center">
-                                        <div class="col-2">&nbsp;</div>
+                                        <div class="col-1">&nbsp;</div>
                                         <div class="col-2"><?=l("tours")?></div>
-                                        <div class="col-2"><?=l("price")?></div>
+                                        <div class="col-2"><?=l("passenger")?></div>
+                                        <div class="col-1"><?=l("price")?></div>
                                         <div class="col-2"><?=l("pickup")?></div>
                                         <div class="col-2"><?=l("orderdate")?></div>
                                         <div class="col-2"><?=l("invoice")?></div>
@@ -309,12 +310,43 @@ if(isset($_FILES["profile-photo"])){
                                             
                                             if($item['startPlaceName2'] && $item['endPlaceName2']){
                                                 $title = $item["startPlaceName"] . " - " . $item["endPlaceName"];
-                                                $guests = "<br />".$item["guests"]." ".l("passenger")."<br />";
-                                                $guests .= $item["startPlaceName2"] . " - " . $item["endPlaceName2"];
-                                                $guests .= "<br />".$item["guests2"]." ".l("passenger");                                    
+                                                
+                                                $guests = l("adults").": ".$item["guests"];
+                                                $guests .= "<br />";
+
+                                                if($item["childrenunder"]>0){
+                                                    $guests .= l("underchildrenages").": ".$item["childrenunder"];
+                                                }
+
+                                                if($item["children"]>0){
+                                                    $guests .= l("childrenages").": ".$item["children"];
+                                                } 
+
+                                                $guests .= "<hr />";
+
+                                                $guests .= l("adults")." ".$item["guests2"];
+                                                $guests .= "<br />";
+                                                
+                                                if($item["childrenunder2"]>0){
+                                                    $guests .= l("underchildrenages").": ".$item["childrenunder2"];
+                                                    $guests .= "<br />";
+                                                }
+
+                                                if($item["children2"]>0){
+                                                    $guests .= l("childrenages").": ".$item["children2"];
+                                                }                                    
                                             }else{
                                                 $title = $item["startPlaceName"] . " - " . $item["endPlaceName"];
-                                                $guests = "<br />".$item["guests"]." ".l("passenger");
+                                                $guests = l("adults").": ".$item["guests"];
+                                                $guests .= "<br />";
+                                                if($item["childrenunder"]>0){
+                                                    $guests .= l("underchildrenages").": ".$item["childrenunder"];
+                                                    $guests .= "<br />";
+                                                }
+
+                                                if($item["children"]>0){
+                                                    $guests .= l("childrenages").": ".$item["children"];
+                                                }
                                             }
                                             
                                         }
@@ -333,14 +365,15 @@ if(isset($_FILES["profile-photo"])){
                                     ?>
                                     <div class="order-details text-center">
                                         <div class="row align-items-center">
-                                            <div class="col-2">
+                                            <div class="col-1">
                                                 <div style="background-image: url('<?=$logoImage?>'); height: 100px; background-repeat: no-repeat; background-position: center; background-size: 50px;"></div>
                                                 <?php if($item['startPlaceName2'] && $item['endPlaceName2']){ ?>
                                                 <div style="background-image: url('<?=$logoImage2?>'); height: 100px; background-repeat: no-repeat; background-position: center; background-size: 50px;"></div>
                                                 <?php } ?>
                                             </div>
-                                            <div class="col-2"><?=$title?><?=$doubleWay.$guests?></div>
-                                            <div class="col-2">
+                                            <div class="col-2"><?=$title?><?=$doubleWay?></div>
+                                            <div class="col-2"><?=$guests?></div>
+                                            <div class="col-1">
                                                 <span class="tdprice"><?=$item['roud1_price']?></span>
                                                 <span class="lari-symbol">l</span>
                                                 <br />
