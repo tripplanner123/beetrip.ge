@@ -277,6 +277,9 @@ textarea.form-control{
 		min-width:350px;
 	}
 }
+.modal-dialog{
+	max-width: 380px;
+}
 .modal-content{
 	max-width: 380px;
 	border:0;
