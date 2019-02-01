@@ -3033,7 +3033,7 @@
                     "Success"=>array(
                         "Code"=>$successCode, 
                         "Text"=>$successText,
-                        "Regions"=>$html,
+                        "Regions"=>"",
                         "Details"=>""
                     )
                 );
