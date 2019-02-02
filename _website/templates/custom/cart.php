@@ -60,14 +60,20 @@ $select = db_fetch("SELECT `content` FROM `pages` WHERE `id`=131 AND `language`=
 <div id="purchase-terms-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
+            <div class="modal-header flex-column align-items-center">
+                <h4 class="change-password-form__title" style="font-size: 2.5rem"><?=l("siterule")?></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" viewBox="0 0 20.17 20.17">
+                        <path fill="#4d4d4f" d="M19.74,17.68l-7.63-7.63,7.56-7.57A1.46,1.46,0,0,0,17.61.43L10.05,8,2.49.43A1.46,1.46,0,0,0,.43,2.49L8,10.05.43,17.62a1.46,1.46,0,0,0,2.07,2.06l7.56-7.57,7.62,7.62a1.46,1.46,0,0,0,2.07-2.06Z"></path>
+                    </svg>
+                </button>
+            </div>
             <div class="modal-body" style="max-height: 350px; overflow: auto;">
                 <div class="text-holder" style="font-size: 12px;color: #BABABA;">
                     <?=strip_tags($select['content'], '<p><br>')?>
                 </div>
             </div>
-            <div class="modal-footer justify-content-center pt-0" style="margin-top: 20px;">
-                <a href="#" class="button button--yellow button--small text-uppercase" data-dismiss="modal" aria-label="Close"><?=l("close")?></a>
-            </div>
+            
         </div>
     </div>
 </div>

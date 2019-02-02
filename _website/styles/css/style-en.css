@@ -288,6 +288,26 @@ textarea.form-control{
 	-moz-box-shadow:0 2px 4px rgba(3,3,4,.1);
 	box-shadow:0 2px 4px rgba(3,3,4,.1);
 }
+
+
+#terms-modal .modal-dialog, 
+#terms-modal .modal-content{
+	max-width: 480px;
+	text-align: left;
+}
+#terms-modal .modal-content .modal-body .text-holder p{
+	text-align: left;
+}
+
+#purchase-terms-modal .modal-dialog, 
+#purchase-terms-modal .modal-content{
+	max-width: 480px;
+	text-align: left;
+}
+#purchase-terms-modal .modal-content .modal-body .text-holder p{
+	text-align: left;
+}
+
 .modal-body,.modal-footer,.modal-header{
 	padding:25px 30px;
 }
@@ -2456,3 +2476,4 @@ a.emphasized-link:hover{
 .g-new-timepickbox table tr td a i{ margin: 0; padding: 0; color:#d8d8d8; font-size: 21px; }
 .g-new-timepickbox table tr td input{ margin: 0 auto; padding: 5px; border: solid 1px #d8d8d8; max-width: 50px; height: 50px; text-align: center; font-size: 21px; }
 .purchase-terms-modal .modal-dialog .modal-content .modal-body .text-holder p{ padding: 10px 0px !important; }
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{ font-size: 1.5rem !important; }
