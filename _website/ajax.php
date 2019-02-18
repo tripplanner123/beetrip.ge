@@ -2975,6 +2975,7 @@
 
                 break;
             case "currencyChange":
+                $html = "";
                 if(
                     empty($_POST["cur"]) || 
                     empty($_POST["input_lang"]) 
