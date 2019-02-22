@@ -328,7 +328,7 @@ if($_GET["result"]=="success"){
                     <script type="text/javascript">
                         <?php if(isset($_SESSION["siterules"]) && $_SESSION["siterules"]=="checked"): ?>
                         $(document).ready(function(){
-                            $(".button-group--cart-action-button").removeAttr("disabled");
+                            $(".bgcab").removeAttr("disabled");
                         });
                         <?php endif; ?>
                     </script>
@@ -336,12 +336,12 @@ if($_GET["result"]=="success"){
                 </div>
                 <div class="button-group button-group--cart-action-buttons text-lg-right g-buttons-show-hide">
                     
-                    <button type="button" class="button button--gray button-group--cart-action-button button-delete text-uppercase g-cart-delete-button" disabled="disabled"><?=l("delete")?></button>
+                    <button type="button" class="button button--gray button-group--cart-action-button button-delete text-uppercase g-cart-delete-button"><?=l("delete")?></button>
 
                     <?php if(isset($_SESSION["beetrip_user"])){ ?>
-                    <button type="button" class="button button--yellow button-group--cart-action-button button--buy text-uppercase" disabled="disabled"><?=l("buy")?></button>
+                    <button type="button" class="button button--yellow button-group--cart-action-button button--buy text-uppercase bgcab" disabled="disabled"><?=l("buy")?></button>
                     <?php }else{ ?>
-                    <button type="button" class="button button--yellow text-uppercase button-group--cart-action-button" data-toggle="modal" data-target="#auth-modal" disabled="disabled"><?=l("buy")?></button>
+                    <button type="button" class="button button--yellow text-uppercase button-group--cart-action-button bgcab" data-toggle="modal" data-target="#auth-modal" disabled="disabled"><?=l("buy")?></button>
                     <?php } ?>
                     
                 </div>

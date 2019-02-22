@@ -37,7 +37,7 @@ function gRemove(){
 $(function () {
 
     var cartItemSelectControl = $(".cart-item-select-control");
-    var cartActionButton = $(".button-group--cart-action-button");
+    var cartActionButton = $(".bgcab");
     var buttonBuy = $(".button--buy");
     var paymentBlock = $(".payment-block");
     var deleteButton = $(".g-cart-delete-button");
@@ -182,10 +182,10 @@ $(document).on("change", "#siterules", function(){
 
     if(ch && x){
         siterules = "checked";
-        $(".button-group--cart-action-button").removeAttr("disabled");
+        $(".bgcab").removeAttr("disabled");
     }else{
         siterules = "unchecked";
-        $(".button-group--cart-action-button").attr("disabled","disabled");
+        $(".bgcab").attr("disabled","disabled");
     }
 
 

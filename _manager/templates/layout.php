@@ -108,7 +108,8 @@
 
                 external_plugins: {"filemanager" : "filemanager/plugin.min.js"}, 
 
-                extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align]"
+                extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align]",
+                link_assume_external_targets: true
 
             });
 

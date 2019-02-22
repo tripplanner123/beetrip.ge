@@ -39,7 +39,7 @@
 
     if(isset($_GET['logout'])){
         unset($_SESSION["beetrip_user"]);
-        header("Location: /");
+        header("Location: /".l());
         exit();
     }
 
@@ -437,7 +437,7 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li class="footer__list-item footer__list-item--show-before-lg">
+                                <!-- <li class="footer__list-item footer__list-item--show-before-lg">
                                     <a href="<?=s('beetripfacebook')?>" target="_blank" class="footer__list-link">
                                         <svg class="footer__list-icon" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.652 49.652">
                                             <path fill="#D3D3D3" d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826
@@ -449,8 +449,8 @@
                                             Facebook
                                         </span>
                                     </a>
-                                </li>
-                                <li class="footer__list-item footer__list-item--show-before-lg">
+                                </li> -->
+                                <!-- <li class="footer__list-item footer__list-item--show-before-lg">
                                     <a href="<?=s('beetripinstagram')?>" class="footer__list-link" target="_blank">
                                         <svg class="footer__list-icon" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 468.792 468.792">
                                             <path fill="#D3D3D3" d="M234.396,0C104.946,0,0,104.946,0,234.396s104.946,234.396,234.396,234.396
@@ -466,7 +466,7 @@
                                             Instagram
                                         </span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
