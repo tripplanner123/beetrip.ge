@@ -120,7 +120,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p><?=l("wouldyoulikedelete")?></p>
+                <p><?=l("beetripdeletecartitem")?></p>
             </div>
 
             <div class="modal-footer  flex-column">
@@ -199,7 +199,7 @@
                             <div style="clear:both;"></div>
                             <div class="form-group" style="width: 100%; text-align: center;">
                                 <label class="w-100 form-label">
-                                    <span class="form-label-text form-label-text--gray d-inline-block">New to Beetrip?</span>
+                                    <span class="form-label-text form-label-text--gray d-inline-block"><?=l("newtobeetrip")?></span>
                                 </label>
 
                                 <button type="button" onclick="location.href='/<?=l()?>/registration'" class="button button--small button--yellow w-100 text-uppercase new-v-button-registration"><?=l("registration")?></button>

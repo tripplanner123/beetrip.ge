@@ -192,20 +192,29 @@ if($_GET["result"]=="success"){
                                 // echo $item['startPlaceName2'];
                                 
                                 if($item['startPlaceName2'] && $item['endPlaceName2']){
-                                    $title .= $item["startPlaceName"] . " - " . $item["endPlaceName"];
-                                    $guests = "<br />".l("passenger").": ".($item["guests2"]+$item["children2"]+$item["childrenunder2"])."<br />";
-                                    // $guests .= $item["transport_name1"]."<br />";
-                                    $guests .= $item["roud1_price"]." <span class=\"lari-symbol\">l</span><br />";
+                                    $title .= "";
+                                    $guests = "<table border=\"0\" cellspaceing=\"0\" cellpadding=\"0\">";
+                                    $guests .= "<tr>";
+                                    $guests .= "<td>";
+                                    $guests .= $item["startPlaceName"] . " - " . $item["endPlaceName"];
+                                    $guests .= "<br />".l("passenger").": ".($item["guests2"]+$item["children2"]+$item["childrenunder2"])."<br />";
+                                    $guests .= $item["roud1_price"]." <span class=\"lari-symbol\">l</span>";
+                                    $guests .= "</td>";
+                                    $guests .= "</tr>";
+
+                                    $guests .= "<tr>";
+                                    $guests .= "<td>";
                                     $guests .= $item["startPlaceName2"] . " - " . $item["endPlaceName2"];
-                                    $guests .= "<br />".l("passenger").": ".$item["guests2"];
-                                    // $guests .= "<br />".$item["transport_name2"];
-                                    $guests .= "<br />".$item["roud2_price"]." <span class=\"lari-symbol\">l</span><br />";
+                                    $guests .= l("passenger").": ".$item["guests2"];
+                                    $guests .= "<br />".$item["roud2_price"]." <span class=\"lari-symbol\">l</span>";
+                                    $guests .= "</td>";
+                                    $guests .= "</tr>";
+
+                                    $guests .= "</table>";
                                     
                                 }else{
                                     $title .= $item["startPlaceName"] . " - " . $item["endPlaceName"];
                                     $guests = "<br />".l("passenger").": ".($item["guests"]+$item["children"]+$item["childrenunder"]);
-                                    // $guests .= "<br />".$item["transport_name1"];
-                                    // $guests .= "<br />".$item["roud1_price"]."<br />";
                                 }
 
                                 $logoImage = "/_website/images/transport-1-yellow.svg";
@@ -243,7 +252,8 @@ if($_GET["result"]=="success"){
                                 data-price1="<?=(float)$item['roud1_price']?>" 
                                 data-price2="<?=(float)$item['roud2_price']?>">
                                 <td>
-                                    <div style="background-image: url('<?=$logoImage?>'); width: 100px; height: 100px; background-repeat: no-repeat; background-position: center; background-size: 50px;"></div>
+                                <div style="background-image: url('<?=$logoImage?>'); width: 100px; height: 100px; background-repeat: no-repeat; background-position: center; background-size: 50px;"></div>
+
                                     <?php if($item['startPlaceName2'] && $item['endPlaceName2']){ ?>
                                     <div style="background-image: url('<?=$logoImage2?>'); width: 100px; height: 100px; background-repeat: no-repeat; background-position: center; background-size: 50px;"></div>
                                     <?php } ?>
@@ -252,10 +262,25 @@ if($_GET["result"]=="success"){
                                     <span><?=$title?></span><?=$doubleWay.$guests?>
                                 </td>
                                 <td>
-                                    <p><?=$item['startdate']?> <?=$item['timetrans']?></p>
+                                    <?php 
+                                    $height = ($item['startPlaceName2'] && $item['endPlaceName2']) ? "height: 200px" : "";
+                                    ?>
+                                    <table border="0" cellspaceing="0" cellpadding="0" style="<?=$height?>">
+                                    <tr>
+                                        <td>
+                                            <p><?=$item['startdate']?> <?=$item['timetrans']?></p>
+                                        </td>
+                                    </tr>
+
                                     <?php if($item['startPlaceName2'] && $item['endPlaceName2']): ?>
-                                    <p><?=$item['startdate2']?> <?=$item['timetrans2']?></p>
+                                    <tr>
+                                        <td>
+                                            <p><?=$item['startdate2']?> <?=$item['timetrans2']?></p>
+                                        </td>
+                                    </tr>
                                     <?php endif; ?>
+
+                                    </table>
                                 </td>                                
                                 
                                 <td>

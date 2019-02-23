@@ -15,6 +15,7 @@
                    // print_r(get_defined_vars());
                    // echo "</pre>";
                     $i = 1;
+                    $reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
                     foreach (array_reverse($lists) AS $item):
                     ?>     
                     <div class="transfer-content bg-white" style="margin-bottom: 20px;"> 
@@ -24,7 +25,15 @@
                             </div>
                             <!-- .title -->
                             <div class="text text-<?=$i?>" style="display: none; padding-top: 20px">
-                                <?php echo $item["description"]; ?>
+                                <?php 
+                                if(preg_match($reg_exUrl, $item["description"], $url)){
+                                    $urlx = "<a href=\"".strip_tags($url[0])."\">".strip_tags($url[0])."</a>";
+                                    echo preg_replace($reg_exUrl, $urlx, $item["description"]);
+
+                                }else{
+                                    echo $item["description"];
+                                }
+                                ?>
                             </div>
                         </div>
                        
