@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+error_reporting(0);
+ini_set('display_errors', false);
 /*
 if($_SERVER["PHP_AUTH_USER"] !== "bbog" && $_SERVER["PHP_AUTH_PW"] !== "b2011bog")
 {
@@ -54,6 +54,7 @@ $p_cardholder='';
 $ts2='';
 $signature='';
 $o_website='';
+$o_currency='gel';
 
 if(isset($_GET["trx_id"])){$trx_id=$_GET["trx_id"];}
 if(isset($_GET["merch_id"])){$merch_id=$_GET["merch_id"];}
@@ -71,6 +72,7 @@ if(isset($_GET["p_maskedPan"])){$p_maskedPan=$_GET["p_maskedPan"];}
 if(isset($_GET["p_cardholder"])){$p_cardholder=$_GET["p_cardholder"];}
 if(isset($_GET["ts"])){$ts2=$_GET["ts"];}
 if(isset($_GET["signature"])){$signature=$_GET["signature"];}
+if(isset($_GET["o_currency"])){$o_currency=$_GET["o_currency"];}
 
 
 if($trx_id!="" && $merchant_trx!="" && $merch_id!="" && $merch_id=="D6640FE47F9AE706A041C0D913DCF654"){

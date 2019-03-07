@@ -48,6 +48,7 @@ $merch_id='';
 $order_id='';
 $o_website='';
 $userid='';
+$o_currency='gel';
 $ts='';
 if(isset($_GET["trx_id"])){$trx_id=$_GET["trx_id"];}
 if(isset($_GET["lang_code"])){$lang_code=$_GET["lang_code"];}
@@ -55,6 +56,7 @@ if(isset($_GET["merch_id"])){$merch_id=$_GET["merch_id"];}
 if(isset($_GET["o_order_id"])){$order_id=$_GET["o_order_id"];}
 if(isset($_GET["o_website"])){$o_website=$_GET["o_website"];}else{ $o_website="beetrip"; }
 if(isset($_GET["o_userid"])){$userid=$_GET["o_userid"];}
+if(isset($_GET["o_currency"])){$o_currency=$_GET["o_currency"];}
 if(isset($_GET["ts"])){$ts=$_GET["ts"];}
 
 switch($lang_code){

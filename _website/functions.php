@@ -1,6 +1,4 @@
 <?php
-
-
 function text($id){
     $sql = "SELECT * FROM  ".c("table.pages")." WHERE language = '" . l() . "' AND visibility = 1 and deleted=0 AND id =".$id;
 	$newshome = db_fetch($sql);
@@ -2440,7 +2438,19 @@ function g_sent_order_mail(
 					$transfersInvoices .= "<p style=\"margin:0; padding:0; line-height: 14px; font-size: 14px;\"><strong>".l("underchildrenages").":</strong> {$o['childrenunder']}</p>";
 					$transfersInvoices .= "<p style=\"margin:0; padding:0; line-height: 14px; font-size: 14px;\"><strong>".l("childrenages").":</strong> {$o['children']}</p>";
 					$transfersInvoices .= '</td>';
-					$transfersInvoices .= "<td style=\"margin:0; padding:0; line-height: 14px; font-size: 14px;\">{$o['roud1_price']} ".l('gel')."</td>";
+					/*Price start*/
+					if(isset($_SESSION["currency_123"]) && $_SESSION["currency_123"]=="usd"){
+						$devide = (float)s("currencyusd");
+						$ccc = "$";
+					}else if(isset($_SESSION["currency_123"]) && $_SESSION["currency_123"]=="eur"){
+						$devide = (float)s("courseeur");
+						$ccc = "&euro;";
+					}else{
+						$devide = 1;
+						$ccc = l('gel');
+					}
+					$transfersInvoices .= "<td style=\"margin:0; padding:0; line-height: 14px; font-size: 14px;\">".round($o['roud1_price'] / $devide)." ".$ccc."</td>";
+					/*Price end*/
 					$transfersInvoices .= '</tr>'; 
 
 					if(!empty($o['startPlaceName2']) && !empty($o['endPlaceName2'])){
@@ -2461,7 +2471,19 @@ function g_sent_order_mail(
 						$transfersInvoices .= "<p style=\"margin:0; padding:0; line-height: 14px; font-size: 14px;\"><strong>".l("underchildrenages").":</strong> {$o['childrenunder2']}</p>";
 						$transfersInvoices .= "<p style=\"margin:0; padding:0; line-height: 14px; font-size: 14px;\"><strong>".l("childrenages").":</strong> {$o['children2']}</p>";
 						$transfersInvoices .= '</td>';
-						$transfersInvoices .= "<td style=\"margin:0; padding:0; line-height: 14px; font-size: 14px;\">{$o['roud2_price']} ".l('gel')."</td>";
+						/*price start*/
+						if(isset($_SESSION["currency_123"]) && $_SESSION["currency_123"]=="usd"){
+							$devide = (float)s("currencyusd");
+							$ccc = "$";
+						}else if(isset($_SESSION["currency_123"]) && $_SESSION["currency_123"]=="eur"){
+							$devide = (float)s("courseeur");
+							$ccc = "&euro;";
+						}else{
+							$devide = 1;
+							$ccc = l('gel');
+						}
+						$transfersInvoices .= "<td style=\"margin:0; padding:0; line-height: 14px; font-size: 14px;\">".round($o['roud2_price'] / $devide)." ".$ccc."</td>";
+						/*price end*/
 						$transfersInvoices .= '</tr>';
 					}				
 					break;
@@ -2523,9 +2545,28 @@ function g_sent_order_mail(
 			$invoiveHtml .= '<tr><td>&nbsp;</td><td>&nbsp;</td></tr>';
 		}		
 		
+
+
+
+		$invoiveHtml .= '<tr>';
+		$invoiveHtml .= '<td colspan="2" style="textalign:right"><span style="font-size:10px">'.l("paymentdescription").'</span></td>';
+		$invoiveHtml .= '</tr>';
+
 		$invoiveHtml .= '<tr>';
 		$invoiveHtml .= '<td>'.l("totalpricefinal").'</td>';
-		$invoiveHtml .= "<td align=\"right\">{$theHoleTotalPrice} ".l('gel')."</td>";
+		/* start price */
+		if(isset($_SESSION["currency_123"]) && $_SESSION["currency_123"]=="usd"){
+			$devide = (float)s("currencyusd");
+			$ccc = "$";
+		}else if(isset($_SESSION["currency_123"]) && $_SESSION["currency_123"]=="eur"){
+			$devide = (float)s("courseeur");
+			$ccc = "&euro;";
+		}else{
+			$devide = 1;
+			$ccc = l('gel');
+		}
+		$invoiveHtml .= "<td align=\"right\">".round($theHoleTotalPrice / $devide)." ".$ccc."</td>";
+		/* start end */
 		$invoiveHtml .= '</tr>';
 
 		$invoiveHtml .= '<tr>';

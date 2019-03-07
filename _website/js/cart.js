@@ -152,7 +152,7 @@ $(function () {
         });
 
         $(".payment-table--1").html(tb);
-        $(".theTotalPrice").html(parseInt(totalPriceTopay / curActive));
+        $(".theTotalPrice").html(parseInt(Math.round(totalPriceTopay / curActive)));
         paymentBlock.removeClass("payment-block--hidden");
     });
 

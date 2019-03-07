@@ -32,8 +32,9 @@
         try {
           $accessToken = $helper->getAccessToken();
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
-          echo 'Graph returned an error: ' . $e->getMessage();
-          exit;
+          // echo 'Graph returned an error: ' . $e->getMessage();
+            header("Location: /");
+            exit;
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
           // echo '123 Facebook SDK returned an error: ' . $e->getMessage();
           // exit;
@@ -41,14 +42,18 @@
 
         if (!isset($accessToken)) {
           if ($helper->getError()) {
-            header('HTTP/1.0 401 Unauthorized');
-            echo "Error: " . $helper->getError() . "\n";
-            echo "Error Code: " . $helper->getErrorCode() . "\n";
-            echo "Error Reason: " . $helper->getErrorReason() . "\n";
-            echo "Error Description: " . $helper->getErrorDescription() . "\n";
+            // header('HTTP/1.0 401 Unauthorized');
+            // echo "Error: " . $helper->getError() . "\n";
+            // echo "Error Code: " . $helper->getErrorCode() . "\n";
+            // echo "Error Reason: " . $helper->getErrorReason() . "\n";
+            // echo "Error Description: " . $helper->getErrorDescription() . "\n";
+            header("Location: /");
+            exit;
           } else {
-            header('HTTP/1.0 400 Bad Request');
-            echo 'Bad request';
+            // header('HTTP/1.0 400 Bad Request');
+            // echo 'Bad request';
+            header("Location: /");
+            exit;
           }
           exit;
         }
@@ -58,11 +63,13 @@
         try {
           $response = $fb->get('/me?fields=birthday,name,email,gender,picture.width(350).height(350)', $accessToken);         
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
-          echo 'Graph returned an error: ' . $e->getMessage();
-          exit;
+          // echo 'Graph returned an error: ' . $e->getMessage();
+            header("Location: /");
+            exit;
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
           // echo 'Facebook SDK returned an error: ' . $e->getMessage(); 
           // exit;
+            header("Location: /");
         }
         $user = $response->getGraphUser();
         //print_r($response);
@@ -91,8 +98,7 @@
             }
             header('HTTP/1.1 301 Moved Permanently');
             header('Location: ' . $redirect);
-            exit();
-
+            exit;
         }else{
 
             $name = (isset($user['name'])) ? explode(" ", $user['name']) : "";
@@ -104,30 +110,17 @@
 
             db_query($sql);
 
-
-
             $sql = "SELECT * FROM `site_users` WHERE `email`='".$user['email']."' AND `deleted`=0";
-
             $fetch = db_fetch($sql);
-
             $_SESSION["beetrip_user"] = $user['email'];
-
             $_SESSION["beetrip_user_info"] = $fetch;
 
-
-
             if(isset($_SESSION["cartsession"]))
-
             {
-
                 $userid = $_SESSION["cartsession"];
-
                 $sql5 = "UPDATE `cart` SET `userid`='".$user['email']."' WHERE `userid`='".$userid."'";
-
                 db_query($sql5);
-
             }
-
 
             $redirect = $_SERVER['HTTP_REFERER'];
             if(!preg_match_all("/https:\/\/beetrip.ge\/\w{2}\/registration/", $redirect, $matches)){
@@ -138,32 +131,17 @@
             header('HTTP/1.1 301 Moved Permanently');
             header('Location: ' . $redirect);
             exit();
-
-
         }
-
-        
-
-
-
         exit();
-
     }
 
-
-
     if(isset($_GET["sql"])){
-
-        
-
         exit();
-
     }
 
     if(isset($_POST["type"]))
     {
         $type = $_POST["type"];
-
         switch ($type) {
             case 'insertTransCart':
                 if(
