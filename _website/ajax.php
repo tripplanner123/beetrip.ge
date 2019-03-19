@@ -143,6 +143,47 @@
     {
         $type = $_POST["type"];
         switch ($type) {
+            case 'savePickupPlaces':
+                if(
+                    empty($_POST["input_lang"]) || 
+                    empty($_POST["pickupplacses"]) 
+                ){
+                    $errorCode = 1;
+                    $successCode = 0;
+                    $errorText = l("allfields");
+                    $successText = "";          
+                    $countCartitem = 0;
+                }else{
+                    $json = json_decode($_POST["pickupplacses"], true);
+                    $update = "";
+                    foreach ($json as $v) {
+                        if($v["double"]=="false"){
+                            $update .= "UPDATE `cart` SET `wherepickup`='".$v["value"]."' WHERE `id`='".$v["id"]."';"; 
+                        }else{
+                            $update .= "UPDATE `cart` SET `wherepickup2`='".$v["value"]."' WHERE `id`='".$v["id"]."';"; 
+                        }
+                    }
+                    db_query($update);
+
+                    $errorCode = 0;
+                    $successCode = 1;
+                    $errorText = "";
+                    $successText = l("welldone");
+                }
+
+                $out = array(
+                    "Error" => array(
+                        "Code"=>$errorCode, 
+                        "Text"=>$errorText,
+                        "Details"=>""
+                    ),
+                    "Success"=>array(
+                        "Code"=>$successCode, 
+                        "Text"=>$successText,
+                        "Details"=>""
+                    )
+                );
+                break;
             case 'insertTransCart':
                 if(
                     empty($_POST["input_lang"]) || 

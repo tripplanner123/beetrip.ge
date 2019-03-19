@@ -104,6 +104,39 @@ $(function () {
         var tb = "";
         var totalPriceTopay = 0;
         var curActive = parseFloat($(".currencyChangeActive").attr("data-cur"));
+
+        var pickupplacses = new Array();
+        $(".pickupPlace___").each(function(){
+            let id = parseInt($(this).attr("data-id"));
+            let double = $(this).attr("data-double");
+            let val = $(this).val();
+
+            let arrr = {};
+            arrr.double = double;
+            arrr.id = id;           
+            arrr.value = val;
+
+            pickupplacses.push(arrr);
+        });
+
+        $.ajax({
+            type: "POST",
+            url: Config.website+input_lang+"/?ajax=true",
+            data: { 
+                type:"savePickupPlaces", 
+                input_lang:input_lang, 
+                pickupplacses:JSON.stringify(pickupplacses)          
+            } 
+        }).done(function( msg ) {
+            var obj = $.parseJSON(msg);
+            if(obj.Error.Code==1){            
+                console.log(obj.Error.Text);
+            }else{
+                console.log(obj.Success.Text);
+            }
+        })
+
+
         $(".table-responsive table .cart-items").each(function(){
             let chk = $(".cart-item-select-control", this).prop("checked");
             if(chk){
@@ -122,9 +155,6 @@ $(function () {
 
                 totalPriceTopay += price1;
                 totalPriceTopay += price2;
-
-                
-                
 
                 tb += "<tr>";
                 

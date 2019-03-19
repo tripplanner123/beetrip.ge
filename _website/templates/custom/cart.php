@@ -1,37 +1,4 @@
 <?php defined('DIR') OR exit; ?>
-<!-- Message Modal start -->
-<div id="g-pickplace-modal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title w-100 text-center"><?=l("pickup")?></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" viewBox="0 0 20.17 20.17">
-                        <path fill="#4d4d4f" d="M19.74,17.68l-7.63-7.63,7.56-7.57A1.46,1.46,0,0,0,17.61.43L10.05,8,2.49.43A1.46,1.46,0,0,0,.43,2.49L8,10.05.43,17.62a1.46,1.46,0,0,0,2.07,2.06l7.56-7.57,7.62,7.62a1.46,1.46,0,0,0,2.07-2.06Z"></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="?" method="post" id="pickupplaceform">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="pick1" name="placeform" value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="pick2" name="placeform" value="" />
-                    </div>
-                    
-                </form>
-            </div>
-
-            <div class="modal-footer  flex-column">
-                <div id="g-pickplace-modal-footer">
-                    <button type="button" class="button button--small button--yellow w-100 text-uppercase"><?=l("save")?></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Message Modal end -->
 
 <div id="cart-message-modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm" role="document">
@@ -115,28 +82,7 @@ if($_GET["result"]=="success"){
                     <div class="col-lg-12">
                         <h2 class="page-title text-center text-lg-left"><?php echo $title ?></h2>
                     </div>
-                    <!-- <div class="col-lg-4">
-                        <div class="row align-items-center quick-links quick-links--profile">
-                            <div class="col-4 quick-links__col text-center">
-                                <a href="https://tripplanner.ge/<?=l()?>/ongoing-tours/?page=1&pri=0&cat=&reg=" class="quick-links__item d-inline-block" target="_blank">
-                                    <span class="quick-links__icon quick-links__icon--1 d-inline-block"></span>
-                                    <h2 class="quick-links__title"><?=menu_title(63)?></h2>
-                                </a>
-                            </div>
-                            <div class="col-4 quick-links__col text-center">
-                                <a href="/<?=l()?>/transfers" class="quick-links__item d-inline-block">
-                                    <span class="quick-links__icon quick-links__icon--2 d-inline-block"></span>
-                                    <h2 class="quick-links__title"><?=menu_title(62)?></h2>
-                                </a>
-                            </div>
-                            <div class="col-4 quick-links__col text-center">
-                                <a href="https://tripplanner.ge/<?=l()?>/plan-your-trip" class="quick-links__item d-inline-block" target="_blank">
-                                    <span class="quick-links__icon quick-links__icon--3 d-inline-block"></span>
-                                    <h2 class="quick-links__title"><?=l('tripplanner')?></h2>
-                                </a>
-                            </div>
-                        </div>
-                    </div> -->
+                    
                 </div>
             </div>
         </div>
@@ -156,7 +102,7 @@ if($_GET["result"]=="success"){
                                 <th><?=l("tours")?></th>
                                 
                                 <th><?=l("pickup")?></th>
-                                <th>&nbsp;</th>
+                                <th><?=l("pickupmodaltitle")?></th>
                                 <th><?=l("totalpricefinal")?></th>
                                 <th></th>
                             </tr>
@@ -198,7 +144,26 @@ if($_GET["result"]=="success"){
                                     $guests .= "<td>";
                                     $guests .= $item["startPlaceName"] . " - " . $item["endPlaceName"];
                                     $guests .= "<br />".l("passenger").": ".($item["guests2"]+$item["children2"]+$item["childrenunder2"])."<br />";
-                                    $guests .= $item["roud1_price"]." <span class=\"lari-symbol\">l</span>";
+                                    
+                                    //start
+                                    $currency_123 = "gel";
+                                    if(isset($_SESSION["currency_123"])){
+                                        $currency_123 = $_SESSION["currency_123"];
+                                    }
+
+                                    switch ($currency_123) {
+                                        case 'usd':
+                                            $guests .= round((int)$item["roud1_price"] / (float)s("currencyusd"))." $";
+                                            break;
+                                        case 'eur':
+                                            $guests .= round((int)$item["roud1_price"] / (float)s("courseeur"))." &euro;";
+                                            break;
+                                        default:
+                                            $guests .= $item["roud1_price"]." <span class=\"lari-symbol\" style=\"font-size:25px !important;\">l</span>";
+                                            break;
+                                    }
+                                    //end                                    
+                                    
                                     $guests .= "</td>";
                                     $guests .= "</tr>";
 
@@ -206,7 +171,27 @@ if($_GET["result"]=="success"){
                                     $guests .= "<td>";
                                     $guests .= $item["startPlaceName2"] . " - " . $item["endPlaceName2"];
                                     $guests .= l("passenger").": ".$item["guests2"];
-                                    $guests .= "<br />".$item["roud2_price"]." <span class=\"lari-symbol\">l</span>";
+                                    
+
+                                    //start
+                                    $currency_123 = "gel";
+                                    if(isset($_SESSION["currency_123"])){
+                                        $currency_123 = $_SESSION["currency_123"];
+                                    }
+
+                                    switch ($currency_123) {
+                                        case 'usd':
+                                            $guests .= "<br />".round((int)$item["roud2_price"] / (float)s("currencyusd"))." $";
+                                            break;
+                                        case 'eur':
+                                            $guests .= "<br />".round((int)$item["roud2_price"] / (float)s("courseeur"))." &euro;";
+                                            break;
+                                        default:
+                                            $guests .= "<br />".$item["roud2_price"]." <span class=\"lari-symbol\" style=\"font-size:25px !important;\">l</span>";
+                                            break;
+                                    }
+                                    //end
+
                                     $guests .= "</td>";
                                     $guests .= "</tr>";
 
@@ -252,7 +237,7 @@ if($_GET["result"]=="success"){
                                 data-price1="<?=(float)$item['roud1_price']?>" 
                                 data-price2="<?=(float)$item['roud2_price']?>">
                                 <td>
-                                <div style="background-image: url('<?=$logoImage?>'); width: 100px; height: 100px; background-repeat: no-repeat; background-position: center; background-size: 50px;"></div>
+                                    <div style="background-image: url('<?=$logoImage?>'); width: 100px; height: 100px; background-repeat: no-repeat; background-position: center; background-size: 50px;"></div>
 
                                     <?php if($item['startPlaceName2'] && $item['endPlaceName2']){ ?>
                                     <div style="background-image: url('<?=$logoImage2?>'); width: 100px; height: 100px; background-repeat: no-repeat; background-position: center; background-size: 50px;"></div>
@@ -281,14 +266,31 @@ if($_GET["result"]=="success"){
                                     <?php endif; ?>
 
                                     </table>
-                                </td>                                
+                                </td>                             
                                 
-                                <td>
-                                    
-                                    <p class="pickupPlaceHtml pph<?=$item['id']?>"><?=$item["wherepickup"]?></p>
-                                    
+                                <td>   
+                                    <table border="0" cellspaceing="0" cellpadding="0" style="height: 200px">
+                                        <tbody>
 
-                                
+                                        <tr>
+                                            <td>
+                                                <p><input type="text" name="pickupPlace___" value="<?=htmlentities($item["wherepickup"])?>" placeholder="<?=l("pickupaddress1")?>" class="form-control pickupPlace___" data-double="false" data-id="<?=$item['id']?>" /></p>
+                                            </td>
+                                        </tr>
+                                        <?php if($item['startPlaceName2'] && $item['endPlaceName2']): ?>
+                                        <tr>
+                                            <td>
+                                                 <p><input type="text" name="pickupPlace2___" value="<?=htmlentities($item["wherepickup2"])?>" placeholder="<?=l("pickupaddress1")?>" class="form-control pickupPlace___" data-double="true" data-id="<?=$item['id']?>" /></p>
+
+                                            </td>
+                                        </tr>
+                                        <?php endif; ?>
+                                        </tbody>
+                                    </table>
+
+                                                               
+                                    
+                                    <!-- <p class="pickupPlaceHtml pph<?=$item['id']?>"><?=$item["wherepickup"]?></p>                   
                                     <p class="pickupPlaceHtml pph2<?=$item['id']?>"><?=$item["wherepickup2"]?></p>
                                         
                                     <button 
@@ -302,9 +304,9 @@ if($_GET["result"]=="success"){
                                         data-pickplacevalue1="<?=$item["wherepickup"]?>" 
                                         data-pickplacevalue2="<?=$item["wherepickup2"]?>" 
                                         style="min-width: 100px; margin-top: 0px; font-size: 13px; height: 25px; padding: 0 15px; line-height: 100%;"><i class="fa fa-map-marker" aria-hidden="true"></i> <?=l("pickupmodaltitle")?>
-                                    </button>
-                                </td>
+                                    </button> -->
 
+                                </td>
                                 <td>
                                     <?php 
                                     $currency_123 = "gel";

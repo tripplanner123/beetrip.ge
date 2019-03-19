@@ -374,12 +374,33 @@ if(isset($_FILES["profile-photo"])){
                                             <div class="col-2"><?=$title?><?=$doubleWay?></div>
                                             <div class="col-2"><?=$guests?></div>
                                             <div class="col-1">
-                                                <span class="tdprice"><?=$item['roud1_price']?></span>
-                                                <span class="lari-symbol">l</span>
+                                                <?php 
+                                                $currency_123 = "gel";
+                                                if(isset($_SESSION["currency_123"])){
+                                                    $currency_123 = $_SESSION["currency_123"];
+                                                }
+
+                                                switch ($currency_123) {
+                                                    case 'usd':
+                                                        $exchange = s("currencyusd");
+                                                        $cur = "<span>$</span>";
+                                                        break;
+                                                    case 'eur':
+                                                        $exchange = s("courseeur");
+                                                        $cur = "<span>&euro;</span>";
+                                                        break;
+                                                    default:
+                                                        $exchange = 1;
+                                                        $cur = "<span class=\"lari-symbol\">l</span>";
+                                                        break;
+                                                }
+                                                ?>
+
+
+                                                <span class="tdprice"><?=round($item['roud1_price'] / $exchange)?></span><?=$cur?>
                                                 <br />
                                                 <?php if($item['roud2_price']>0): ?>
-                                                <span class="tdprice"><?=$item['roud2_price']?></span>
-                                                <span class="lari-symbol">l</span>
+                                                <span class="tdprice"><?=round($item['roud2_price'] / $exchange)?></span><?=$cur?>
                                                 <?php endif; ?>
                                             </div>
                                             <div class="col-2">

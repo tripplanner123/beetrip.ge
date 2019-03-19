@@ -896,7 +896,7 @@ a.emphasized-link:hover{
 }
 .lari-symbol{
 	font-family:Lari;
-	font-size:1.4em;
+	font-size:18px !important;
 }
 .footer,.sum-price,.tour-title,.transport__price{
 	font-family:Montserrat,sans-serif;
@@ -2287,7 +2287,7 @@ a.emphasized-link:hover{
 }
 .cart-table tbody td{
     font-weight:500;
-    padding:8px 10px;
+    padding:8px 5px;
     background-color:#fafafa;
     vertical-align:middle;
     max-width: 200px;
