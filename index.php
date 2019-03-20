@@ -16,20 +16,20 @@ require_once '_manager/bootstrap.php';
 // Administration
 if ($storage->adminslug == c('admin.slug'))
 {
-    $route = array('main','show',1);
-    for ($i=0; $i<=count($storage->segments); $i++) {
-        if (!empty($storage->segments[$i+1]))
-            $route[$i] = $storage->segments[$i+1];
-    }
-    $storage->route = $route;
-    unset($storage->segments, $route);
-    require_once DIR . CMS . '/class.manager.php';
-    require_once DIR . WEBSITE . '/class.manager.php';
-    file_exists(DIR . WEBSITE . '/functions.php') AND require_once DIR . WEBSITE . '/functions.php';
-    $manager = new Manager();
-    if ($storage->route[0] !== 'manager' AND in_array($storage->route[0], array_map('strtolower', get_class_methods('Manager'))))
-        call_user_func(array($manager, $storage->route[0]));
-    exit($manager);
+    // $route = array('main','show',1);
+    // for ($i=0; $i<=count($storage->segments); $i++) {
+    //     if (!empty($storage->segments[$i+1]))
+    //         $route[$i] = $storage->segments[$i+1];
+    // }
+    // $storage->route = $route;
+    // unset($storage->segments, $route);
+    // require_once DIR . CMS . '/class.manager.php';
+    // require_once DIR . WEBSITE . '/class.manager.php';
+    // file_exists(DIR . WEBSITE . '/functions.php') AND require_once DIR . WEBSITE . '/functions.php';
+    // $manager = new Manager();
+    // if ($storage->route[0] !== 'manager' AND in_array($storage->route[0], array_map('strtolower', get_class_methods('Manager'))))
+    //     call_user_func(array($manager, $storage->route[0]));
+    // exit($manager);
 }
 
 // Website
