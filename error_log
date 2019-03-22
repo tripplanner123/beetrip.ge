@@ -52,3 +52,9 @@
 [20-Mar-2019 04:13:08 America/Chicago] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; AudioPhpCaptcha has a deprecated constructor in /home4/tripplanner/beetrip.ge/_modules/captcha/php-captcha.inc.php on line 408
 [20-Mar-2019 04:13:08 America/Chicago] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; PhpCaptchaColour has a deprecated constructor in /home4/tripplanner/beetrip.ge/_modules/captcha/php-captcha.inc.php on line 482
 [20-Mar-2019 13:13:08 Asia/Tbilisi] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/tripplanner/beetrip.ge/_modules/captcha/php-captcha.inc.php:72) in /home4/tripplanner/beetrip.ge/index.php on line 36
+[20-Mar-2019 17:11:22 Asia/Tbilisi] PHP Notice:  Undefined index: currency_123 in /home4/tripplanner/beetrip.ge/_website/templates/custom/cart.php on line 403
+[21-Mar-2019 17:00:43 Asia/Tbilisi] PHP Notice:  Undefined index: currency_123 in /home4/tripplanner/beetrip.ge/_website/templates/custom/cart.php on line 403
+[21-Mar-2019 17:22:59 Asia/Tbilisi] PHP Notice:  Undefined index: currency_123 in /home4/tripplanner/beetrip.ge/_website/templates/custom/cart.php on line 403
+[21-Mar-2019 18:57:33 Asia/Tbilisi] PHP Notice:  Undefined index: currency_123 in /home4/tripplanner/beetrip.ge/_website/templates/custom/cart.php on line 403
+[21-Mar-2019 21:56:17 Asia/Tbilisi] PHP Notice:  Undefined index: currency_123 in /home4/tripplanner/beetrip.ge/_website/templates/custom/cart.php on line 403
+[22-Mar-2019 10:13:25 Asia/Tbilisi] PHP Notice:  Undefined index: currency_123 in /home4/tripplanner/beetrip.ge/_website/templates/custom/cart.php on line 403
