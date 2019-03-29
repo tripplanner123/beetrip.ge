@@ -400,7 +400,7 @@ if($_GET["result"]=="success"){
                             <?php 
                             $order_id = "fb657d65d12373dbf6983"; 
                             if($order_id!=""){?>
-                            <a class="nav-link text-center g-pay-with-creditcard" href="javascript:void(0)" data-href="https://3dacq.georgiancard.ge/payment/start.wsm?lang=KA&merch_id=D6640FE47F9AE706A041C0D913DCF654&back_url_s=<?=urlencode('https://beetrip.ge/en/cart?result=success')?>&back_url_f=<?=urlencode('https://beetrip.ge/en/cart?result=fail')?>&preauth=N&o.order_id=<?=$order_id?>&o.userid=<?=(isset($_SESSION["beetrip_user"])) ? $_SESSION["beetrip_user"] : ''?>&o.lang=<?=l()?>&o.currency=<?=$_SESSION["currency_123"]?>">
+                            <a class="nav-link text-center g-pay-with-creditcard" href="javascript:void(0)" data-href="https://3dacq.georgiancard.ge/payment/start.wsm?lang=KA&merch_id=D6640FE47F9AE706A041C0D913DCF654&back_url_s=<?=urlencode('https://beetrip.ge/en/cart?result=success')?>&back_url_f=<?=urlencode('https://beetrip.ge/en/cart?result=fail')?>&preauth=N&o.order_id=<?=$order_id?>&o.userid=<?=(isset($_SESSION["beetrip_user"])) ? $_SESSION["beetrip_user"] : ''?>&o.lang=<?=l()?>&o.currency=gel">
                                 <span class="payment-method-icon payment-method-icon--1 d-inline-block"></span>
                                 <span class="d-block"><?=l("paywithcard")?></span>
                             </a>

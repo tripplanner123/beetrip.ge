@@ -249,8 +249,8 @@
                         $howManyVehicle = ceil($totalCrew / 12);
                     }
 
-                    $totalprice = ((int)round($km*$transport_price_per_km) * $howManyVehicle);
-                    $roud1_price = $totalprice + (int)$_POST["ten1"];
+                    $totalprice = ((int)round($km*$transport_price_per_km) * $howManyVehicle) + (int)$_POST["ten1"];
+                    $roud1_price = $totalprice;
 
 
                     /* double way start */
