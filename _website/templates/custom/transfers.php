@@ -201,14 +201,15 @@
                                                     <span class="transport__icon transport__icon--2 d-block"></span>
                                                     <span class="transport__price d-block text-uppercase g-minivan-price">0 <?=currencySign()?></span>
                                                     <span class="transport__type d-block"><?=l("minivan")?></span>
-                                                </label>
+                                                </label>                                            <li class="transport__list-item">
+
                                             </li>
                                             
                                             <li class="transport__list-item">
                                                 <label class="transport__radio-label text-center">
                                                     <input type="radio" class="transport__radio d-none g-transporDropDownId g-minibus" data-id="127" name="transport">
                                                     <span class="transport__icon trans-icon-3 d-block"></span>
-                                                    <span class="transport__price d-block text-uppercase g-bus-price">0 <?=currencySign()?></span>
+                                                    <span class="transport__price d-block text-uppercase g-minibus-price">0 <?=currencySign()?></span>
                                                     <span class="transport__type d-block"><?=l("minibus")?></span>
                                                 </label>
                                             </li>
@@ -430,7 +431,7 @@
                                 <label class="transport__radio-label text-center">
                                     <input type="radio" class="transport__radio d-none g-transporDropDownId2 g-minibus2" name="transport-1" data-id="127">
                                     <span class="transport__icon trans-icon-3 d-block"></span>
-                                    <span class="transport__price d-block text-uppercase g-bus-price2">0 <?=currencySign()?></span>
+                                    <span class="transport__price d-block text-uppercase g-minibus-price2">0 <?=currencySign()?></span>
                                     <span class="transport__type d-block"><?=l("minibus")?></span>
                                 </label>
                             </li>
@@ -469,6 +470,116 @@ $.timepicker.regional['<?=l()?>'] = {
     ampm: false
 };
 $.timepicker.setDefaults($.timepicker.regional['<?=l()?>']);
+
+<?php 
+$g_transports = g_transports();
+$tra = array();
+foreach ($g_transports as $v) {
+    if($v["id"]==125){
+        $tra["sedan"]["t_0_50"] = (float)$v["menutitle"];  
+        $tra["sedan"]["t_50_100"] = (float)$v["menutitle2"];
+        $tra["sedan"]["t_100_150"] = (float)$v["menutitle3"];
+        $tra["sedan"]["t_150_200"] = (float)$v["menutitle4"];
+        $tra["sedan"]["t_200_250"] = (float)$v["menutitle5"];
+        $tra["sedan"]["t_250_300"] = (float)$v["menutitle6"];
+        $tra["sedan"]["t_300_350"] = (float)$v["menutitle7"];
+        $tra["sedan"]["t_350_400"] = (float)$v["menutitle8"];
+        $tra["sedan"]["t_400_plus"] = (float)$v["menutitle9"];
+        $tra["sedan"]["t_max_passanger"] = (int)$v["menutitle10"];
+        $tra["sedan"]["samewaydiscount2"] = (int)$v["samewaydiscount2"];
+    }else if($v["id"]==126){
+        $tra["minivan"]["t_0_50"] = (float)$v["menutitle"];  
+        $tra["minivan"]["t_50_100"] = (float)$v["menutitle2"];
+        $tra["minivan"]["t_100_150"] = (float)$v["menutitle3"];
+        $tra["minivan"]["t_150_200"] = (float)$v["menutitle4"];
+        $tra["minivan"]["t_200_250"] = (float)$v["menutitle5"];
+        $tra["minivan"]["t_250_300"] = (float)$v["menutitle6"];
+        $tra["minivan"]["t_300_350"] = (float)$v["menutitle7"];
+        $tra["minivan"]["t_350_400"] = (float)$v["menutitle8"];
+        $tra["minivan"]["t_400_plus"] = (float)$v["menutitle9"];
+        $tra["minivan"]["t_max_passanger"] = (int)$v["menutitle10"];
+        $tra["minivan"]["samewaydiscount2"] = (int)$v["samewaydiscount2"];
+    }else if($v["id"]==127){
+        $tra["minibus"]["t_0_50"] = (float)$v["menutitle"];  
+        $tra["minibus"]["t_50_100"] = (float)$v["menutitle2"];
+        $tra["minibus"]["t_100_150"] = (float)$v["menutitle3"];
+        $tra["minibus"]["t_150_200"] = (float)$v["menutitle4"];
+        $tra["minibus"]["t_200_250"] = (float)$v["menutitle5"];
+        $tra["minibus"]["t_250_300"] = (float)$v["menutitle6"];
+        $tra["minibus"]["t_300_350"] = (float)$v["menutitle7"];
+        $tra["minibus"]["t_350_400"] = (float)$v["menutitle8"];
+        $tra["minibus"]["t_400_plus"] = (float)$v["menutitle9"];
+        $tra["minibus"]["t_max_passanger"] = (int)$v["menutitle10"];
+        $tra["minibus"]["samewaydiscount2"] = (int)$v["samewaydiscount2"];
+    }else if($v["id"]==220){
+        $tra["bus"]["t_0_50"] = (float)$v["menutitle"];  
+        $tra["bus"]["t_50_100"] = (float)$v["menutitle2"];
+        $tra["bus"]["t_100_150"] = (float)$v["menutitle3"];
+        $tra["bus"]["t_150_200"] = (float)$v["menutitle4"];
+        $tra["bus"]["t_200_250"] = (float)$v["menutitle5"];
+        $tra["bus"]["t_250_300"] = (float)$v["menutitle6"];
+        $tra["bus"]["t_300_350"] = (float)$v["menutitle7"];
+        $tra["bus"]["t_350_400"] = (float)$v["menutitle8"];
+        $tra["bus"]["t_400_plus"] = (float)$v["menutitle9"];
+        $tra["bus"]["t_max_passanger"] = (int)$v["menutitle10"];
+        $tra["bus"]["samewaydiscount2"] = (int)$v["samewaydiscount2"];
+    }
+}
+?>
+var transferPrices = {
+    sedan:{
+        t_0_50:parseFloat("<?=$tra["sedan"]["t_0_50"]?>"),
+        t_50_100:parseFloat("<?=$tra["sedan"]["t_50_100"]?>"),
+        t_100_150:parseFloat("<?=$tra["sedan"]["t_100_150"]?>"),
+        t_150_200:parseFloat("<?=$tra["sedan"]["t_150_200"]?>"),
+        t_200_250:parseFloat("<?=$tra["sedan"]["t_200_250"]?>"),
+        t_250_300:parseFloat("<?=$tra["sedan"]["t_250_300"]?>"),
+        t_300_350:parseFloat("<?=$tra["sedan"]["t_300_350"]?>"),
+        t_350_400:parseFloat("<?=$tra["sedan"]["t_350_400"]?>"),
+        t_400_plus:parseFloat("<?=$tra["sedan"]["t_400_plus"]?>"),
+        t_max_passanger:parseFloat("<?=$tra["sedan"]["t_max_passanger"]?>"),
+        samewaydiscount2:parseFloat("<?=$tra["sedan"]["samewaydiscount2"]?>")
+    },
+    minivan:{
+        t_0_50:parseFloat("<?=$tra["minivan"]["t_0_50"]?>"),
+        t_50_100:parseFloat("<?=$tra["minivan"]["t_50_100"]?>"),
+        t_100_150:parseFloat("<?=$tra["minivan"]["t_100_150"]?>"),
+        t_150_200:parseFloat("<?=$tra["minivan"]["t_150_200"]?>"),
+        t_200_250:parseFloat("<?=$tra["minivan"]["t_200_250"]?>"),
+        t_250_300:parseFloat("<?=$tra["minivan"]["t_250_300"]?>"),
+        t_300_350:parseFloat("<?=$tra["minivan"]["t_300_350"]?>"),
+        t_350_400:parseFloat("<?=$tra["minivan"]["t_350_400"]?>"),
+        t_400_plus:parseFloat("<?=$tra["minivan"]["t_400_plus"]?>"),
+        t_max_passanger:parseFloat("<?=$tra["minivan"]["t_max_passanger"]?>"),
+        samewaydiscount2:parseFloat("<?=$tra["minivan"]["samewaydiscount2"]?>")
+    },
+    minibus:{
+        t_0_50:parseFloat("<?=$tra["minibus"]["t_0_50"]?>"),
+        t_50_100:parseFloat("<?=$tra["minibus"]["t_50_100"]?>"),
+        t_100_150:parseFloat("<?=$tra["minibus"]["t_100_150"]?>"),
+        t_150_200:parseFloat("<?=$tra["minibus"]["t_150_200"]?>"),
+        t_200_250:parseFloat("<?=$tra["minibus"]["t_200_250"]?>"),
+        t_250_300:parseFloat("<?=$tra["minibus"]["t_250_300"]?>"),
+        t_300_350:parseFloat("<?=$tra["minibus"]["t_300_350"]?>"),
+        t_350_400:parseFloat("<?=$tra["minibus"]["t_350_400"]?>"),
+        t_400_plus:parseFloat("<?=$tra["minibus"]["t_400_plus"]?>"),
+        t_max_passanger:parseFloat("<?=$tra["minibus"]["t_max_passanger"]?>"),
+        samewaydiscount2:parseFloat("<?=$tra["minibus"]["samewaydiscount2"]?>")
+    },
+    bus:{
+        t_0_50:parseFloat("<?=$tra["bus"]["t_0_50"]?>"),
+        t_50_100:parseFloat("<?=$tra["bus"]["t_50_100"]?>"),
+        t_100_150:parseFloat("<?=$tra["bus"]["t_100_150"]?>"),
+        t_150_200:parseFloat("<?=$tra["bus"]["t_150_200"]?>"),
+        t_200_250:parseFloat("<?=$tra["bus"]["t_200_250"]?>"),
+        t_250_300:parseFloat("<?=$tra["bus"]["t_250_300"]?>"),
+        t_300_350:parseFloat("<?=$tra["bus"]["t_300_350"]?>"),
+        t_350_400:parseFloat("<?=$tra["bus"]["t_350_400"]?>"),
+        t_400_plus:parseFloat("<?=$tra["bus"]["t_400_plus"]?>"),
+        t_max_passanger:parseFloat("<?=$tra["bus"]["t_max_passanger"]?>"),
+        samewaydiscount2:parseFloat("<?=$tra["bus"]["samewaydiscount2"]?>")
+    }
+};
 </script>
 <script src="_website/js/transfer.js?time=<?=time()?>"></script>
 <script src="_website/js/quantity.js"></script>

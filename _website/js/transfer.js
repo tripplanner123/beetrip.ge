@@ -150,56 +150,66 @@ function countPriceTransport(){
     var numberofchildren05 = parseInt($(".g-under-child").val());
     var totalCrew = guest + numberofchildren612 + numberofchildren05;
 
-    var sedan50 =  parseFloat($("#kilo-price-125").attr("data-price_50"));
-    var sedan100 =  parseFloat($("#kilo-price-125").attr("data-price_100"));
-    var sedan200 =  parseFloat($("#kilo-price-125").attr("data-price_200"));
-    var sedan200_plus =  parseFloat($("#kilo-price-125").attr("data-price_200_plus"));
-
-    var mivan50 =  parseFloat($("#kilo-price-126").attr("data-price_50"));
-    var mivan100 =  parseFloat($("#kilo-price-126").attr("data-price_100"));
-    var mivan200 =  parseFloat($("#kilo-price-126").attr("data-price_200"));
-    var mivan200_plus =  parseFloat($("#kilo-price-126").attr("data-price_200_plus"));
-
-    var bus50 =  parseFloat($("#kilo-price-127").attr("data-price_50"));
-    var bus100 =  parseFloat($("#kilo-price-127").attr("data-price_100"));
-    var bus200 =  parseFloat($("#kilo-price-127").attr("data-price_200"));
-    var bus200_plus =  parseFloat($("#kilo-price-127").attr("data-price_200_plus"));
+    var sedanMaxPass = transferPrices.sedan.t_max_passanger;
+    var minivanMaxPass = transferPrices.minivan.t_max_passanger;
+    var minibusMaxPass = transferPrices.minibus.t_max_passanger;
+    var busMaxPass = transferPrices.bus.t_max_passanger;
 
     var transport_price_per_km_sedan = 0;
     var transport_price_per_km_minivan = 0;
-    var transport_price_per_km_buss = 0;
+    var transport_price_per_km_minibus = 0;
+    var transport_price_per_km_bus = 0;
 
-    var howManySedan = Math.ceil(totalCrew / 3);
-    if(km<=50){
-        transport_price_per_km_sedan = sedan50;
-    }else if(km<=100){
-        transport_price_per_km_sedan = sedan100;
-    }else if(km<=200){
-        transport_price_per_km_sedan = sedan200;
-    }else if(km>200){
-        transport_price_per_km_sedan = sedan200_plus;
-    }
+    var howManySedan = Math.ceil(totalCrew / sedanMaxPass);
+    var howManyMinivan = Math.ceil(totalCrew / minivanMaxPass);
+    var howManyMinibus = Math.ceil(totalCrew / minibusMaxPass);
+    var howManyBus = Math.ceil(totalCrew / busMaxPass);
 
-    var howManyMinivan = Math.ceil(totalCrew / 6);
-    if(km<=50){
-        transport_price_per_km_minivan = mivan50;
-    }else if(km<=100){
-        transport_price_per_km_minivan = mivan100;
-    }else if(km<=200){
-        transport_price_per_km_minivan = mivan200;
-    }else if(km>200){
-        transport_price_per_km_minivan = mivan200_plus;
-    }
-
-    var howManyBus = Math.ceil(totalCrew / 12);
-    if(km<=50){
-        transport_price_per_km_buss = bus50;
-    }else if(km<=100){
-        transport_price_per_km_buss = bus100;
-    }else if(km<=200){
-        transport_price_per_km_buss = bus200;
-    }else if(km>200){
-        transport_price_per_km_buss = bus200_plus;
+    if(km<=49){
+        transport_price_per_km_sedan = transferPrices.sedan.t_0_50;
+        transport_price_per_km_minivan = transferPrices.minivan.t_0_50;
+        transport_price_per_km_minibus = transferPrices.minibus.t_0_50;
+        transport_price_per_km_bus = transferPrices.bus.t_0_50;
+    }else if(km<=99){
+        transport_price_per_km_sedan = transferPrices.sedan.t_50_100;
+        transport_price_per_km_minivan = transferPrices.minivan.t_50_100;
+        transport_price_per_km_minibus = transferPrices.minibus.t_50_100;
+        transport_price_per_km_bus = transferPrices.bus.t_50_100;
+    }else if(km<=149){
+        transport_price_per_km_sedan = transferPrices.sedan.t_100_150;
+        transport_price_per_km_minivan = transferPrices.minivan.t_100_150;
+        transport_price_per_km_minibus = transferPrices.minibus.t_100_150;
+        transport_price_per_km_bus = transferPrices.bus.t_100_150;
+    }else if(km<=199){
+        transport_price_per_km_sedan = transferPrices.sedan.t_150_200;
+        transport_price_per_km_minivan = transferPrices.minivan.t_150_200;
+        transport_price_per_km_minibus = transferPrices.minibus.t_150_200;
+        transport_price_per_km_bus = transferPrices.bus.t_150_200;
+    }else if(km<=249){
+        transport_price_per_km_sedan = transferPrices.sedan.t_200_250;
+        transport_price_per_km_minivan = transferPrices.minivan.t_200_250;
+        transport_price_per_km_minibus = transferPrices.minibus.t_200_250;
+        transport_price_per_km_bus = transferPrices.bus.t_200_250;
+    }else if(km<=299){
+        transport_price_per_km_sedan = transferPrices.sedan.t_250_300;
+        transport_price_per_km_minivan = transferPrices.minivan.t_250_300;
+        transport_price_per_km_minibus = transferPrices.minibus.t_250_300;
+        transport_price_per_km_bus = transferPrices.bus.t_250_300;
+    }else if(km<=349){
+        transport_price_per_km_sedan = transferPrices.sedan.t_300_350;
+        transport_price_per_km_minivan = transferPrices.minivan.t_300_350;
+        transport_price_per_km_minibus = transferPrices.minibus.t_300_350;
+        transport_price_per_km_bus = transferPrices.bus.t_300_350;
+    }else if(km<=399){
+        transport_price_per_km_sedan = transferPrices.sedan.t_350_400;
+        transport_price_per_km_minivan = transferPrices.minivan.t_350_400;
+        transport_price_per_km_minibus = transferPrices.minibus.t_350_400;
+        transport_price_per_km_bus = transferPrices.bus.t_350_400;
+    }else if(km>=400){
+        transport_price_per_km_sedan = transferPrices.sedan.t_400_plus;
+        transport_price_per_km_minivan = transferPrices.minivan.t_400_plus;
+        transport_price_per_km_minibus = transferPrices.minibus.t_400_plus;
+        transport_price_per_km_bus = transferPrices.bus.t_400_plus;
     }
 
     var ten = 0;
@@ -209,9 +219,14 @@ function countPriceTransport(){
 
     var totalprice_sedan = ((km * transport_price_per_km_sedan) * howManySedan) + ten;
     totalprice_sedan = (isNaN(totalprice_sedan)) ? 0 : totalprice_sedan;
+    
     var totalprice_minivan = ((km * transport_price_per_km_minivan) * howManyMinivan) + ten;
     totalprice_minivan = (isNaN(totalprice_minivan)) ? 0 : totalprice_minivan;
-    var totalprice_bus = ((km * transport_price_per_km_buss) * howManyBus) + ten;
+
+    var totalprice_minibus = ((km * transport_price_per_km_minibus) * howManyMinibus) + ten;
+    totalprice_minibus = (isNaN(totalprice_minibus)) ? 0 : totalprice_minibus;
+    
+    var totalprice_bus = ((km * transport_price_per_km_bus) * howManyBus) + ten;
     totalprice_bus = (isNaN(totalprice_bus)) ? 0 : totalprice_bus;
 
     
@@ -219,6 +234,7 @@ function countPriceTransport(){
 
     $(".g-sedan-price").html(parseInt(Math.round(totalprice_sedan / curActive)) + " "+currencySign());
     $(".g-minivan-price").html(parseInt(Math.round(totalprice_minivan / curActive) ) + " "+currencySign());
+    $(".g-minibus-price").html(parseInt(Math.round(totalprice_minibus / curActive) ) + " "+currencySign());
     $(".g-bus-price").html(parseInt(Math.round(totalprice_bus / curActive)) + " "+currencySign());
 }
 
@@ -230,56 +246,66 @@ function countPriceTransport2(){
     var numberofchildren05 = parseInt($(".g-under-child2").val());
     var totalCrew = guest + numberofchildren612 + numberofchildren05;
 
-    var sedan50 =  parseFloat($("#kilo-price-125").attr("data-price_50"));
-    var sedan100 =  parseFloat($("#kilo-price-125").attr("data-price_100"));
-    var sedan200 =  parseFloat($("#kilo-price-125").attr("data-price_200"));
-    var sedan200_plus =  parseFloat($("#kilo-price-125").attr("data-price_200_plus"));
-
-    var mivan50 =  parseFloat($("#kilo-price-126").attr("data-price_50"));
-    var mivan100 =  parseFloat($("#kilo-price-126").attr("data-price_100"));
-    var mivan200 =  parseFloat($("#kilo-price-126").attr("data-price_200"));
-    var mivan200_plus =  parseFloat($("#kilo-price-126").attr("data-price_200_plus"));
-
-    var bus50 =  parseFloat($("#kilo-price-127").attr("data-price_50"));
-    var bus100 =  parseFloat($("#kilo-price-127").attr("data-price_100"));
-    var bus200 =  parseFloat($("#kilo-price-127").attr("data-price_200"));
-    var bus200_plus =  parseFloat($("#kilo-price-127").attr("data-price_200_plus"));
+    var sedanMaxPass = transferPrices.sedan.t_max_passanger;
+    var minivanMaxPass = transferPrices.minivan.t_max_passanger;
+    var minibusMaxPass = transferPrices.minibus.t_max_passanger;
+    var busMaxPass = transferPrices.bus.t_max_passanger;
 
     var transport_price_per_km_sedan = 0;
     var transport_price_per_km_minivan = 0;
-    var transport_price_per_km_buss = 0;
+    var transport_price_per_km_minibus = 0;
+    var transport_price_per_km_bus = 0;
 
-    var howManySedan = Math.ceil(totalCrew / 3);
-    if(km<=50){
-        transport_price_per_km_sedan = sedan50;
-    }else if(km<=100){
-        transport_price_per_km_sedan = sedan100;
-    }else if(km<=200){
-        transport_price_per_km_sedan = sedan200;
-    }else if(km>200){
-        transport_price_per_km_sedan = sedan200_plus;
-    }
+    var howManySedan = Math.ceil(totalCrew / sedanMaxPass);
+    var howManyMinivan = Math.ceil(totalCrew / minivanMaxPass);
+    var howManyMinibus = Math.ceil(totalCrew / minibusMaxPass);
+    var howManyBus = Math.ceil(totalCrew / busMaxPass);
 
-    var howManyMinivan = Math.ceil(totalCrew / 6);
-    if(km<=50){
-        transport_price_per_km_minivan = mivan50;
-    }else if(km<=100){
-        transport_price_per_km_minivan = mivan100;
-    }else if(km<=200){
-        transport_price_per_km_minivan = mivan200;
-    }else if(km>200){
-        transport_price_per_km_minivan = mivan200_plus;
-    }
-
-    var howManyBus = Math.ceil(totalCrew / 12);
-    if(km<=50){
-        transport_price_per_km_buss = bus50;
-    }else if(km<=100){
-        transport_price_per_km_buss = bus100;
-    }else if(km<=200){
-        transport_price_per_km_buss = bus200;
-    }else if(km>200){
-        transport_price_per_km_buss = bus200_plus;
+    if(km<=49){
+        transport_price_per_km_sedan = transferPrices.sedan.t_0_50;
+        transport_price_per_km_minivan = transferPrices.minivan.t_0_50;
+        transport_price_per_km_minibus = transferPrices.minibus.t_0_50;
+        transport_price_per_km_bus = transferPrices.bus.t_0_50;
+    }else if(km<=99){
+        transport_price_per_km_sedan = transferPrices.sedan.t_50_100;
+        transport_price_per_km_minivan = transferPrices.minivan.t_50_100;
+        transport_price_per_km_minibus = transferPrices.minibus.t_50_100;
+        transport_price_per_km_bus = transferPrices.bus.t_50_100;
+    }else if(km<=149){
+        transport_price_per_km_sedan = transferPrices.sedan.t_100_150;
+        transport_price_per_km_minivan = transferPrices.minivan.t_100_150;
+        transport_price_per_km_minibus = transferPrices.minibus.t_100_150;
+        transport_price_per_km_bus = transferPrices.bus.t_100_150;
+    }else if(km<=199){
+        transport_price_per_km_sedan = transferPrices.sedan.t_150_200;
+        transport_price_per_km_minivan = transferPrices.minivan.t_150_200;
+        transport_price_per_km_minibus = transferPrices.minibus.t_150_200;
+        transport_price_per_km_bus = transferPrices.bus.t_150_200;
+    }else if(km<=249){
+        transport_price_per_km_sedan = transferPrices.sedan.t_200_250;
+        transport_price_per_km_minivan = transferPrices.minivan.t_200_250;
+        transport_price_per_km_minibus = transferPrices.minibus.t_200_250;
+        transport_price_per_km_bus = transferPrices.bus.t_200_250;
+    }else if(km<=299){
+        transport_price_per_km_sedan = transferPrices.sedan.t_250_300;
+        transport_price_per_km_minivan = transferPrices.minivan.t_250_300;
+        transport_price_per_km_minibus = transferPrices.minibus.t_250_300;
+        transport_price_per_km_bus = transferPrices.bus.t_250_300;
+    }else if(km<=349){
+        transport_price_per_km_sedan = transferPrices.sedan.t_300_350;
+        transport_price_per_km_minivan = transferPrices.minivan.t_300_350;
+        transport_price_per_km_minibus = transferPrices.minibus.t_300_350;
+        transport_price_per_km_bus = transferPrices.bus.t_300_350;
+    }else if(km<=399){
+        transport_price_per_km_sedan = transferPrices.sedan.t_350_400;
+        transport_price_per_km_minivan = transferPrices.minivan.t_350_400;
+        transport_price_per_km_minibus = transferPrices.minibus.t_350_400;
+        transport_price_per_km_bus = transferPrices.bus.t_350_400;
+    }else if(km>=400){
+        transport_price_per_km_sedan = transferPrices.sedan.t_400_plus;
+        transport_price_per_km_minivan = transferPrices.minivan.t_400_plus;
+        transport_price_per_km_minibus = transferPrices.minibus.t_400_plus;
+        transport_price_per_km_bus = transferPrices.bus.t_400_plus;
     }
 
     var ten = 0;
@@ -289,15 +315,50 @@ function countPriceTransport2(){
 
     var totalprice_sedan = ((km * transport_price_per_km_sedan) * howManySedan) + ten;
     totalprice_sedan = (isNaN(totalprice_sedan)) ? 0 : totalprice_sedan;
+
     var totalprice_minivan = ((km * transport_price_per_km_minivan) * howManyMinivan) + ten;
     totalprice_minivan = (isNaN(totalprice_minivan)) ? 0 : totalprice_minivan;
-    var totalprice_bus = ((km * transport_price_per_km_buss) * howManyBus) + ten;
+
+    var totalprice_minibus = ((km * transport_price_per_km_minibus) * howManyMinibus) + ten;
+    totalprice_minibus = (isNaN(totalprice_minibus)) ? 0 : totalprice_minibus;
+
+    var totalprice_bus = ((km * transport_price_per_km_bus) * howManyBus) + ten;
     totalprice_bus = (isNaN(totalprice_bus)) ? 0 : totalprice_bus;
 
     var curActive = parseFloat($(".currencyChangeActive").attr("data-cur"));
 
+    //g-datepicker
+    //g-datepicker2
+    var firstFromPlace = parseInt($(".g-startingplace").val());
+    var secondFromPlace = parseInt($(".g-endingplace").val());
+    var thirdFromPlace = parseInt($(".g-startingplace2").val());
+    var fourFromPlace = parseInt($(".g-endingplace2").val());
+
+    var ex1 = $(".g-datepicker").val().split("-");
+    var ex2 = $(".g-datepicker2").val().split("-");
+
+    var year = ex1[2];
+    var month = (ex1[1].length<=1) ? "0"+ex1[1] : ex1[1];
+    var day = (ex1[0].length<=1) ? "0"+ex1[0] : ex1[0];
+
+    var year2 = ex2[2];
+    var month2 = (ex2[1].length<=1) ? "0"+ex2[1] : ex2[1];
+    var day2 = (ex2[0].length<=1) ? "0"+ex2[0] : ex2[0];
+
+    var firstFullDate = year + "-" + month + "-" + day;
+    var secondFullDate = year2 + "-" + month2 + "-" + day2;
+
+    //same way back discount
+    if(firstFromPlace==fourFromPlace && secondFromPlace==thirdFromPlace && firstFullDate==secondFullDate){
+        totalprice_sedan = totalprice_sedan - ((totalprice_sedan*transferPrices.sedan.samewaydiscount2) / 100);
+        totalprice_minivan = totalprice_minivan - ((totalprice_minivan*transferPrices.minivan.samewaydiscount2) / 100);
+        totalprice_minibus = totalprice_minibus - ((totalprice_minibus*transferPrices.minibus.samewaydiscount2) / 100);
+        totalprice_bus = totalprice_bus - ((totalprice_bus*transferPrices.bus.samewaydiscount2) / 100);
+    }
+
     $(".g-sedan-price2").html(parseInt(Math.round(totalprice_sedan / curActive)) + " "+currencySign());
     $(".g-minivan-price2").html(parseInt(Math.round(totalprice_minivan / curActive) ) + " "+currencySign());
+    $(".g-minibus-price2").html(parseInt(Math.round(totalprice_minibus / curActive) ) + " "+currencySign());
     $(".g-bus-price2").html(parseInt(Math.round(totalprice_bus / curActive)) + " "+currencySign());
 }
 
@@ -422,7 +483,7 @@ $(function () {
         dateToday.setDate(dateToday.getDate()+2);
 
         var date2 = $('.g-datepicker').datepicker('getDate'); 
-        date2.setDate(date2.getDate()+1); 
+        // date2.setDate(date2.getDate()+1); 
          
         var nextDay = date2.getDate()+"-"+(date2.getMonth()+1)+"-"+date2.getFullYear();
         $(".g-datepicker2").val(nextDay);
@@ -503,21 +564,21 @@ $(document).on("click",".g-order-button", function(){
     var startingplace = $(".g-startingplace").val();
     var startplace2 = (typeof $(".g-startingplace2").val() !== "undefined") ? $(".g-startingplace2").val() : '';
     var endingplace = $(".g-endingplace").val();
-    var endplace2 = (typeof $(".g-endingplace2").val()) ? $(".g-endingplace2").val() : '';
+    var endplace2 = (typeof $(".g-endingplace2").val() !== "undefined") ? $(".g-endingplace2").val() : '';
     var datepicker = $(".g-datepicker").val();
-    var startdatetrans2 = (typeof $(".g-datepicker2").val()) ? $(".g-datepicker2").val() : '';
+    var startdatetrans2 = (typeof $(".g-datepicker2").val() !== "undefined") ? $(".g-datepicker2").val() : '';
     var timepicker = $(".g-timepicker").val();
-    var timeTrans2 = (typeof $(".g-timepicker2").val()) ? $(".g-timepicker2").val() : '';
+    var timeTrans2 = (typeof $(".g-timepicker2").val() !== "undefined") ? $(".g-timepicker2").val() : '';
     var numberofpeople = $(".g-numberofpeople").val();
     var numberofchildren612 = parseInt($(".g-child").val());
     var numberofchildren05 = parseInt($(".g-under-child").val());
 
-    var guestnumber2 = (typeof $(".g-numberofpeople2").val()) ? $(".g-numberofpeople2").val() : '';
+    var guestnumber2 = (typeof $(".g-numberofpeople2").val() !== "undefined") ? $(".g-numberofpeople2").val() : '';
     var numberofchildren612_ = parseInt($(".g-child2").val());
     var numberofchildren05_ = parseInt($(".g-under-child2").val());
 
     var TransporDropDownId = $(".g-transporDropDownId:checked").attr("data-id");
-    var TransporDropDownId2 = (typeof $(".g-transporDropDownId2:checked").attr("data-id")) ? $(".g-transporDropDownId2:checked").attr("data-id") : '';
+    var TransporDropDownId2 = (typeof $(".g-transporDropDownId2:checked").attr("data-id") !== "undefined") ? $(".g-transporDropDownId2:checked").attr("data-id") : '';
     
     var messageheader = $(this).attr("data-messageheader");
     var datatype = $(this).attr("data-type");
@@ -957,6 +1018,8 @@ $(document).on("change", ".g-datepicker", function(){
     let baby2 = parseInt(url.searchParams.get("ba2"));
     let child2 = parseInt(url.searchParams.get("ch2"));
 
+    countPriceTransport2();
+
     let urlToGo = "/"+lang+"/transfers?s="+startPlace+"&e="+endPlace+"&s2="+startPlace2+"&e2="+endPlace2+"&gd="+val+"&gt="+gtimepicker+"&gd2="+gdatepicker2+"&gt2="+gtimepicker2+"&ad="+adult+"&ba="+baby+"&ch="+child+"&ad2="+adult2+"&ba2="+baby2+"&ch2="+child2;
     window.history.pushState('', '', urlToGo);
 });
@@ -1013,6 +1076,8 @@ $(document).on("change", ".g-datepicker2", function(){
     let adult2 = parseInt(url.searchParams.get("ad2"));
     let baby2 = parseInt(url.searchParams.get("ba2"));
     let child2 = parseInt(url.searchParams.get("ch2"));
+
+    countPriceTransport2();
 
     let urlToGo = "/"+lang+"/transfers?s="+startPlace+"&e="+endPlace+"&s2="+startPlace2+"&e2="+endPlace2+"&gd="+gdatepicker+"&gt="+gtimepicker+"&gd2="+val+"&gt2="+gtimepicker2+"&ad="+adult+"&ba="+baby+"&ch="+child+"&ad2="+adult2+"&ba2="+baby2+"&ch2="+child2;
     window.history.pushState('', '', urlToGo);

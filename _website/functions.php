@@ -1883,7 +1883,7 @@ function g_categories()
 
 function g_transports()
 {
-	$sql = "SELECT `id`, `title`, `menutitle`, `menutitle2`, `menutitle3`, `menutitle4`, `meta_desc`, `price_50`, `price_100`, `price_200`, `price_200_plus` FROM `pages` WHERE `language`='".l()."' AND `menuid`=40 AND `visibility`=1 AND `deleted`=0";
+	$sql = "SELECT * FROM `pages` WHERE `language`='".l()."' AND `menuid`=40 AND `visibility`=1 AND `deleted`=0";
 	$fetch = db_fetch_all($sql);
 	return $fetch;
 }
