@@ -2710,7 +2710,7 @@ function currencySign(){
 			$html .= "&euro;";
 			break;
 		default:
-			$html .= "<span class=\"lari-symbol\" style=\"font-size:25px !important;\">l</span>";
+			$html .= "<span class=\"lari-symbol\">l</span>";
 			break;
 	}
 

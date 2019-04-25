@@ -16,3 +16,18 @@
 [27-Mar-2019 16:10:01 Asia/Tbilisi] PHP Notice:  Undefined index: currency_123 in /home4/tripplanner/beetrip.ge/_website/templates/custom/cart.php on line 403
 [27-Mar-2019 16:10:10 Asia/Tbilisi] PHP Notice:  Undefined index: currency_123 in /home4/tripplanner/beetrip.ge/_website/templates/custom/cart.php on line 403
 [27-Mar-2019 16:34:41 Asia/Tbilisi] PHP Parse error:  syntax error, unexpected end of file in /home4/tripplanner/beetrip.ge/_website/ajax.php on line 221
+[12-Apr-2019 20:17:43 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[12-Apr-2019 20:17:43 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[12-Apr-2019 20:17:43 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[12-Apr-2019 20:17:43 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[12-Apr-2019 20:17:43 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[12-Apr-2019 20:18:02 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[12-Apr-2019 20:18:02 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[12-Apr-2019 20:21:13 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[12-Apr-2019 20:21:13 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[15-Apr-2019 13:57:49 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[15-Apr-2019 13:57:49 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[15-Apr-2019 13:59:19 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[15-Apr-2019 13:59:19 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[15-Apr-2019 14:00:46 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[15-Apr-2019 14:00:46 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201

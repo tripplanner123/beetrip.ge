@@ -33,7 +33,7 @@
 .siterules label a{ font-family: 'NotoSansGeorgian'; }
 .footer__list-item a{ font-family: 'NotoSansGeorgian'; }
 .form-control-1-label select{ font-family: 'NotoSansGeorgian' !important; }
-.transport__type{ font-family: 'NotoSansGeorgian' !important; }
+.transport__type{ font-family: 'NotoSansGeorgian' !important; font-size: 10px !important; }
 .profile-info__val{ font-family: 'NotoSansGeorgian' !important; }
 .order-details .align-items-center .col-3{ font-family: 'NotoSansGeorgian' !important; font-size: 16px; }
 .form-control{ font-family: 'NotoSansGeorgian' !important; }
@@ -86,9 +86,6 @@ h1,h2,h3,h4,h5,h6,label,p,ul{margin-bottom:0}button,hr,input{overflow:visible}pr
 .g-new-timepickbox table tr td span{ font-family: 'NotoSansGeorgian' !important; }
 #purchase-terms-modal > div > div > div.modal-footer.justify-content-center.pt-0 > a{ font-family: 'NotoSansGeorgian' !important; }
 #terms-modal > div > div > div.modal-footer.justify-content-center.pt-0 > a{ font-family: 'NotoSansGeorgian' !important; }
-.transport__list-item:not(:first-child){
-    margin-left:38px;
-}
 .page-content .container h5{ font-size: 1.25rem !important; font-family: 'NotoSansGeorgian' !important; }
 .order-details-headers{ font-family: 'NotoSansGeorgian' !important; }
 .order-details{ font-family: 'NotoSansGeorgian' !important; }

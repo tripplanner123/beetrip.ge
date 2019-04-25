@@ -2055,9 +2055,6 @@ a.emphasized-link:hover{
     color:rgba(0,0,0,.5);
     margin-bottom:20px
 }
-.transport__list-item:not(:first-child){
-    margin-left:47px
-}
 .transport__radio-label:hover .transport__icon--1{
     background-image:url(../../images/transport-1-yellow.svg)
 }
@@ -2477,3 +2474,9 @@ a.emphasized-link:hover{
 .g-new-timepickbox table tr td input{ margin: 0 auto; padding: 5px; border: solid 1px #d8d8d8; max-width: 50px; height: 50px; text-align: center; font-size: 21px; }
 .purchase-terms-modal .modal-dialog .modal-content .modal-body .text-holder p{ padding: 10px 0px !important; }
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{ font-size: 1.5rem !important; }
+
+li.transport__list-item {
+    display: inline;
+    margin: 0;
+    padding: 0 6px;
+}

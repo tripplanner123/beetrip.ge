@@ -185,7 +185,7 @@
                                 <div class="form-group form-group--lg mb-0">
                                     <div class="transport">
                                         <div class="transport__label-text"><?=l("vehicletype")?></div>
-                                        <ul class="transport__list d-flex">
+                                        <ul class="transport__list">
                                             <li class="transport__list-item">
                                                 <label class="transport__radio-label text-center">
                                                     <input type="radio" class="transport__radio d-none g-transporDropDownId g-sedan" name="transport" checked="checked" data-id="125" />
@@ -194,6 +194,7 @@
                                                     <span class="transport__type d-block"><?=l("sedan")?></span>
                                                 </label>
                                             </li>
+                                            
                                             <li class="transport__list-item">
                                                 <label class="transport__radio-label text-center">
                                                     <input type="radio" class="transport__radio d-none g-transporDropDownId g-minivan" data-id="126" name="transport">
@@ -202,9 +203,19 @@
                                                     <span class="transport__type d-block"><?=l("minivan")?></span>
                                                 </label>
                                             </li>
+                                            
                                             <li class="transport__list-item">
                                                 <label class="transport__radio-label text-center">
-                                                    <input type="radio" class="transport__radio d-none g-transporDropDownId g-bus" data-id="127" name="transport">
+                                                    <input type="radio" class="transport__radio d-none g-transporDropDownId g-minibus" data-id="127" name="transport">
+                                                    <span class="transport__icon trans-icon-3 d-block"></span>
+                                                    <span class="transport__price d-block text-uppercase g-bus-price">0 <?=currencySign()?></span>
+                                                    <span class="transport__type d-block"><?=l("minibus")?></span>
+                                                </label>
+                                            </li>
+
+                                            <li class="transport__list-item">
+                                                <label class="transport__radio-label text-center">
+                                                    <input type="radio" class="transport__radio d-none g-transporDropDownId g-bus" data-id="220" name="transport">
                                                     <span class="transport__icon trans-icon-3 d-block"></span>
                                                     <span class="transport__price d-block text-uppercase g-bus-price">0 <?=currencySign()?></span>
                                                     <span class="transport__type d-block"><?=l("bus")?></span>
@@ -398,7 +409,7 @@
                 <div class="form-group form-group--lg mb-0">
                     <div class="transport">
                         <div class="transport__label-text"><?=l("vehicletype")?></div>
-                        <ul class="transport__list d-flex">
+                        <ul class="transport__list">
                             <li class="transport__list-item">
                                 <label class="transport__radio-label text-center">
                                     <input type="radio" class="transport__radio d-none g-transporDropDownId2 g-sedan2" name="transport-1" checked="checked" data-id="125">
@@ -417,13 +428,23 @@
                             </li>
                             <li class="transport__list-item">
                                 <label class="transport__radio-label text-center">
-                                    <input type="radio" class="transport__radio d-none g-transporDropDownId2 g-bus2" name="transport-1" data-id="127">
-                                    <!-- <span class="transport__icon transport__icon--2 d-block"></span> -->
+                                    <input type="radio" class="transport__radio d-none g-transporDropDownId2 g-minibus2" name="transport-1" data-id="127">
+                                    <span class="transport__icon trans-icon-3 d-block"></span>
+                                    <span class="transport__price d-block text-uppercase g-bus-price2">0 <?=currencySign()?></span>
+                                    <span class="transport__type d-block"><?=l("minibus")?></span>
+                                </label>
+                            </li>
+
+                            <li class="transport__list-item">
+                                <label class="transport__radio-label text-center">
+                                    <input type="radio" class="transport__radio d-none g-transporDropDownId2 g-bus2" name="transport-1" data-id="220">
                                     <span class="transport__icon trans-icon-3 d-block"></span>
                                     <span class="transport__price d-block text-uppercase g-bus-price2">0 <?=currencySign()?></span>
                                     <span class="transport__type d-block"><?=l("bus")?></span>
                                 </label>
                             </li>
+
+                            
                         </ul>
                     </div>
                 </div>
