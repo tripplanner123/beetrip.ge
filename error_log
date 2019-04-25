@@ -31,3 +31,6 @@
 [15-Apr-2019 13:59:19 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
 [15-Apr-2019 14:00:46 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
 [15-Apr-2019 14:00:46 Asia/Tbilisi] PHP Notice:  Undefined index: email in /home4/tripplanner/beetrip.ge/_plugins/php-graph-sdk-5.x/src/Facebook/GraphNodes/Collection.php on line 201
+[25-Apr-2019 19:50:02 Asia/Tbilisi] PHP Notice:  A non well formed numeric value encountered in /home4/tripplanner/beetrip.ge/_website/ajax.php on line 337
+[25-Apr-2019 19:50:17 Asia/Tbilisi] PHP Notice:  A non well formed numeric value encountered in /home4/tripplanner/beetrip.ge/_website/ajax.php on line 337
+[25-Apr-2019 19:53:37 Asia/Tbilisi] PHP Notice:  A non well formed numeric value encountered in /home4/tripplanner/beetrip.ge/_website/ajax.php on line 333

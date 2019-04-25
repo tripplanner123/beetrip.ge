@@ -218,7 +218,7 @@
                     $lat2 = $ex2[0];
                     $long2 = $ex2[1];                    
 
-                    $sql3 = "SELECT `menutitle`, `menutitle2`, `menutitle3`, `menutitle4`, `price_50`, `price_100`, `price_200`, `price_200_plus` FROM `pages` WHERE `id`='".(int)$_POST['TransporDropDownId']."' AND `deleted`=0 AND `language`='".$_POST["input_lang"]."'";
+                    $sql3 = "SELECT * FROM `pages` WHERE `id`='".(int)$_POST['TransporDropDownId']."' AND `deleted`=0 AND `language`='".$_POST["input_lang"]."'";
                     $fetch3 = db_fetch($sql3);
                     // $google = g_getDrivingDistance($lat2, $long2, $lat1, $long1);
                     // $km = (float)$google['distance'];
@@ -226,27 +226,37 @@
                     
                     $totalCrew = (int)$_POST["guestnumber"] + (int)$_POST["numberofchildren612"] + (int)$_POST["numberofchildren05"]; 
 
-                    
-                    if($km<=50){
+                    if($km<=49){
                         $transport_price_per_km = (float)$fetch3['menutitle'];
-                    }else if($km<=100){
+                    }else if($km<=99){
                         $transport_price_per_km = (float)$fetch3['menutitle2'];
-                    }else if($km<=200){
+                    }else if($km<=149){
                         $transport_price_per_km = (float)$fetch3['menutitle3'];
-                    }else{
+                    }else if($km<=199){
                         $transport_price_per_km = (float)$fetch3['menutitle4'];
+                    }else if($km<=249){
+                        $transport_price_per_km = (float)$fetch3['menutitle5'];
+                    }else if($km<=299){
+                        $transport_price_per_km = (float)$fetch3['menutitle6'];
+                    }else if($km<=349){
+                        $transport_price_per_km = (float)$fetch3['menutitle7'];
+                    }else if($km<=399){
+                        $transport_price_per_km = (float)$fetch3['menutitle8'];
+                    }else if($km>=400){
+                        $transport_price_per_km = (float)$fetch3['menutitle9'];
                     }
+
+                    $howManyVehicle = ceil($totalCrew / (int)$fetch3['menutitle10']);
 
                     $transport_name1 = "";
                     if($_POST['TransporDropDownId']==125){//sedan
                         $transport_name1 = "Sedan";
-                        $howManyVehicle = ceil($totalCrew / 3);
                     }else if($_POST['TransporDropDownId']==126){//minivan
                         $transport_name1 = "Minivan";
-                        $howManyVehicle = ceil($totalCrew / 6);
                     }else if($_POST['TransporDropDownId']==127){//bus
                         $transport_name1 = "Bus";
-                        $howManyVehicle = ceil($totalCrew / 12);
+                    }else if($_POST['TransporDropDownId']==220){//Mini bus
+                        $transport_name1 = "MiniBus";
                     }
 
                     $totalprice = ((int)round($km*$transport_price_per_km) * $howManyVehicle) + (int)$_POST["ten1"];
@@ -263,7 +273,7 @@
                         !empty($_POST["startplace2"]) && 
                         !empty($_POST["endplace2"]) 
                     ){
-                        $sql500 = "SELECT `menutitle`, `menutitle2`, `menutitle3`, `menutitle4`, `price_50`, `price_100`, `price_200`, `price_200_plus` FROM `pages` WHERE `id`='".(int)$_POST['TransporDropDownId2']."' AND `deleted`=0 AND `language`='".$_POST["input_lang"]."'";
+                        $sql500 = "SELECT * FROM `pages` WHERE `id`='".(int)$_POST['TransporDropDownId2']."' AND `deleted`=0 AND `language`='".$_POST["input_lang"]."'";
                         $fetch500 = db_fetch($sql500);
 
                         $startplace2 = $_POST["startplace2"];
@@ -282,38 +292,48 @@
                         $lat5 = $ex5[0];
                         $long5 = $ex5[1];
 
-                        // $googleDouble = g_getDrivingDistance($lat5, $long5, $lat4, $long4);
-                        // $kmDouble = (float)$googleDouble['distance'];
                         $kmDouble = (float)$_POST['km2'];
-
-
                         $totalCrew2 = (int)$_POST["guestnumber2"] + (int)$_POST["numberofchildren612_"] + (int)$_POST["numberofchildren05_"]; 
                         
 
-                        if($kmDouble<=50){
+                        if($kmDouble<=49){
                             $transport_price_per_km2 = (float)$fetch500['menutitle'];
-                        }else if($kmDouble<=100){
+                        }else if($kmDouble<=99){
                             $transport_price_per_km2 = (float)$fetch500['menutitle2'];
-                        }else if($kmDouble<=200){
+                        }else if($kmDouble<=149){
                             $transport_price_per_km2 = (float)$fetch500['menutitle3'];
-                        }else{
+                        }else if($kmDouble<=199){
                             $transport_price_per_km2 = (float)$fetch500['menutitle4'];
+                        }else if($kmDouble<=249){
+                            $transport_price_per_km2 = (float)$fetch500['menutitle5'];
+                        }else if($kmDouble<=299){
+                            $transport_price_per_km2 = (float)$fetch500['menutitle6'];
+                        }else if($kmDouble<=349){
+                            $transport_price_per_km2 = (float)$fetch500['menutitle7'];
+                        }else if($kmDouble<=399){
+                            $transport_price_per_km2 = (float)$fetch500['menutitle8'];
+                        }else if($kmDouble>=400){
+                            $transport_price_per_km2 = (float)$fetch500['menutitle9'];
                         }
 
-                        
+                        $howManyVehicle2 = ceil((int)$totalCrew / (int)$fetch500['menutitle10']);
+
                         if($_POST['TransporDropDownId2']==125){//sedan
                             $transport_name2 = "Sedan";
-                            $howManyVehicle2 = ceil($totalCrew2 / 3);
                         }else if($_POST['TransporDropDownId2']==126){//minivan
                             $transport_name2 = "Minivan";
-                            $howManyVehicle2 = ceil($totalCrew2 / 6);
                         }else if($_POST['TransporDropDownId2']==127){//bus
                             $transport_name2 = "Bus";
-                            $howManyVehicle2 = ceil($totalCrew2 / 12);
+                        }else if($_POST['TransporDropDownId2']==220){//mini bus
+                            $transport_name2 = "Mini Bus";
                         }
 
+                        //same way back discount
+                        if($_POST["startplace"]==$_POST["endplace2"] && $_POST["endplace"]==$_POST["startplace2"] && $_POST["startdatetrans"]==$_POST["startdatetrans2"]){
+                            $transport_price_per_km2 = $transport_price_per_km2 - (((float)$transport_price_per_km2*(int)$fetch500["samewaydiscount2"]) / 100);
+                        }
 
-                        $roud2_price = ((int)round($kmDouble*$transport_price_per_km2) * $howManyVehicle2) + (int)$_POST["ten2"];
+                        $roud2_price = round((float)$kmDouble*(float)$transport_price_per_km2) * $howManyVehicle2 + (int)$_POST["ten2"];
 
 
 
