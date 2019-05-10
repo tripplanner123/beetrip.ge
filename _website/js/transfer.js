@@ -71,7 +71,9 @@ function g_change_transport(){
         $(".g-sedan").prop("checked", true);
     }else if(numberofpeople>=4 && numberofpeople<=6){
         $(".g-minivan").prop("checked", true);
-    }else if(numberofpeople>=7){
+    }else if(numberofpeople>=7 && numberofpeople<=15){
+        $(".g-minibus").prop("checked", true);
+    }else if(numberofpeople>=16){
         $(".g-bus").prop("checked", true);
     }
 
@@ -91,7 +93,9 @@ function g_change_transport2(){
         $(".g-sedan2").prop("checked", true);
     }else if(numberofpeople>=4 && numberofpeople<=6){
         $(".g-minivan2").prop("checked", true);
-    }else if(numberofpeople>=7){
+    }else if(numberofpeople>=7 && numberofpeople<=15){
+        $(".g-minibus2").prop("checked", true);
+    }else if(numberofpeople>=16){
         $(".g-bus2").prop("checked", true);
     }
 
