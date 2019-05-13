@@ -486,6 +486,7 @@ foreach ($g_transports as $v) {
         $tra["sedan"]["t_350_400"] = (float)$v["menutitle8"];
         $tra["sedan"]["t_400_plus"] = (float)$v["menutitle9"];
         $tra["sedan"]["t_max_passanger"] = (int)$v["menutitle10"];
+        $tra["sedan"]["t_income_procent"] = (int)$v["menutitle11"];
         $tra["sedan"]["samewaydiscount2"] = (int)$v["samewaydiscount2"];
     }else if($v["id"]==126){
         $tra["minivan"]["t_0_50"] = (float)$v["menutitle"];  
@@ -498,6 +499,7 @@ foreach ($g_transports as $v) {
         $tra["minivan"]["t_350_400"] = (float)$v["menutitle8"];
         $tra["minivan"]["t_400_plus"] = (float)$v["menutitle9"];
         $tra["minivan"]["t_max_passanger"] = (int)$v["menutitle10"];
+        $tra["minivan"]["t_income_procent"] = (int)$v["menutitle11"];
         $tra["minivan"]["samewaydiscount2"] = (int)$v["samewaydiscount2"];
     }else if($v["id"]==127){
         $tra["minibus"]["t_0_50"] = (float)$v["menutitle"];  
@@ -510,6 +512,7 @@ foreach ($g_transports as $v) {
         $tra["minibus"]["t_350_400"] = (float)$v["menutitle8"];
         $tra["minibus"]["t_400_plus"] = (float)$v["menutitle9"];
         $tra["minibus"]["t_max_passanger"] = (int)$v["menutitle10"];
+        $tra["minibus"]["t_income_procent"] = (int)$v["menutitle11"];
         $tra["minibus"]["samewaydiscount2"] = (int)$v["samewaydiscount2"];
     }else if($v["id"]==220){
         $tra["bus"]["t_0_50"] = (float)$v["menutitle"];  
@@ -522,6 +525,7 @@ foreach ($g_transports as $v) {
         $tra["bus"]["t_350_400"] = (float)$v["menutitle8"];
         $tra["bus"]["t_400_plus"] = (float)$v["menutitle9"];
         $tra["bus"]["t_max_passanger"] = (int)$v["menutitle10"];
+        $tra["bus"]["t_income_procent"] = (int)$v["menutitle11"];
         $tra["bus"]["samewaydiscount2"] = (int)$v["samewaydiscount2"];
     }
 }
@@ -538,6 +542,7 @@ var transferPrices = {
         t_350_400:parseFloat("<?=$tra["sedan"]["t_350_400"]?>"),
         t_400_plus:parseFloat("<?=$tra["sedan"]["t_400_plus"]?>"),
         t_max_passanger:parseFloat("<?=$tra["sedan"]["t_max_passanger"]?>"),
+        t_income_procent:parseFloat("<?=$tra["sedan"]["t_income_procent"]?>"),
         samewaydiscount2:parseFloat("<?=$tra["sedan"]["samewaydiscount2"]?>")
     },
     minivan:{
@@ -551,6 +556,7 @@ var transferPrices = {
         t_350_400:parseFloat("<?=$tra["minivan"]["t_350_400"]?>"),
         t_400_plus:parseFloat("<?=$tra["minivan"]["t_400_plus"]?>"),
         t_max_passanger:parseFloat("<?=$tra["minivan"]["t_max_passanger"]?>"),
+        t_income_procent:parseFloat("<?=$tra["minivan"]["t_income_procent"]?>"),
         samewaydiscount2:parseFloat("<?=$tra["minivan"]["samewaydiscount2"]?>")
     },
     minibus:{
@@ -564,6 +570,7 @@ var transferPrices = {
         t_350_400:parseFloat("<?=$tra["minibus"]["t_350_400"]?>"),
         t_400_plus:parseFloat("<?=$tra["minibus"]["t_400_plus"]?>"),
         t_max_passanger:parseFloat("<?=$tra["minibus"]["t_max_passanger"]?>"),
+        t_income_procent:parseFloat("<?=$tra["minibus"]["t_income_procent"]?>"),
         samewaydiscount2:parseFloat("<?=$tra["minibus"]["samewaydiscount2"]?>")
     },
     bus:{
@@ -577,6 +584,7 @@ var transferPrices = {
         t_350_400:parseFloat("<?=$tra["bus"]["t_350_400"]?>"),
         t_400_plus:parseFloat("<?=$tra["bus"]["t_400_plus"]?>"),
         t_max_passanger:parseFloat("<?=$tra["bus"]["t_max_passanger"]?>"),
+        t_income_procent:parseFloat("<?=$tra["bus"]["t_income_procent"]?>"),
         samewaydiscount2:parseFloat("<?=$tra["bus"]["samewaydiscount2"]?>")
     }
 };

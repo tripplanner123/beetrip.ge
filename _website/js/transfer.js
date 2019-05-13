@@ -67,13 +67,13 @@ function g_change_transport(){
     $(".g-minivan").prop("checked", false);
     $(".g-bus").prop("checked", false);
 
-    if(numberofpeople<=3){
+    if(numberofpeople<=transferPrices.sedan.t_max_passanger){
         $(".g-sedan").prop("checked", true);
-    }else if(numberofpeople>=4 && numberofpeople<=6){
+    }else if(numberofpeople>transferPrices.sedan.t_max_passanger && numberofpeople<=transferPrices.minivan.t_max_passanger){
         $(".g-minivan").prop("checked", true);
-    }else if(numberofpeople>=7 && numberofpeople<=15){
+    }else if(numberofpeople>=transferPrices.minivan.t_max_passanger && numberofpeople<=transferPrices.minibus.t_max_passanger){
         $(".g-minibus").prop("checked", true);
-    }else if(numberofpeople>=16){
+    }else if(numberofpeople>transferPrices.minibus.t_max_passanger){
         $(".g-bus").prop("checked", true);
     }
 
@@ -89,13 +89,13 @@ function g_change_transport2(){
     $(".g-minivan2").prop("checked", false);
     $(".g-bus2").prop("checked", false);
 
-    if(numberofpeople<=3){
+    if(numberofpeople<=transferPrices.sedan.t_max_passanger){
         $(".g-sedan2").prop("checked", true);
-    }else if(numberofpeople>=4 && numberofpeople<=6){
+    }else if(numberofpeople>=transferPrices.sedan.t_max_passanger && numberofpeople<=transferPrices.minivan.t_max_passanger){
         $(".g-minivan2").prop("checked", true);
-    }else if(numberofpeople>=7 && numberofpeople<=15){
+    }else if(numberofpeople>=transferPrices.minivan.t_max_passanger && numberofpeople<=transferPrices.minibus.t_max_passanger){
         $(".g-minibus2").prop("checked", true);
-    }else if(numberofpeople>=16){
+    }else if(numberofpeople>=transferPrices.minibus.t_max_passanger){
         $(".g-bus2").prop("checked", true);
     }
 
@@ -236,6 +236,20 @@ function countPriceTransport(){
     
     var curActive = parseFloat($(".currencyChangeActive").attr("data-cur"));
 
+    /* plus income procent START */
+    var sedanIncome = parseFloat(transferPrices.sedan.t_income_procent);
+    var minivanIncome = parseFloat(transferPrices.minivan.t_income_procent);
+    var minibusIncome = parseFloat(transferPrices.minibus.t_income_procent);
+    var busIncome = parseFloat(transferPrices.bus.t_income_procent);
+
+    // console.log( totalprice_sedan + (totalprice_sedan * sedanIncome / 100) );
+
+    totalprice_sedan = totalprice_sedan + (totalprice_sedan * sedanIncome / 100);
+    totalprice_minivan = totalprice_minivan + (totalprice_minivan * minivanIncome / 100);
+    totalprice_minibus = totalprice_minibus + (totalprice_minibus * minibusIncome / 100);
+    totalprice_bus = totalprice_bus + (totalprice_bus * busIncome / 100);
+    /* plus income procent END */
+
     $(".g-sedan-price").html(parseInt(Math.round(totalprice_sedan / curActive)) + " "+currencySign());
     $(".g-minivan-price").html(parseInt(Math.round(totalprice_minivan / curActive) ) + " "+currencySign());
     $(".g-minibus-price").html(parseInt(Math.round(totalprice_minibus / curActive) ) + " "+currencySign());
@@ -359,6 +373,20 @@ function countPriceTransport2(){
         totalprice_minibus = totalprice_minibus - ((totalprice_minibus*transferPrices.minibus.samewaydiscount2) / 100);
         totalprice_bus = totalprice_bus - ((totalprice_bus*transferPrices.bus.samewaydiscount2) / 100);
     }
+
+    /* plus income procent START */
+    var sedanIncome = parseFloat(transferPrices.sedan.t_income_procent);
+    var minivanIncome = parseFloat(transferPrices.minivan.t_income_procent);
+    var minibusIncome = parseFloat(transferPrices.minibus.t_income_procent);
+    var busIncome = parseFloat(transferPrices.bus.t_income_procent);
+
+    // console.log( totalprice_sedan + (totalprice_sedan * sedanIncome / 100) );
+
+    totalprice_sedan = totalprice_sedan + (totalprice_sedan * sedanIncome / 100);
+    totalprice_minivan = totalprice_minivan + (totalprice_minivan * minivanIncome / 100);
+    totalprice_minibus = totalprice_minibus + (totalprice_minibus * minibusIncome / 100);
+    totalprice_bus = totalprice_bus + (totalprice_bus * busIncome / 100);
+    /* plus income procent END */
 
     $(".g-sedan-price2").html(parseInt(Math.round(totalprice_sedan / curActive)) + " "+currencySign());
     $(".g-minivan-price2").html(parseInt(Math.round(totalprice_minivan / curActive) ) + " "+currencySign());
@@ -531,7 +559,7 @@ $(function () {
             btnUp.click(function() {
                 let oldValue = parseInt(input.val());
 
-                console.log(oldValue+" test");
+                // console.log(oldValue+" test");
                 if (oldValue >= max) {
                     var newVal = oldValue;
                 } else {

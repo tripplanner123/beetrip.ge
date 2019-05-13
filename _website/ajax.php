@@ -260,6 +260,10 @@
                     }
 
                     $totalprice = ((int)round($km*$transport_price_per_km) * $howManyVehicle) + (int)$_POST["ten1"];
+                    
+                    $incomeProcent = (int)$fetch3['menutitle11'];
+                    $totalprice = $totalprice + ($totalprice * $incomeProcent / 100);
+
                     $roud1_price = $totalprice;
 
 
@@ -335,11 +339,13 @@
 
                         $roud2_price = round((float)$kmDouble*(float)$transport_price_per_km2) * $howManyVehicle2 + (int)$_POST["ten2"];
 
+                        $incomeProcent2 = (int)$fetch500['menutitle11'];
+                        $roud2_price = $roud2_price + ($roud2_price * $incomeProcent2 / 100);
+
 
 
                         $totalprice += $roud2_price;
                     }
-
                     /* double way end */
 
                     if(isset($_SESSION["beetrip_user"])){
