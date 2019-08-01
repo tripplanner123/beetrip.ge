@@ -503,3 +503,219 @@ $(document).on("click", ".currencyChange", function(){
         } 
     });
 });
+
+Date.prototype.yyyymmdd = function() {
+  var mm = this.getMonth() + 1;
+  var dd = this.getDate();
+
+  return [
+      (dd>9 ? '' : '0') + dd + "-",
+      (mm>9 ? '' : '0') + mm + "-",
+      this.getFullYear()
+  ].join('');
+};
+
+
+var g_countOngoingTour = function(crew, price_sedan, guest_sedan, price_minivan, price_minibus, price_bus, tour_margin, child_ages, cuisune, ticket, hotel, guide, tour_income_margin=null, productPrices){
+    var perprice = 0;
+    var totalprice = 0;
+    var cuisune_price = 0;
+    var ticket_price = 0;
+
+    var sedanMax = productPrices.sedan.p_ongoing_max_crowd;
+    var vanMax = productPrices.minivan.p_ongoing_max_crowd;
+    var miniBusMax = productPrices.minibus.p_ongoing_max_crowd;
+    var busMax = productPrices.bus.p_ongoing_max_crowd;
+
+    var totalCrew = parseInt(crew) + parseInt($("#gg_children_612").val()) + parseInt($("#gg_children_05").val());
+    
+    // console.log(productPrices.sedan.p_ongoing_max_crowd);
+    var outTotalPrice = 0;
+    /* new count start */
+    if(totalCrew<=sedanMax){// sedan
+        if(totalCrew<=guest_sedan){// crew <= admin user sedan 
+            var bepx = Math.ceil((price_sedan * tour_margin) / 100); 
+            outTotalPrice = price_sedan - bepx;
+        }else{
+            outTotalPrice = price_sedan;
+        }
+    }else if(totalCrew>sedanMax && totalCrew<=vanMax){//minivan
+        outTotalPrice = price_minivan;
+    }else if(totalCrew>vanMax && totalCrew<=miniBusMax){//minibus
+        outTotalPrice = price_minibus;
+    }else if(totalCrew>miniBusMax){// bus
+        var howManyBusNeed = Math.ceil(totalCrew / busMax);
+        outTotalPrice = price_bus * howManyBusNeed;
+    }
+    /* new count end */
+
+
+
+    /* additional info start */
+    let adults = parseInt(crew);
+    let child6 = parseInt($("#gg_children_612").val());
+    let child0 = parseInt($("#gg_children_05").val());
+    var aditionalprice = guide;
+    // adult prices
+    aditionalprice += (hotel * adults);
+    aditionalprice += (cuisune * adults);
+    aditionalprice += (ticket * adults);
+    // child 6-12 prices
+    aditionalprice += ((hotel / 2) * child6);
+    aditionalprice += ((cuisune / 2) * child6);
+    aditionalprice += ((ticket / 2) * child6); 
+
+    
+    // child 0-5
+    // free
+    /* additional info end */
+
+    /* change additional service prices START*/
+    let hotelPrice = 0;
+    hotelPrice += (hotel * adults);
+    hotelPrice += ((hotel / 2) * child6);
+    
+    let cuisunePrice = 0;
+    cuisunePrice += (cuisune * adults);
+    cuisunePrice += ((cuisune / 2) * child6); 
+    
+    let ticketPrice = 0;
+    ticketPrice += (ticket * adults);
+    ticketPrice += ((ticket / 2) * child6);
+    
+    // $("#hotelPrice__").html(totalCrew+"x");
+    // $("#cuisunePrice__").html(totalCrew+"x");
+    // $("#ticketPrice__").html(totalCrew+"x");
+    // $("#gidi__").html(totalCrew+"x");
+
+    
+    // $("#hotelPrice").attr("data-gelprice",hotelPrice);
+    // $("#cuisunePrice").attr("data-gelprice",cuisunePrice);
+    // $("#ticketPrice").attr("data-gelprice",ticketPrice);
+    var usd = parseFloat($("#g-cur-exchange-usd").val());
+    var eur = parseFloat($("#g-cur-exchange-eur").val());
+    var exchange_cur = 1;
+    var cur = " <span class='lari-symbol'>l</span>";
+
+    if($("#g-cur__").val()=="usd"){
+        exchange_cur = usd; 
+        cur = " $";
+    }else if($("#g-cur__").val()=="eur"){
+        exchange_cur = eur; 
+        cur = " &euro;";
+    }
+
+    console.log(exchange_cur);
+
+
+    // $("#hotelPrice").html(Math.round(hotelPrice / exchange_cur)+cur);
+    // $("#cuisunePrice").html(Math.round(cuisunePrice / exchange_cur)+cur);
+    // $("#ticketPrice").html(Math.round(ticketPrice / exchange_cur)+cur);
+    /* change additional service prices END*/
+    
+    var theTotalPriceForPerPerson = parseInt((outTotalPrice + aditionalprice) / totalCrew);
+    var theTotapPrice = parseInt(outTotalPrice + aditionalprice);
+
+
+
+    // console.log(theTotalPriceForPerPerson + " -" + tour_income_margin+"-");
+
+    var incomePricePerPerson = 0;
+    var incomePrice = 0;
+    if(tour_income_margin!=null && tour_income_margin!="" && !isNaN(tour_income_margin)){
+        tour_income_margin=parseInt(tour_income_margin);
+        incomePricePerPerson = Math.round(theTotalPriceForPerPerson * tour_income_margin / 100);
+        incomePrice = Math.round(theTotapPrice * tour_income_margin / 100);
+    }
+
+    // $("#packageprice").attr("data-gelprice", (theTotalPriceForPerPerson + incomePricePerPerson));
+    // $("#packageprice").html(Math.round((theTotalPriceForPerPerson + incomePricePerPerson) / exchange_cur)+cur);
+    $(".gelprice").attr("data-gelprice", Math.round(theTotapPrice + incomePrice));
+    $(".gelprice").html(Math.round((theTotapPrice + incomePrice) / exchange_cur)+cur);
+
+    // $(".QuantityButton").attr("disabled", false);
+};
+
+$(document).on("click", ".g-addCart", function(e){
+    var redirectToCart = ($(this).attr("data-redirect") === "true");
+    var input_lang = $("#input_lang").val();
+    var id = $(this).attr("data-id");
+    var title = $(this).attr("data-title");
+    var errorText = $(this).attr("data-errortext");
+
+    var guestNuber = parseInt($('#gg-adults').val());    
+    var childrenunder = parseInt($("#gg_children_05").val());
+    var children = parseInt($("#gg_children_612").val());
+    
+
+    var insurance123 = 1;
+    var g_insuarance_damzgvevi = "";
+    var g_insuarance_dazgveuli = "";
+    var g_insuarance_misamarti = "";
+    var g_insuarance_dabtarigi = "";
+    var g_insuarance_pasporti = "";
+    var g_insuarance_piradinomeri = "";
+    var g_insuarance_telefonis = "";
+    var CSRF_token = $('#CSRF_token').val();
+
+    // if($(this).hasClass("active")){
+    //     $(this).removeClass("active");
+    // }else{
+    //     $(this).addClass("active");
+    // }
+
+    var dd = $(".DatePicker2").val().split("-");
+    var inside = dd[2]+"-"+(dd[1]>9 ? '' : '0')+dd[1]+"-"+(dd[0]>9 ? '' : '0')+dd[0];
+
+
+    var tra = "sedan";
+
+    $.ajax({
+        type: "POST",
+        url: Config.website+input_lang+"/?ajax=true",
+        data: { 
+            type:"updateCart", 
+            input_lang:input_lang, 
+            guestNuber:guestNuber, 
+            children:children,
+            childrenunder:childrenunder,
+            id:id,
+            insurance123:insurance123, 
+            g_insuarance_damzgvevi:g_insuarance_damzgvevi,
+            g_insuarance_dazgveuli:g_insuarance_dazgveuli, 
+            g_insuarance_misamarti:g_insuarance_misamarti,
+            g_insuarance_dabtarigi:g_insuarance_dabtarigi,
+            g_insuarance_pasporti:g_insuarance_pasporti,
+            g_insuarance_piradinomeri:g_insuarance_piradinomeri,
+            g_insuarance_telefonis:g_insuarance_telefonis,
+            inside:inside, 
+            tra:tra,
+            token:CSRF_token         
+        } 
+    }).done(function( msg ) {
+        var obj = $.parseJSON(msg);
+        if(obj.Error.Code==1){   
+            $('#ErrorModal .modal-dialog .modal-body .Title').text(title);
+            $('#ErrorModal .modal-dialog .modal-body .Text').text(obj.Error.Text);
+            $('#ErrorModal').modal('show');
+        }else{
+            if(!redirectToCart){
+                if($(".addCart[data-redirect='true']").hasClass("g-visiable-button")){
+                    $(".addCart[data-redirect='true']").removeClass("g-visiable-button");
+                    $(".addCart[data-redirect='true']").fadeOut();
+                }else{
+                    $(".addCart[data-redirect='true']").addClass("g-visiable-button");
+                    $(".addCart[data-redirect='true']").fadeIn();
+                }
+
+                $('#SuccessModal .modal-dialog .modal-body .Title').text(title);
+                $('#SuccessModal .modal-dialog .modal-body .Text').text(obj.Success.Text);
+                $('#SuccessModal').modal('show');
+            }else{
+                location.href = "/"+input_lang+"/cart";
+            }
+        }
+        $(".HeaderCardIcon span").text(obj.Success.countCartitem);
+    });
+
+});

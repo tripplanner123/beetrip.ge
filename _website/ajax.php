@@ -1123,149 +1123,166 @@
                 );
 
             break;
-
             case 'updateCart':
-
                 if(
-
                     empty($_POST["input_lang"]) || 
-
-                    empty($_POST["id"]) 
-
+                    empty($_POST["id"]) || 
+                    empty($_POST["guestNuber"]) ||  
+                    empty($_POST["token"])  
                 ){
-
                     $errorCode = 1;
-
                     $successCode = 0;
-
                     $errorText = l("allfields");
-
                     $successText = "";
-
                     $updateType = "";
-
                     $countCartitem = 0;
-
                 }else{
-
-
-
-                    if(isset($_SESSION["trip_user"])){
-
-                        $userid = $_SESSION["trip_user"];
-
+                    $children = (isset($_POST["children"])) ? $_POST['children'] : 0;
+                    if(isset($_SESSION["beetrip_user"])){
+                        $userid = $_SESSION["beetrip_user"];
                     }else{
-
                         if(isset($_SESSION["cartsession"]))
-
                         {
-
                             $userid = $_SESSION["cartsession"];
-
                         }else{
-
                             $_SESSION["cartsession"] = g_random(15);
-
                             $userid = $_SESSION["cartsession"];
-
                         }
-
                     }
 
+                    $g_insuarance_damzgvevi = (isset($_POST["g_insuarance_damzgvevi"])) ? $_POST["g_insuarance_damzgvevi"] : ' ';
+                    $g_insuarance_dazgveuli = (isset($_POST["g_insuarance_dazgveuli"])) ? $_POST["g_insuarance_dazgveuli"] : ' ';
+                    $g_insuarance_misamarti = (isset($_POST["g_insuarance_misamarti"])) ? $_POST["g_insuarance_misamarti"] : ' ';
+                    $g_insuarance_dabtarigi = (isset($_POST["g_insuarance_dabtarigi"])) ? $_POST["g_insuarance_dabtarigi"] : ' ';
+                    $g_insuarance_pasporti = (isset($_POST["g_insuarance_pasporti"])) ? $_POST["g_insuarance_pasporti"] : ' ';
+                    $g_insuarance_piradinomeri = (isset($_POST["g_insuarance_piradinomeri"])) ? $_POST["g_insuarance_piradinomeri"] : ' ';
+                    $g_insuarance_telefonis = (isset($_POST["g_insuarance_telefonis"])) ? $_POST["g_insuarance_telefonis"] : ' ';
 
-
-                    $select = "SELECT `id` FROM `cart` WHERE `pid`='".(int)$_POST["id"]."' AND `userid`='".$userid."'";
-
-                    $fetch = db_fetch($select);
-
-
-
-                    if(isset($fetch['id'])){
-
-                        db_query("DELETE FROM `cart` WHERE `pid`='".(int)$_POST["id"]."' AND `userid`='".$userid."'");
-
-                        $updateType = "removed";
-
-                    }else{
-
-                        $selectProduct = "SELECT `price` FROM `catalogs` WHERE `id`='".(int)$_POST["id"]."' AND `language`='".l()."' AND `deleted`=0 AND `visibility`=1";
-
-                        $fetchProduct = db_fetch($selectProduct);
-
+                    
+                    $selectProduct = "SELECT * FROM `catalogs` WHERE `id`='".(int)$_POST["id"]."' AND `language`='".l()."' AND `deleted`=0 AND `visibility`=1";
+                    $fetchProduct = db_fetch($selectProduct);
                         
+                    $totalprice = 0;
+                    $crew = (int)$_POST["guestNuber"]; 
+                    $totalCrew = (int)$_POST["guestNuber"] + (int)$children + (int)$_POST['childrenunder'];
+                    $perprice = 0;
 
-                        $totalprice = 0;
 
-                        if(isset($fetchProduct['price'])){
-
-                            if(isset($_POST["guestNuber"]) && is_numeric($_POST["guestNuber"])){
-
-                                $totalprice = (float)$fetchProduct['price']*$_POST["guestNuber"];
-
-                            }else{
-
-                                $totalprice = (float)$fetchProduct['price'];
-
-                            }
-
+                    $transportP = g_transports();
+                    $maxCrow = array();
+                    foreach ($transportP as $v) {
+                        if($v["id"]==125){//sedan
+                            $maxCrow["sedan"] = $v["p_ongoing_max_crowd"];
+                        }else if($v["id"]==126){//minivan
+                            $maxCrow["minivan"] = $v["p_ongoing_max_crowd"];
+                        }else if($v["id"]==127){//minibus
+                            $maxCrow["minibus"] = $v["p_ongoing_max_crowd"];
+                        }else if($v["id"]==220){//bus
+                            $maxCrow["bus"] = $v["p_ongoing_max_crowd"];
                         }
-
-
-
-                        $insert = "INSERT INTO `cart` SET `date`='".time()."', `pid`='".(int)$_POST["id"]."', `userid`='".$userid."', `guests`='".(int)$_POST["guestNuber"]."', `totalprice`='".(float)$totalprice."', `sold`=0, `quantity`=0, `website`='beetrip'";
-
-                        db_query($insert);
-
-                        $updateType = "inserted";
-
+                    }
+                    
+                    if($totalCrew<=$maxCrow["sedan"]){// sedan
+                      $tour_margin = 100 - (int)$fetchProduct['tour_margin'];
+                      $bep = ceil(((int)$fetchProduct["price_sedan"] / 100) * $tour_margin); 
+                      if($totalCrew<=$fetchProduct["guest_sedan"]){
+                        $perprice = $bep / $totalCrew;
+                      }else{
+                        $perprice = (int)$fetchProduct["price_sedan"] / $totalCrew;
+                      }
+                    }else if($totalCrew > $maxCrow["sedan"] && $totalCrew <= $maxCrow["minivan"]){
+                      $perprice = (int)$fetchProduct["price_minivan"] / $totalCrew;      
+                    }else if($totalCrew > $maxCrow["minivan"] && $totalCrew <= $maxCrow["minibus"]){
+                      $perprice = (int)$fetchProduct["price_minibus"] / $totalCrew;      
+                    }else{
+                      if($totalCrew<=$maxCrow["bus"]){ 
+                        $perprice = (int)$fetchProduct["price_bus"] / $totalCrew;
+                      }else{
+                        $howManyBus = ceil($totalCrew / $maxCrow["bus"]);
+                        $bussesTotalPrice = ceil((int)$fetchProduct["price_bus"] * $howManyBus);
+                        $perprice = $bussesTotalPrice / $totalCrew;
+                      }
                     }
 
-                   
+                    // $child_price = 0;
 
+                    $cuisune_price = $crew * (int)$fetchProduct['cuisune_price1person'];
+                    $ticket_price = $crew * (int)$fetchProduct['ticketsandother_price1person'];
+                    $guidepricefortour = (int)$fetchProduct['guidepricefortour'];
+
+                    $cuisune_price_child = 0;
+                    $ticket_price_child = 0;
+                    for($i = 0; $i < $children; $i++){
+                        // $child_price += ceil($perprice / 2);
+                        $cuisune_price_child += ceil((int)$fetchProduct['cuisune_price1person'] / 2);
+                        $ticket_price_child += ceil((int)$fetchProduct['ticketsandother_price1person'] / 2);
+                    }
+
+                    $totalprice = number_format(($perprice * $totalCrew) + $cuisune_price + $ticket_price + $cuisune_price_child + $ticket_price_child + $guidepricefortour, 2, ".", "");
+                    
+                    if($fetchProduct["tour_income_margin"]){
+                        $incomePrice = $totalprice * (int)$fetchProduct["tour_income_margin"] / 100;
+                        $totalprice = round($totalprice + $incomePrice);
+                    }
+
+                    $childrenunder = (isset($_POST['childrenunder']) && is_numeric($_POST['childrenunder'])) ? $_POST['childrenunder'] : 0;
+
+                    if(isset($_POST["inside"]) && $_POST["inside"]!="false"){
+                        $startdate = strtotime($_POST["inside"]);
+                        $startdate = date("Y-m-d", $startdate);
+                    }else{
+                        $startdate = date("Y-m-d", time()+172800);
+                    }         
+
+                    $insurance = (isset($_POST["insurance123"]) && $_POST["insurance123"]==1) ? '1' : 'NULL';  
+
+                    $insert = "INSERT INTO `cart` SET 
+                    `date`='".time()."', 
+                    `pid`='".(int)$_POST["id"]."', 
+                    `userid`='".$userid."', 
+                    `guests`='".(int)$_POST["guestNuber"]."', 
+                    `children`='".(int)$children."', 
+                    `childrenunder`='".(int)$childrenunder."', 
+                    `totalprice`='".(float)$totalprice."', 
+                    `sold`=0, 
+                    `quantity`=0,
+                    `damzgvevi`='{$g_insuarance_damzgvevi}',
+                    `dazgveuli`='{$g_insuarance_dazgveuli}', 
+                    `misamarti`='{$g_insuarance_misamarti}',
+                    `dabtarigi`='{$g_insuarance_dabtarigi}',
+                    `pasporti`='{$g_insuarance_pasporti}',
+                    `piradinomeri`='{$g_insuarance_piradinomeri}',
+                    `telefonis`='{$g_insuarance_telefonis}',
+                    `insurance`='{$insurance}',
+                    `website`='beetrip',
+                    `startdate`='".$startdate."'
+                    ";
+                    db_query($insert);
+                    $updateType = "inserted";
+                    
+                   
                     $countCartitem = g_cart_count($userid);
 
-
-
                     $errorCode = 0;
-
                     $successCode = 1;
-
                     $errorText = "";
-
                     $successText = l("welldone");
-
                 }
 
-
-
                 $out = array(
-
                     "Error" => array(
-
                         "Code"=>$errorCode, 
-
                         "Text"=>$errorText,
-
                         "Details"=>""
-
                     ),
-
                     "Success"=>array(
-
                         "Code"=>$successCode, 
-
                         "Text"=>$successText,
-
                         "updateType"=>$updateType,
-
                         "countCartitem"=>$countCartitem,
-
                         "Details"=>""
-
                     )
-
                 );
-
                 break;
 
             case 'loadcatalog':

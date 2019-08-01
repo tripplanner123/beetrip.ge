@@ -271,7 +271,7 @@
                                     </li>
 
                                     <li class="menu__list-item">
-                                        <a href="https://tripplanner.ge/<?=l()?>/ongoing-tours" target="_blank" class="menu__link" target="_blank"><?=menu_title(63)?></a>
+                                        <a href="https://beetrip.ge/<?=l()?>/ongoing-tours"  class="menu__link g-ongoing-tourx"><?=menu_title(63)?></a>
                                     </li>
                                     <li class="menu__list-item">
                                         <a href="https://tripplanner.ge/<?=l()?>/plan-your-trip" target="_blank" class="menu__link" target="_blank"><?=menu_title(61)?></a>
@@ -365,6 +365,7 @@
                                     </li>
                             </ul>
                             <?=currency()?>
+
                         </div>
                     </div>
                 </div>
@@ -412,7 +413,7 @@
                                 </li>
 
                                 <li class="footer__list-item">
-                                    <a href="https://tripplanner.ge/<?=l()?>/ongoing-tours" target="_blank" class="footer__list-link" target="_blank"><?=menu_title(63)?></a>
+                                    <a href="https://beetrip.ge/<?=l()?>/ongoing-tours" class="footer__list-link"><?=menu_title(63)?></a>
                                 </li>
                                 
                                 

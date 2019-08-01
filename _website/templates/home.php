@@ -49,9 +49,9 @@ defined('DIR') OR exit;
 
                     <?php 
                     foreach(g_homepage_tours(false, false, 20) as $item): 
-                        $link = str_replace("https://beetrip.ge","https://tripplanner.ge",href(63,array(), l(), $item['id']));
+                        $link = str_replace("https://tripplanner.ge","https://tripplanner.ge",href(63,array(), l(), $item['id']));
                     ?>
-                    <a href="<?=$link?>" target="_blank" class="swiper-slide tours-carousel__item" style="background-image:url('<?=$item['image1']?>')">
+                    <a href="<?=$link?>" class="swiper-slide tours-carousel__item" style="background-image:url('<?=$item['image1']?>')">
                         <div class="tours-carousel__item-details d-flex align-items-center">
                             <h2 class="tours-carousel__item-title" title="<?=htmlentities($item['title'])?>" style="max-width: 100%">
                                 <p class="tours-carousel__item-link"><?=$item['title']?></p>

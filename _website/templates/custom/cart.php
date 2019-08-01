@@ -133,10 +133,6 @@ if($_GET["result"]=="success"){
                             // $image1 = $item['image1'];
                             $title = $item['title'];
                             if($item["type"]=="transport"){
-
-                                // $image1 = "/img/transport.png";
-                                // echo $item['startPlaceName2'];
-                                
                                 if($item['startPlaceName2'] && $item['endPlaceName2']){
                                     $title .= "";
                                     $guests = "<table border=\"0\" cellspaceing=\"0\" cellpadding=\"0\">";
@@ -161,8 +157,7 @@ if($_GET["result"]=="success"){
                                         default:
                                             $guests .= $item["roud1_price"]." <span class=\"lari-symbol\" style=\"font-size:25px !important;\">l</span>";
                                             break;
-                                    }
-                                    //end                                    
+                                    }                                   
                                     
                                     $guests .= "</td>";
                                     $guests .= "</tr>";
@@ -172,7 +167,6 @@ if($_GET["result"]=="success"){
                                     $guests .= $item["startPlaceName2"] . " - " . $item["endPlaceName2"];
                                     $guests .= l("passenger").": ".$item["guests2"];
                                     
-
                                     //start
                                     $currency_123 = "gel";
                                     if(isset($_SESSION["currency_123"])){
@@ -191,12 +185,10 @@ if($_GET["result"]=="success"){
                                             break;
                                     }
                                     //end
-
                                     $guests .= "</td>";
                                     $guests .= "</tr>";
 
-                                    $guests .= "</table>";
-                                    
+                                    $guests .= "</table>";                                    
                                 }else{
                                     $title .= $item["startPlaceName"] . " - " . $item["endPlaceName"];
                                     $guests = "<br />".l("passenger").": ".($item["guests"]+$item["children"]+$item["childrenunder"]);
@@ -219,8 +211,9 @@ if($_GET["result"]=="success"){
                                     $logoImage2 = "/_website/images/transport-2-yellow.svg";
                                 }else if(isset($item["transport_name2"]) && $item["transport_name2"] == "Bus"){
                                     $logoImage2 = "/_website/images/bus-yellow.svg";
-                                }
-                                
+                                }                                
+                            }else if($item["type"]=="ongoing"){
+                                $logoImage = $item["image1"];
                             }
                             ?>
                             <tr 
@@ -253,7 +246,7 @@ if($_GET["result"]=="success"){
                                     <table border="0" cellspaceing="0" cellpadding="0" style="<?=$height?>">
                                     <tr>
                                         <td>
-                                            <p><?=$item['startdate']?> <?=$item['timetrans']?></p>
+                                            <p><?=$item['startdate']?> <?=($item['timetrans']) ? $item['timetrans'] : ''?></p>
                                         </td>
                                     </tr>
 
@@ -288,30 +281,16 @@ if($_GET["result"]=="success"){
                                         </tbody>
                                     </table>
 
-                                                               
-                                    
-                                    <!-- <p class="pickupPlaceHtml pph<?=$item['id']?>"><?=$item["wherepickup"]?></p>                   
-                                    <p class="pickupPlaceHtml pph2<?=$item['id']?>"><?=$item["wherepickup2"]?></p>
-                                        
-                                    <button 
-                                        type="button" 
-                                        class="button button--yellow button--form-submit g-pickup-button NotoSansGeorgian" 
-                                        data-modaltitle="<?=l("pickupmodaltitle")?>" 
-                                        data-pick1="<?=l("pickupaddress1")?>" 
-                                        data-pick2="<?=l("pickupaddress2")?>" 
-                                        data-cartid="<?=$item['id']?>" 
-                                        data-doubleway="<?=($item['startPlaceName2'] && $item['endPlaceName2']) ? "true" : "false"?>" 
-                                        data-pickplacevalue1="<?=$item["wherepickup"]?>" 
-                                        data-pickplacevalue2="<?=$item["wherepickup2"]?>" 
-                                        style="min-width: 100px; margin-top: 0px; font-size: 13px; height: 25px; padding: 0 15px; line-height: 100%;"><i class="fa fa-map-marker" aria-hidden="true"></i> <?=l("pickupmodaltitle")?>
-                                    </button> -->
-
                                 </td>
                                 <td>
                                     <?php 
                                     $currency_123 = "gel";
                                     if(isset($_SESSION["currency_123"])){
                                         $currency_123 = $_SESSION["currency_123"];
+                                    }
+                                    
+                                    if($item["type"]=="ongoing"){
+                                        $item["roud1_price"] = $item["totalprice"];
                                     }
 
                                     switch ($currency_123) {
@@ -326,7 +305,7 @@ if($_GET["result"]=="success"){
                                             break;
                                     }
 
-                                     ?>
+                                    ?>
                                     <span class="tdprice"><?=(int)$totalPrice?></span>
                                     <?=currencySign()?>
                                 </td>

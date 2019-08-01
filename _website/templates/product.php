@@ -1,338 +1,304 @@
 <?php defined('DIR') OR exit;?>
-<div class="InsidePagesHeader">
-  <div class="Item" style="background:url('<?=WEBSITE?>/img/trip_1.jpg');"></div>
-  <div class="Item" style="background:url('<?=WEBSITE?>/img/trip_2.jpg');"></div>
-  <div class="Item" style="background:url('<?=WEBSITE?>/img/trip_3.jpg');"></div>
-  <div class="Item" style="background:url('<?=WEBSITE?>/img/trip_4.jpg');"></div>
-  
-  
-</div>
-
-
-
-<div class="TripListPageDiv">
-  <div class="TripListInsidePage"> 
-    <div class="container"> 
-      
-      <div class="row row0">
-        <div class="col s12">
-          <div class="Breadcrumb"> 
-            <a href="#" class="Nolink"><?=menu_title(1)?></a>
-              <span>></span>
-            <a href="#"><?=menu_title(61)?></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="ToursSliderDiv">
-            <div class="BigImageSlide">
-              <?php 
-              for($i=1; $i<=10; $i++):
-                $img = "image$i";
-                if(!empty($$img)): 
-              ?>
-                  <div class="Image" style="background:url('<?=$$img?>');"></div>
-              <?php 
-                endif; 
-              endfor;
-              ?>
-            </div>
-            <div class="SmallImageSlide">
-              <?php 
-              for($i=1; $i<=10; $i++):
-                $img = "image$i";
-                if(!empty($$img)):
-              ?>
-                <div class="Image" style="background:url('<?=$$img?>');"></div>
-              <?php 
-                endif; 
-              endfor;
-              ?>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-sm-9 ColSm9">
-          <div class="TripSinglePage">
-            <div class="TripTitle"><?=$title?></div>
-            <div class="TripBottomDiv">
-              <div class="TabsMenu">
-                <ul> 
-                  <li class="active">
-                    <a href="#Overview" aria-controls="home" role="tab" data-toggle="tab"><?=l("overview")?></a>
-                  </li>
-                  <li>
-                    <a href="#TourDescription" aria-controls="profile" role="tab" data-toggle="tab"><?=l("tourdescription")?></a>
-                  </li>
-                  <li>
-                    <a href="#TourIncludes" aria-controls="messages" role="tab" data-toggle="tab"><?=l("tourincludes")?></a>
-                  </li>
-                  <li>
-                    <a href="#Mapid" aria-controls="settings" role="tab" data-toggle="tab"><?=l("map")?></a>
-                  </li>
-                </ul>
-              </div>
-              
-              <div class="TabsContent tab-content">
-                <div class="tab-pane active" id="Overview"> 
-                  <?php 
-                  $cat = explode(",", $categories);
-                  $cat = (isset($cat[0])) ? (int)$cat[0] : 0;
-                  $sql = "SELECT `title`,`image1` FROM `pages` WHERE `id`={$cat} AND `visibility`=1 AND `deleted`=0 AND `language`='".l()."'";
-                  $catimage = db_fetch($sql);
-                  $image1 = (isset($catimage["image1"])) ? $catimage["image1"] : '';
-                  $title = (isset($catimage["title"])) ? $catimage["title"] : '';
-                  
-
-                  $reg = explode(",", $regions);
-                  $reg = (isset($reg[0])) ? (int)$reg[0] : 0;
-                  $sql = "SELECT `title` FROM `pages` WHERE `id`={$reg} AND `visibility`=1 AND `deleted`=0 AND `language`='".l()."'";
-                  $regtitle = db_fetch($sql);
-                  $titlereg = (isset($regtitle["title"])) ? $regtitle["title"] : '';
-                 // echo "regions: {$regions}<br />";
-                  ?>
-                  
-                  <div class="PlannerCategories">
-                    <div class="row"> 
-                      <div class="Item active">
-                        <div class="MuseumIcon" style="background-image: url('<?=$image1?>');     background-position: top center; width: 70px;"></div>
-                        <div class="Title"><?=$title?></div>  
-                      </div> 
-                    </div>
-                  </div> 
-                  
-                  <div class="FiltItemsDiv">
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <div class="Item"><?=$titlereg?></div>
-                        <div class="Item"><?=$postdate?></div>
-                      </div> 
-                    </div>  
-                  </div>
-                  
-                  <!-- <div class="PeoPleCount">
-                    <div class="Icon"></div>
-                    <div class="Count"><?=$tourists?></div>
-                    <div class="Text">People</div>
-                  </div> -->
-
-                  <?=$overview?>
-                  
-                  <!-- <div class="ListDivCircre">
-                    <div class="Title">Places To visit</div>
-                    <li>Ananuri fortress</li>
-                    <li>Gudauri panoramic viewpoint</li>
-                    <li>"Travertines"</li>
-                    <li>juta</li>
-                    <li>Chaukhebi</li>
-                  </div>
-                  <div class="OverviewText">
-                    The ensemble of the Ananuri Fortress, the Gudauri panoramas, breathtaking flickering travertines, a beautiful village Juta will leave indelible impressions on tourists.
-                  </div> -->  
-                </div>
-                <div class="tab-pane" id="TourDescription"><?=$description?></div>
-                <div class="tab-pane" id="TourIncludes"><?=$includes?></div>
-                <div class="tab-pane" id="Mapid">
-                  <div class="SidebarSmallMap text-center" id="SidebarSmallMap">
-                  MAP DIV
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>      
-        </div>
-        
-        <div class="col-sm-3 ColSm3">
-          <div class="TripSidebar">
-            <div class="GreenSidebarDiv RightBackground ToursInsideSidebar">
-              <div class="SidebarTitle"><?=l("orderdetails")?></div>
-              <div class="FiltersDiv">
-                <div class="col-sm-12 PaddingRight0">
-                  <div class="btn-group SearchFilterItem"> 
-                      <div class="TripTogglebutton">
-                        <span>
-                          <div class="row">
-                            <div class="col-sm-6"><?=l("startdate")?></div>
-                            <div class="col-sm-6" style="position:relative;left:-19px;"><?=l("enddate")?></div>
+<?php 
+//print_r($variables); 
+?>
+<main class="site__content" style="margin-bottom: 40px;">
+  <div class="content">
+      <div class="page-content pt-0 pb-0">
+          <div class="section pb-0">
+              <div class="container-fluid-from-before-xl">
+                  <div class="d-lg-flex align-items-lg-center position-relative">
+                      <div class="swiper-container tour-slider">
+                          <div class="swiper-wrapper">
+                              <?php 
+                              for($x=1; $x<=10; $x++): 
+                              if($variables["image".$x]==""){ continue; }
+                              ?>
+                              <div class="swiper-slide" style="background-image: url('<?=$variables["image".$x]?>');"></div>
+                              <?php endfor; ?>
                           </div>
-                        </span>
-                        <div class="input-group PositionRelative">
-                        <input type="text" class="form-control DatePicker" placeholder="2018-02-07">
-                        <span class="input-group-addon TimeAddons">-</span>
-                        <input type="text" class="form-control DatePicker" placeholder="2018-02-07">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                          <!-- Add Pagination -->
+                          <div class="swiper-pagination swiper-pagination--tour-slider"></div>
                       </div>
-                      </div> 
+                      <div class="tour-details text-center text-lg-left">
+                          <div class="tour-details__content">
+                              <h2 class="tour-title"><?=$variables["title"]?></h2>
+                              <div class="text-holder text-holder--tour-details">
+                                 <?=$variables["description"]?>
+                              </div>
+                          </div>
+                          <div class="tour-details__footer d-lg-flex align-items-lg-center">
+                              
+                              <div class="tour-price text-yellow gelprice" data-gelprice="0">0</div>
+                              
+                              <div class="button-group ml-lg-auto">
+                                  <?php $_SESSION["CSRF_token"] = md5(sha1(time())); ?>
+                                  <input type="hidden" name="CSRF_token" id="CSRF_token" value="<?=$_SESSION["CSRF_token"]?>" />
+                                  <a href="#" class="button button--green button--icon button--icon-position-left button--icon-cart button--add-to-cart g-addCart" data-inside="true" data-redirect="false" data-id="<?=$variables["id"]?>" data-title="<?=l("message")?>" data-errortext="<?=l("error")?>"><?=l("addtocart")?></a>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="btn-group SearchFilterItem"> 
-                      <div class="TripTogglebutton">
-                        <span class="Name1"><?=l("guest")?></span>
-                        <div class="input-group PositionRelative"> 
-                        <span class="Quantity Quantity2">
-                          <div class="input-group">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn QuantityButton btn-number"  data-type="minus" data-field="quant[2]">
-                                      <span class="glyphicon glyphicon-minus"></span>
-                                    </button>
-                                </span>
-                                <input type="text" name="quant[2]" class="form-control tour-guest-number" value="1" min="1" max="100">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn QuantityButton btn-number" data-type="plus" data-field="quant[2]">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                    </button>
-                                </span>
+              </div>
+              <div class="container">
+                  <div class="tour-info-controls form-row align-items-center">
+                      <input type="hidden" id="g-cur__" value="<?=(isset($_SESSION["currency_123"])) ? $_SESSION["currency_123"] : 'gel'?>">
+                      <input type="hidden" id="g-cur-exchange-usd" value="<?=(float)s("currencyusd")?>">
+                      <input type="hidden" id="g-cur-exchange-eur" value="<?=(float)s("courseeur")?>">
+                      <div class="col-lg-3 tour-info-controls__col">
+                          <div class="datepicker-container posiion-relative">
+                              <label for=""><?=l("startdate")?></label>
+                              <input type="text" class="form-control form-control--icon form-control--icon-position-right form-control--icon-calendar datepicker g-datepicker form-control--small border-radius-0 DatePicker2" placeholder="Start Date">
+                          </div>
+                      </div>
+                      <div class="col-lg-3 tour-info-controls__col">
+                          <div class="datepicker-container posiion-relative">
+                              <label for=""><?=l("enddate")?></label>
+                              <?php 
+                              $newdates = time() + ((int)$variables["total_dayes"] * 86400) + 172800;
+                              ?>
+                              <input type="text" class="form-control form-control--icon form-control--icon-position-right form-control--icon-calendar g-datepicker form-control--small border-radius-0 DatePicker3" disabled="disabled" value="<?=date("d-m-Y", $newdates)?>">
+                          </div>
+                      </div>
+                      <div class="col-lg-2 tour-info-controls__col">
+                          <label for=""><?=l("adults")?></label>
+                          <input type="number" min="1" value="1" id="gg-adults" class="form-control form-control--small border-radius-0">
+                      </div>
+                      <div class="col-lg-2 tour-info-controls__col">
+                          <label for=""><?=l("underchildrenages")?></label>
+                          <input type="number" min="0" value="0" id="gg_children_05" class="form-control form-control--small border-radius-0 tour-child-number-under">
+                      </div>
+                      <div class="col-lg-2 tour-info-controls__col">
+                          <label for=""><?=l("childrenages")?></label>
+                          <input type="number" min="0" value="0" id="gg_children_612" class="form-control form-control--small border-radius-0">
+                      </div>
+                      <div class="col-lg-12 tour-info-controls__col text-center text-lg-left">
+                          <label style="width:100%">&nbsp;</label>
+                          <span class="tour-info-controls__additional-info-label text-yellow text-uppercase">+ <?=l("freeinsurance")?></span>
+                      </div>
+                  </div>
+                  <div class="tour-days">
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <?=$variables["overview"]?>
+                              <hr><br>
+                              <?=$variables["includes"]?>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          
+          <div class="section section--other-tours">
+            <div class="container">
+                <div class="other-tours">
+                    <h3 class="other-tours__title text-center"><?=l("moretours")?></h3>
+                    <div class="position-relative other-tours-carousel-container">
+                        <div class="swiper-container other-tours-carousel">
+                            <?php 
+                            $items = g_homepage_tours(false, false, 10);
+                            ?>
+                            <div class="swiper-wrapper">
+                                <?php foreach($items as $item): 
+                                  $link = str_replace("https://tripplanner.ge","https://beetrip.ge",href(63,array(), l(), $item['id']));
+                                ?>
+                                <div class="swiper-slide other-tour text-center">
+                                    <a href="<?=$link?>" class="other-tour__img-container d-block position-relative" style="width: 100%; height: 220px; background-size: cover; background-image: url('<?=$item["image1"]?>'); display: block;">
+                                        <!-- <img src="" width="460" height="460" alt="" class="img-fluid"> -->
+                                    </a>
+                                    <h4 class="other-tour__title"><a href="#"><?=$item["title"]?></a></h4>
+                                    <div class="button-group">
+                                        <a href="<?=$link?>" class="button button--green button--icon-position-left" style="padding: 5px 25px;"><?=l("read.more")?></a>
+                                    </div>
+                                </div>
+                                <?php endforeach; ?>
                             </div>
-                        </span> 
-                      </div>
-                      </div> 
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="btn-group PackageInfoDiv"> 
-                    <div class="">
-                      <label><?=l("packageprice")?></label>
-                      <span id="packageprice"><?=$price?> <i>A</i></span>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination swiper-pagination--other-tours-carousel"></div>
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
-                  </div>
                 </div>
-
-
-              </div>
-
-
-              <div class="TotalPriceDiv">
-                    <div class="col-sm-6"><div class="Title"><?=l("totalprice")?></div></div>
-                    <div class="col-sm-6 text-right"><div class="SumCount"><span><?=$price?> <i>A</i></span></div></div>
-                    <div class="col-sm-8"><div class="FreeIncurance">+ <?=l("freeinsurance")?></div></div>
-                    <div class="col-sm-12 pull-right text-center productPageCartBox">
-                      <a href="#" class="GreenCircleButton_4"><?=l("buy")?></a>
-                      <a href="javascript:void(0)" class="GreenCircleButton_4 addCart <?=(!empty($cartId)) ? 'active' : ''?>" data-id="<?=$id?>" data-title="<?=l("message")?>" data-errortext="<?=l("error")?>"><span class="CartIcon"></span> <?=l("addtocart")?></a> 
-                    </div>
-                  </div>
             </div>
-          </div>
         </div>
-
       </div>
-
-      <div class="MoreBlogList">
-        <div class="Title"><?=l("viewalso")?></div>        
-        <div class="ToursList">
-          <div class="row">               
-            <?php 
-            foreach (g_inside_tours_rand() as $item):
-              $link = href(63,array(), l(), $item['id']);
-            ?>
-            <div class="col-sm-3">
-              <div class="Item">
-                <div class="TopInfo" onclick="location.href='<?=str_replace(array('"',"'"," "),"",$link)?>'">
-                  <div class="Background" style="background:url('<?=$item['image1']?>');"></div>
-                </div>
-                <div class="BottomInfo" onclick="location.href='<?=str_replace(array('"',"'"," "),"",$link)?>'">
-                  <div class="Title"><?=g_cut($item['title'], 40)?></div>
-                  <div class="Day"><?=$item['day_count']?> day</div>
-                </div>
-                <div class="Buttons">
-                  <a href="javascript:void(0)" class="addCart<?=(!empty($item['cartId'])) ? ' active' : ''?>" data-id="<?=$item['id']?>" data-title="<?=l("wrongmessage")?>" data-errortext="<?=l("error")?>"><span class="CartIcon"></span> Add To Cart</a>
-                  <a href="<?=str_replace(array('"',"'"," "),"",$link)?>"><span class="WishListIcon"></span> More</a>
-                </div>
-              </div>
-            </div>
-            <?php endforeach; ?>
-
-
-          </div>
-        </div> 
-      </div>
-
-    </div>
   </div>
-</div>
+  </main>
 
-<script type="text/javascript">
-  var map = "";
-  function initMap() {
-    var myLatLng = {lat: 41.63514628349129, lng: 41.62310082006843};    
-    map = new google.maps.Map(document.getElementById('SidebarSmallMap'), {
-      zoom: 12,
-      center: myLatLng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-    var directionsService = new google.maps.DirectionsService();
-    var directionsDisplay = new google.maps.DirectionsRenderer();
+  <?php 
 
-    directionsDisplay.setMap(map);
-    directionsDisplay.setOptions({ 
-      polylineOptions: {
-        strokeColor: "#12693b"
-      }, 
-      suppressMarkers: true 
-    });
+?>
 
-    var waypts = [];
-    <?php 
-    $mapsCoordinates = g_get_place_map_coordinates($places);
-    foreach($mapsCoordinates as $v):
-      //echo $v['map_coordinates']."<br>";
-      if(empty($v['map_coordinates']) || $v['map_coordinates']==""){ continue; }
-      $coords = explode(",", $v['map_coordinates']);
-      if(!isset($coords[0]) || !isset($coords[1])){ continue; }
-    ?>
-    waypts.push({
-          location: new google.maps.LatLng(<?=trim($coords[0])?>, <?=trim($coords[1])?>),
-          stopover: true
-    });
-    <?php endforeach; ?>
 
-    if(typeof waypts[0] !== "undefined"){
-      var start = waypts[0].location;  
-      var end = waypts[waypts.length-1].location;
-
-      var request = {
-        origin: start, 
-        destination: end,
-        travelMode: 'DRIVING',
-        waypoints: waypts,
-        optimizeWaypoints: true
-      };
-
-      directionsService.route(request, function(response, status) {
-          if (status == google.maps.DirectionsStatus.OK) {
-            console.log("Everything is OK!");
-            directionsDisplay.setDirections(response);
-          }else{
-            console.log("Fail!");
-          }
-      });
+  <script>
+  <?php 
+  $Transport = g_listselect(40, false);
+  $productPrices = [];
+  foreach($Transport as $tra){
+    if($tra["id"]==125){ //sedani
+      $productPrices["sedan"]["p_ongoing_max_crowd"] = $tra["menutitle10"];
+    }else if($tra["id"]==126){ //minivan
+      $productPrices["minivan"]["p_ongoing_max_crowd"] = $tra["menutitle10"];
+    }else if($tra["id"]==127){ //minibus
+      $productPrices["minibus"]["p_ongoing_max_crowd"] = $tra["menutitle10"];
+    }else if($tra["id"]==220){ //bus
+      $productPrices["bus"]["p_ongoing_max_crowd"] = $tra["menutitle10"];
     }
-
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      //var target = $(e.target).attr("href") 
-      console.log("zoom change try");
-      map.setZoom(7);
-    });
   }
 
-  $('.tour-guest-number').focusin(function(){
-    var val = parseInt($(this).val());
-    var price = parseFloat($("#packageprice").html().replace("<i>A</i>", ""));
-    var total = price * val;
-    $(".SumCount span").html(parseFloat(total).toFixed(2)+" <i>A</i>");
-  });
+  $cur = "<span class='lari-symbol'>l</span>";
+  $cur_exchange = 1;
+  $cur_exchange_usd = (float)s("currencyusd");
+  $cur_exchange_eur = (float)s("courseeur");
+  if(isset($_SESSION["currency_123"])){
+      if($_SESSION["currency_123"]=="usd"){
+          $cur = "$";
+          $cur_exchange = (float)s("currencyusd");                        
+      }
 
-  $(document).on("change", ".tour-guest-number", function(){
-    var val = parseInt($(this).val());
-    var price = parseFloat($("#packageprice").html().replace("<i>A</i>", ""));
-    var total = price * val;
-    $(".SumCount span").html(parseFloat(total).toFixed(2)+" <i>A</i>");
-  });
+      if($_SESSION["currency_123"]=="eur"){
+          $cur = "&euro;";
+          $cur_exchange = (float)s("courseeur");                      
+      }
+  }
+  ?>
+  
+  (function(){
+    var productPrices = {
+      sedan:{
+        p_ongoing_max_crowd:parseFloat("<?=(float)$productPrices['sedan']['p_ongoing_max_crowd']?>")
+      },
+      minivan:{
+        p_ongoing_max_crowd:parseFloat("<?=(float)$productPrices['minivan']['p_ongoing_max_crowd']?>")
+      },
+      minibus:{
+        p_ongoing_max_crowd:parseFloat("<?=(float)$productPrices['minibus']['p_ongoing_max_crowd']?>")
+      },
+      bus:{
+       p_ongoing_max_crowd:parseFloat("<?=(float)$productPrices['bus']['p_ongoing_max_crowd']?>")
+      }
+    };
+
+    var countData = {
+      g_cur:"<?=$cur?>",
+      g_curexchange:"<?=$cur_exchange?>",
+      g_curexchangeusd:"<?=$cur_exchange_usd?>",
+      g_curexchangeeur:"<?=$cur_exchange_eur?>",
+      price_sedan: parseInt("<?=$variables["price_sedan"]?>"),
+      guest_sedan: parseInt("<?=$variables["guest_sedan"]?>"),
+      price_minivan: parseInt("<?=$variables["price_minivan"]?>"),
+      price_minibus: parseInt("<?=$variables["price_minibus"]?>"),
+      price_bus: parseInt("<?=$variables["price_bus"]?>"),
+      tour_margin: parseInt("<?=$variables["tour_margin"]?>"),
+      tour_income_margin: parseInt("<?=(int)$variables["tour_income_margin"]?>"),
+      tour_total_days: parseInt("<?=(int)$variables["total_dayes"]?>"),
+      cuisune: parseInt("<?=(int)$variables["cuisune_price1person"]?>"),
+      ticket: parseInt("<?=(int)$variables["ticketsandother_price1person"]?>"),
+      hotel: parseInt("<?=(int)$variables["hotelpricefortour"]?>"),
+      guide: parseInt("<?=(int)$variables["guidepricefortour"]?>")
+    };
+
+    let crew = parseInt($("#gg-adults").val()); 
+    g_countOngoingTour(
+      crew, 
+      countData.price_sedan, 
+      countData.guest_sedan, 
+      countData.price_minivan, 
+      countData.price_minibus, 
+      countData.price_bus, 
+      countData.tour_margin, 
+      new Array(), 
+      countData.cuisune, 
+      countData.ticket, 
+      countData.hotel, 
+      countData.guide, 
+      countData.tour_income_margin,
+      productPrices
+    );
+
+    $("#gg-adults").change(function(){
+      let crew = parseInt($("#gg-adults").val()); 
+      g_countOngoingTour(
+        crew, 
+        countData.price_sedan, 
+        countData.guest_sedan, 
+        countData.price_minivan, 
+        countData.price_minibus, 
+        countData.price_bus, 
+        countData.tour_margin, 
+        new Array(), 
+        countData.cuisune, 
+        countData.ticket, 
+        countData.hotel, 
+        countData.guide, 
+        countData.tour_income_margin,
+        productPrices
+      );
+    });
+
+    $("#gg_children_05").change(function(){
+      let crew = parseInt($("#gg-adults").val()); 
+      g_countOngoingTour(
+        crew, 
+        countData.price_sedan, 
+        countData.guest_sedan, 
+        countData.price_minivan, 
+        countData.price_minibus, 
+        countData.price_bus, 
+        countData.tour_margin, 
+        new Array(), 
+        countData.cuisune, 
+        countData.ticket, 
+        countData.hotel, 
+        countData.guide, 
+        countData.tour_income_margin,
+        productPrices
+      );
+    });
+
+    $("#gg_children_612").change(function(){
+      let crew = parseInt($("#gg-adults").val()); 
+      g_countOngoingTour(
+        crew, 
+        countData.price_sedan, 
+        countData.guest_sedan, 
+        countData.price_minivan, 
+        countData.price_minibus, 
+        countData.price_bus, 
+        countData.tour_margin, 
+        new Array(), 
+        countData.cuisune, 
+        countData.ticket, 
+        countData.hotel, 
+        countData.guide, 
+        countData.tour_income_margin,
+        productPrices
+      );
+    });
 
 
+    $(document).on("change", ".DatePicker2", function(){
+      var dd = $(this).val().split("-");
 
+      let startDate = new Date(dd[2]+"-"+dd[1]+"-"+dd[0]);
+
+
+      let tour_dayes_times = parseInt(countData.tour_total_days) * 86400000;
+      let tour_finish = startDate.getTime() + tour_dayes_times;
+      
+      var setTodate = new Date(new Date().setTime(tour_finish));
+
+
+      $(".DatePicker3").val(setTodate.yyyymmdd());
+      return false;
+    });
+
+  })();
+
+  $(function(){new Swiper(".tour-slider",{slidesPerView:1,autoplay:{delay:5e3},pagination:{el:".swiper-pagination--tour-slider",clickable:!0}}),new Swiper(".other-tours-carousel",{spaceBetween:12,slidesPerView:3,breakpoints:{1199:{slidesPerView:2},424:{slidesPerView:1}},loop:!0,loopFillGroupWithBlank:!0,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination--other-tours-carousel",clickable:!0}})});
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeSTjMJTVIuJaIiFgxLQgvCRl8HJqo0qo&amp;callback=initMap"></script>
+<script src="_website/plugins/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="_website/minJs/datepicker.min.js?time=1563971520"></script>
