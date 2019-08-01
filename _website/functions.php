@@ -2112,7 +2112,7 @@ function g_homepage_tours($top_tour = false, $top_offers = false, $limit = 8){
 	$limit = " LIMIT ".$limit;
 	$userid = (isset($_SESSION["cartsession"])) ? $_SESSION["cartsession"] : 0;
 	$sql = "SELECT 
-    (SELECT COUNT(`id`) FROM `".c("table.catalogs")."` WHERE menuid =24 and visibility=1 and deleted=0 and language = '" . l() . "') AS counted,
+    (SELECT COUNT(`id`) FROM `".c("table.catalogs")."` WHERE menuid =24 and visibility=1 and deleted=0 and language = '" . l() . "' and `show_beetrip`=2) AS counted,
     `catalogs`.`id`, 
     `catalogs`.`idx`, 
     `catalogs`.`title`, 
@@ -2124,7 +2124,7 @@ function g_homepage_tours($top_tour = false, $top_offers = false, $limit = 8){
     `cart`.`id` AS cartId
     FROM `".c("table.catalogs")."` 
     LEFT JOIN `cart` ON `catalogs`.`id`=`cart`.`pid` AND `cart`.`userid`='".$userid."'
-    WHERE `menuid` =24 and `visibility`=1 and `deleted`=0 and `language` = '" . l() . "'{$top_tour}{$top_offers} order by `id` desc"."{$limit}"; // 
+    WHERE `menuid` =24 and `show_beetrip`=2 and `visibility`=1 and `deleted`=0 and `language` = '" . l() . "'{$top_tour}{$top_offers} order by `id` desc"."{$limit}"; // 
     $res = db_fetch_all($sql); 
     return $res;
 }
