@@ -1172,56 +1172,56 @@
                     $maxCrow = array();
                     foreach ($transportP as $v) {
                         if($v["id"]==125){//sedan
-                            $maxCrow["sedan"] = $v["p_ongoing_max_crowd"];
+                            $maxCrow["sedan"] = $v["menutitle10"];
                         }else if($v["id"]==126){//minivan
-                            $maxCrow["minivan"] = $v["p_ongoing_max_crowd"];
+                            $maxCrow["minivan"] = $v["menutitle10"];
                         }else if($v["id"]==127){//minibus
-                            $maxCrow["minibus"] = $v["p_ongoing_max_crowd"];
+                            $maxCrow["minibus"] = $v["menutitle10"];
                         }else if($v["id"]==220){//bus
-                            $maxCrow["bus"] = $v["p_ongoing_max_crowd"];
+                            $maxCrow["bus"] = $v["menutitle10"];
                         }
                     }
                     
                     if($totalCrew<=$maxCrow["sedan"]){// sedan
-                      $tour_margin = 100 - (int)$fetchProduct['tour_margin'];
-                      $bep = ceil(((int)$fetchProduct["price_sedan"] / 100) * $tour_margin); 
-                      if($totalCrew<=$fetchProduct["guest_sedan"]){
+                      $tour_margin = 100 - (int)$fetchProduct['tour_margin2'];
+                      $bep = ceil(((int)$fetchProduct["price_sedan2"] / 100) * $tour_margin); 
+                      if($totalCrew<=$fetchProduct["guest_sedan2"]){
                         $perprice = $bep / $totalCrew;
                       }else{
-                        $perprice = (int)$fetchProduct["price_sedan"] / $totalCrew;
+                        $perprice = (int)$fetchProduct["price_sedan2"] / $totalCrew;
                       }
                     }else if($totalCrew > $maxCrow["sedan"] && $totalCrew <= $maxCrow["minivan"]){
-                      $perprice = (int)$fetchProduct["price_minivan"] / $totalCrew;      
+                      $perprice = (int)$fetchProduct["price_minivan2"] / $totalCrew;      
                     }else if($totalCrew > $maxCrow["minivan"] && $totalCrew <= $maxCrow["minibus"]){
-                      $perprice = (int)$fetchProduct["price_minibus"] / $totalCrew;      
+                      $perprice = (int)$fetchProduct["price_minibus2"] / $totalCrew;      
                     }else{
                       if($totalCrew<=$maxCrow["bus"]){ 
-                        $perprice = (int)$fetchProduct["price_bus"] / $totalCrew;
+                        $perprice = (int)$fetchProduct["price_bus2"] / $totalCrew;
                       }else{
                         $howManyBus = ceil($totalCrew / $maxCrow["bus"]);
-                        $bussesTotalPrice = ceil((int)$fetchProduct["price_bus"] * $howManyBus);
+                        $bussesTotalPrice = ceil((int)$fetchProduct["price_bus2"] * $howManyBus);
                         $perprice = $bussesTotalPrice / $totalCrew;
                       }
                     }
 
                     // $child_price = 0;
 
-                    $cuisune_price = $crew * (int)$fetchProduct['cuisune_price1person'];
-                    $ticket_price = $crew * (int)$fetchProduct['ticketsandother_price1person'];
-                    $guidepricefortour = (int)$fetchProduct['guidepricefortour'];
+                    $cuisune_price = $crew * (int)$fetchProduct['cuisune_price1person2'];
+                    $ticket_price = $crew * (int)$fetchProduct['ticketsandother_price1person2'];
+                    $guidepricefortour = (int)$fetchProduct['guidepricefortour2'];
 
                     $cuisune_price_child = 0;
                     $ticket_price_child = 0;
                     for($i = 0; $i < $children; $i++){
                         // $child_price += ceil($perprice / 2);
-                        $cuisune_price_child += ceil((int)$fetchProduct['cuisune_price1person'] / 2);
-                        $ticket_price_child += ceil((int)$fetchProduct['ticketsandother_price1person'] / 2);
+                        $cuisune_price_child += ceil((int)$fetchProduct['cuisune_price1person2'] / 2);
+                        $ticket_price_child += ceil((int)$fetchProduct['ticketsandother_price1person2'] / 2);
                     }
 
                     $totalprice = number_format(($perprice * $totalCrew) + $cuisune_price + $ticket_price + $cuisune_price_child + $ticket_price_child + $guidepricefortour, 2, ".", "");
                     
-                    if($fetchProduct["tour_income_margin"]){
-                        $incomePrice = $totalprice * (int)$fetchProduct["tour_income_margin"] / 100;
+                    if($fetchProduct["tour_income_margin2"]){
+                        $incomePrice = $totalprice * (int)$fetchProduct["tour_income_margin2"] / 100;
                         $totalprice = round($totalprice + $incomePrice);
                     }
 
