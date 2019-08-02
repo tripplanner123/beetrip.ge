@@ -187,18 +187,18 @@
       g_curexchange:"<?=$cur_exchange?>",
       g_curexchangeusd:"<?=$cur_exchange_usd?>",
       g_curexchangeeur:"<?=$cur_exchange_eur?>",
-      price_sedan: parseInt("<?=$variables["price_sedan"]?>"),
-      guest_sedan: parseInt("<?=$variables["guest_sedan"]?>"),
-      price_minivan: parseInt("<?=$variables["price_minivan"]?>"),
-      price_minibus: parseInt("<?=$variables["price_minibus"]?>"),
-      price_bus: parseInt("<?=$variables["price_bus"]?>"),
-      tour_margin: parseInt("<?=$variables["tour_margin"]?>"),
-      tour_income_margin: parseInt("<?=(int)$variables["tour_income_margin"]?>"),
-      tour_total_days: parseInt("<?=(int)$variables["total_dayes"]?>"),
-      cuisune: parseInt("<?=(int)$variables["cuisune_price1person"]?>"),
-      ticket: parseInt("<?=(int)$variables["ticketsandother_price1person"]?>"),
-      hotel: parseInt("<?=(int)$variables["hotelpricefortour"]?>"),
-      guide: parseInt("<?=(int)$variables["guidepricefortour"]?>")
+      price_sedan: parseInt("<?=$variables["price_sedan2"]?>"),
+      guest_sedan: parseInt("<?=$variables["guest_sedan2"]?>"),
+      price_minivan: parseInt("<?=$variables["price_minivan2"]?>"),
+      price_minibus: parseInt("<?=$variables["price_minibus2"]?>"),
+      price_bus: parseInt("<?=$variables["price_bus2"]?>"),
+      tour_margin: parseInt("<?=$variables["tour_margin2"]?>"),
+      tour_income_margin: parseInt("<?=(int)$variables["tour_income_margin2"]?>"),
+      tour_total_days: parseInt("<?=(int)$variables["total_dayes2"]?>"),
+      cuisune: parseInt("<?=(int)$variables["cuisune_price1person2"]?>"),
+      ticket: parseInt("<?=(int)$variables["ticketsandother_price1person2"]?>"),
+      hotel: parseInt("<?=(int)$variables["hotelpricefortour2"]?>"),
+      guide: parseInt("<?=(int)$variables["guidepricefortour2"]?>")
     };
 
     let crew = parseInt($("#gg-adults").val()); 
