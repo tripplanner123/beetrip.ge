@@ -133,7 +133,7 @@
                   </div> -->  
                 </div>
                 <div class="tab-pane" id="TourDescription"><?=$description?></div>
-                <div class="tab-pane" id="TourIncludes"><?=$includes?></div>
+                <div class="tab-pane" id="TourIncludes"><?=$includes3?></div>
                 <div class="tab-pane" id="Mapid">
                   <div class="SidebarSmallMap text-center" id="SidebarSmallMap">
                   MAP DIV

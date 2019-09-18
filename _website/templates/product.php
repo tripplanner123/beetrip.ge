@@ -24,7 +24,7 @@
                           <div class="tour-details__content">
                               <h2 class="tour-title"><?=$variables["title"]?></h2>
                               <div class="text-holder text-holder--tour-details">
-                                 <?=$variables["description"]?>
+                                 <?=$variables["description3"]?>
                               </div>
                           </div>
                           <div class="tour-details__footer d-lg-flex align-items-lg-center">
@@ -82,7 +82,7 @@
                           <div class="col-lg-12">
                               <?=$variables["overview"]?>
                               <hr><br>
-                              <?=$variables["includes"]?>
+                              <?=$variables["includes3"]?>
                           </div>
                       </div>
                   </div>
