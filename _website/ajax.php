@@ -1236,6 +1236,11 @@
 
                     $insurance = (isset($_POST["insurance123"]) && $_POST["insurance123"]==1) ? '1' : 'NULL';  
 
+                    if((int)$fetchProduct["special_offer2"]>0){
+                        $new_discount = round((float)$totalprice * $fetchProduct["special_offer2"] / 100);
+                        $totalprice = (float)$totalprice - $new_discount;
+                    }
+
                     $insert = "INSERT INTO `cart` SET 
                     `date`='".time()."', 
                     `pid`='".(int)$_POST["id"]."', 

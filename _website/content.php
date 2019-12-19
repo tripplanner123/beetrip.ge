@@ -95,6 +95,17 @@
     <script src="_website/plugins/swiper-4.1.6/js/swiper.min.js"></script>
     <script src="_website/js/bootstrap-datepicker.min.js"></script>
     <script src="_website/js/g-script.js?time=<?=time()?>"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136984499-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136984499-2');
+</script>
+
 </head>
 <body class="site">
 	<div class="side-bar-overlay"></div>
@@ -123,7 +134,7 @@
                 <p><?=l("beetripdeletecartitem")?></p>
             </div>
 
-            <div class="modal-footer  flex-column">
+            <div class="modal-footer flex-column">
                 <div id="g-message-modal-footer">
                     <button type="button" class="button button--small button--yellow w-100 text-uppercase gremoveButton"><?=l("delete")?></button>
                 </div>
@@ -212,32 +223,31 @@
 
             <div id="password-recover-modal" class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form action="?">
-                        <div class="modal-header">
-                            <h5 class="modal-title w-100 text-center"><?=menu_title(70)?></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" viewBox="0 0 20.17 20.17">
-                                    <path fill="#4d4d4f" d="M19.74,17.68l-7.63-7.63,7.56-7.57A1.46,1.46,0,0,0,17.61.43L10.05,8,2.49.43A1.46,1.46,0,0,0,.43,2.49L8,10.05.43,17.62a1.46,1.46,0,0,0,2.07,2.06l7.56-7.57,7.62,7.62a1.46,1.46,0,0,0,2.07-2.06Z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="alert alert-warning g-message-top-recover-password" style="background-color:#f7f7f7; display: none;"></div>
-                            <label class="w-100 form-label">
-                                <span class="form-label-text form-label-text--gray d-inline-block"><?=l("enteremailtosearchyour")?></span>
-                                <input type="email" class="form-control form-control--icon g-recover-email" value="" />
-                            </label>
-                        </div>
-                        <div class="modal-footer flex-column align-items-start pt-0">
-                            <button type="button" class="button button--small button--yellow text-uppercase g-recover-password-button new-v-button-recover" data-gErrorMessageHeader="<?=l('checkyouremail')?>"><?=l("recoverpasswordx")?></button>
-                            
-                            <a href="javascript:void(0)" onclick="$('#password-recover-modal').modal('hide'); $('#auth-modal').modal('show');" class="return-to-sign-in text-yellow emphasized-link"><?=l("returnsignin")?></a>
-
-                        </div>
-                    </form>
+                    <div class="modal-content">
+                        <form action="?">
+                            <div class="modal-header">
+                                <h5 class="modal-title w-100 text-center"><?=menu_title(70)?></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" viewBox="0 0 20.17 20.17">
+                                        <path fill="#4d4d4f" d="M19.74,17.68l-7.63-7.63,7.56-7.57A1.46,1.46,0,0,0,17.61.43L10.05,8,2.49.43A1.46,1.46,0,0,0,.43,2.49L8,10.05.43,17.62a1.46,1.46,0,0,0,2.07,2.06l7.56-7.57,7.62,7.62a1.46,1.46,0,0,0,2.07-2.06Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-warning g-message-top-recover-password" style="background-color:#f7f7f7; display: none;"></div>
+                                <label class="w-100 form-label">
+                                    <span class="form-label-text form-label-text--gray d-inline-block"><?=l("enteremailtosearchyour")?></span>
+                                    <input type="email" class="form-control form-control--icon g-recover-email" value="" />
+                                </label>
+                            </div>
+                            <div class="modal-footer flex-column align-items-start pt-0">
+                                <button type="button" class="button button--small button--yellow text-uppercase g-recover-password-button new-v-button-recover" data-gErrorMessageHeader="<?=l('checkyouremail')?>"><?=l("recoverpasswordx")?></button>
+                                
+                                <a href="javascript:void(0)" onclick="$('#password-recover-modal').modal('hide'); $('#auth-modal').modal('show');" class="return-to-sign-in text-yellow emphasized-link"><?=l("returnsignin")?></a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
             </div>
         <!-- modals -->
         <?php } ?>
@@ -405,15 +415,15 @@
                                 </li>
 
                                 <li class="footer__list-item">
-                                    <a href="https://tripplanner.ge/<?=l()?>/plan-your-trip" target="_blank" class="footer__list-link" target="_blank"><?=l("tripplanner")?></a>
+                                    <a href="#" class="footer__list-link" target="_blank"><?=l("tripplanner")?></a>
                                 </li>
 
                                 <li class="footer__list-item">
-                                    <a href="/<?=l()?>/transfers" target="_blank" class="footer__list-link" target="_blank"><?=menu_title(62)?></a>
+                                    <a href="/<?=l()?>/transfers" class="footer__list-link"><?=menu_title(62)?></a>
                                 </li>
 
                                 <li class="footer__list-item">
-                                    <a href="https://beetrip.ge/<?=l()?>/ongoing-tours" class="footer__list-link"><?=menu_title(63)?></a>
+                                    <a href="/<?=l()?>/ongoing-tours" class="footer__list-link"><?=menu_title(63)?></a>
                                 </li>
                                 
                                 

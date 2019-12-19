@@ -28,13 +28,13 @@
                               </div>
                           </div>
                           <div class="tour-details__footer d-lg-flex align-items-lg-center">
-                              
+                              <strike class="strike" style="display: none"></strike>
                               <div class="tour-price text-yellow gelprice" data-gelprice="0">0</div>
                               
                               <div class="button-group ml-lg-auto">
                                   <?php $_SESSION["CSRF_token"] = md5(sha1(time())); ?>
                                   <input type="hidden" name="CSRF_token" id="CSRF_token" value="<?=$_SESSION["CSRF_token"]?>" />
-                                  <a href="#" class="button button--green button--icon button--icon-position-left button--icon-cart button--add-to-cart g-addCart" data-inside="true" data-redirect="false" data-id="<?=$variables["id"]?>" data-title="<?=l("message")?>" data-errortext="<?=l("error")?>"><?=l("addtocart")?></a>
+                                  <a href="javascript:void(0)" class="button button--green button--icon button--icon-position-left button--icon-cart button--add-to-cart g-addCart" data-inside="true" data-redirect="false" data-id="<?=$variables["id"]?>" data-title="<?=l("message")?>" data-errortext="<?=l("error")?>"><?=l("addtocart")?></a>
                               </div>
                           </div>
                       </div>
@@ -188,6 +188,7 @@
       g_curexchangeusd:"<?=$cur_exchange_usd?>",
       g_curexchangeeur:"<?=$cur_exchange_eur?>",
       price_sedan: parseInt("<?=$variables["price_sedan2"]?>"),
+      special_offer: parseInt("<?=$variables["special_offer2"]?>"),
       guest_sedan: parseInt("<?=$variables["guest_sedan2"]?>"),
       price_minivan: parseInt("<?=$variables["price_minivan2"]?>"),
       price_minibus: parseInt("<?=$variables["price_minibus2"]?>"),
@@ -216,7 +217,8 @@
       countData.hotel, 
       countData.guide, 
       countData.tour_income_margin,
-      productPrices
+      productPrices,
+      countData.special_offer
     );
 
     $("#gg-adults").change(function(){
@@ -235,7 +237,8 @@
         countData.hotel, 
         countData.guide, 
         countData.tour_income_margin,
-        productPrices
+        productPrices,
+        countData.special_offer
       );
     });
 
@@ -255,7 +258,8 @@
         countData.hotel, 
         countData.guide, 
         countData.tour_income_margin,
-        productPrices
+        productPrices,
+        countData.special_offer
       );
     });
 
@@ -275,7 +279,8 @@
         countData.hotel, 
         countData.guide, 
         countData.tour_income_margin,
-        productPrices
+        productPrices,
+        countData.special_offer
       );
     });
 

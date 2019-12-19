@@ -17,14 +17,17 @@
             $link = str_replace("https://tripplanner.ge","https://beetrip.ge",href(63,array(), l(), $item['id']));
             ?>
               <div class="col-md-4 col-sx-12">
-              <div class="other-tour text-center">
-              <a href="<?=$link?>" class="other-tour__img-container d-block position-relative" style="width: 100%; height: 220px; background-size: cover; background-image: url('<?=$item["image1"]?>'); display: block;">
-              </a>
-              <h4 class="other-tour__title"><a href="#"><?=$item["title"]?></a></h4>
-              <div class="button-group">
-              <a href="<?=$link?>" class="button button--green button--icon-position-left" style="padding: 5px 25px; margin-bottom: 40px;"><?=l("read.more")?></a>
-              </div>
-              </div>
+                <div class="other-tour text-center">
+                  <?php if((int)$item["special_offer2"] > 0): ?>
+                  <div class="special-offer"><?=l("specialoffer")?></div>
+                  <?php endif; ?>
+                  <a href="<?=$link?>" class="other-tour__img-container d-block position-relative" style="width: 100%; height: 220px; background-size: cover; background-image: url('<?=$item["image1"]?>'); display: block;">
+                  </a>
+                  <h4 class="other-tour__title"><a href="#"><?=$item["title"]?></a></h4>
+                  <div class="button-group">
+                  <a href="<?=$link?>" class="button button--green button--icon-position-left" style="padding: 5px 25px; margin-bottom: 40px;"><?=l("read.more")?></a>
+                  </div>
+                </div>
               </div>
 
             <?php

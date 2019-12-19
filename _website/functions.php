@@ -2121,6 +2121,7 @@ function g_homepage_tours($top_tour = false, $top_offers = false, $limit = 8){
     `catalogs`.`slug`, 
     `catalogs`.`day_count`, 
     `catalogs`.`tourists`, 
+    `catalogs`.`special_offer2`, 
     `cart`.`id` AS cartId
     FROM `".c("table.catalogs")."` 
     LEFT JOIN `cart` ON `catalogs`.`id`=`cart`.`pid` AND `cart`.`userid`='".$userid."'

@@ -516,7 +516,7 @@ Date.prototype.yyyymmdd = function() {
 };
 
 
-var g_countOngoingTour = function(crew, price_sedan, guest_sedan, price_minivan, price_minibus, price_bus, tour_margin, child_ages, cuisune, ticket, hotel, guide, tour_income_margin=null, productPrices){
+var g_countOngoingTour = function(crew, price_sedan, guest_sedan, price_minivan, price_minibus, price_bus, tour_margin, child_ages, cuisune, ticket, hotel, guide, tour_income_margin=null, productPrices, special_offer=null){
     var perprice = 0;
     var totalprice = 0;
     var cuisune_price = 0;
@@ -605,8 +605,6 @@ var g_countOngoingTour = function(crew, price_sedan, guest_sedan, price_minivan,
         cur = " &euro;";
     }
 
-    console.log(exchange_cur);
-
 
     // $("#hotelPrice").html(Math.round(hotelPrice / exchange_cur)+cur);
     // $("#cuisunePrice").html(Math.round(cuisunePrice / exchange_cur)+cur);
@@ -630,8 +628,21 @@ var g_countOngoingTour = function(crew, price_sedan, guest_sedan, price_minivan,
 
     // $("#packageprice").attr("data-gelprice", (theTotalPriceForPerPerson + incomePricePerPerson));
     // $("#packageprice").html(Math.round((theTotalPriceForPerPerson + incomePricePerPerson) / exchange_cur)+cur);
-    $(".gelprice").attr("data-gelprice", Math.round(theTotapPrice + incomePrice));
-    $(".gelprice").html(Math.round((theTotapPrice + incomePrice) / exchange_cur)+cur);
+    var new_gelprice_total = Math.round(theTotapPrice + incomePrice);
+    var new_currency_ex_total = Math.round((theTotapPrice + incomePrice) / exchange_cur);
+    
+   if(special_offer!=0 && special_offer!=null && special_offer!="" && typeof special_offer !== "undefined"){
+        var new_discount = Math.round((new_gelprice_total * special_offer) / 100);
+        var new_discount_with_cur = Math.round((new_currency_ex_total * special_offer) / 100);
+
+        $(".strike").html(new_currency_ex_total+cur).show();
+
+        new_gelprice_total = new_gelprice_total - new_discount;
+        new_currency_ex_total = new_currency_ex_total - new_discount_with_cur;
+    }
+
+    $(".gelprice").attr("data-gelprice", new_gelprice_total);
+    $(".gelprice").html(new_currency_ex_total+cur);
 
     // $(".QuantityButton").attr("disabled", false);
 };
@@ -695,25 +706,36 @@ $(document).on("click", ".g-addCart", function(e){
     }).done(function( msg ) {
         var obj = $.parseJSON(msg);
         if(obj.Error.Code==1){   
-            $('#ErrorModal .modal-dialog .modal-body .Title').text(title);
-            $('#ErrorModal .modal-dialog .modal-body .Text').text(obj.Error.Text);
-            $('#ErrorModal').modal('show');
+            // $('#ErrorModal .modal-dialog .modal-body .Title').text(title);
+            // $('#ErrorModal .modal-dialog .modal-body .Text').text(obj.Error.Text);
+            // $('#ErrorModal').modal('show');
+            $("#g-message-modal .modal-body").html("<p>"+obj.Error.Text+"</p>");
         }else{
             if(!redirectToCart){
-                if($(".addCart[data-redirect='true']").hasClass("g-visiable-button")){
-                    $(".addCart[data-redirect='true']").removeClass("g-visiable-button");
-                    $(".addCart[data-redirect='true']").fadeOut();
-                }else{
-                    $(".addCart[data-redirect='true']").addClass("g-visiable-button");
-                    $(".addCart[data-redirect='true']").fadeIn();
-                }
+                // if($(".addCart[data-redirect='true']").hasClass("g-visiable-button")){
+                //     $(".addCart[data-redirect='true']").removeClass("g-visiable-button");
+                //     $(".addCart[data-redirect='true']").fadeOut();
+                // }else{
+                //     $(".addCart[data-redirect='true']").addClass("g-visiable-button");
+                //     $(".addCart[data-redirect='true']").fadeIn();
+                // }
 
-                $('#SuccessModal .modal-dialog .modal-body .Title').text(title);
-                $('#SuccessModal .modal-dialog .modal-body .Text').text(obj.Success.Text);
-                $('#SuccessModal').modal('show');
+                // $('#SuccessModal .modal-dialog .modal-body .Title').text(title);
+                // $('#SuccessModal .modal-dialog .modal-body .Text').text(obj.Success.Text);
+                // $('#SuccessModal').modal('show');
+
+                $("#g-message-modal .modal-body").html("<p>"+obj.Success.Text+"</p>");
+                setTimeout(function(){
+                    location.reload();
+                },1500);
             }else{
                 location.href = "/"+input_lang+"/cart";
             }
+
+            $("#g-message-modal .modal-footer").hide();
+            $("#g-message-modal").modal("show");
+
+            
         }
         $(".HeaderCardIcon span").text(obj.Success.countCartitem);
     });

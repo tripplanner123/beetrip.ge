@@ -2480,3 +2480,23 @@ li.transport__list-item {
     margin: 0;
     padding: 0 5px;
 }
+
+.special-offer{
+	margin: 0;
+	padding: 10px;
+	background-color: #ffcb24;
+	text-align: center;
+	line-height: 30px;
+	position: absolute;
+	left: 0px;
+	top: -10px;
+	z-index: 9999;
+	font-family: Roboto,sans-serif;
+	color: #555555 !important;
+}
+
+.tours-carousel{ padding-top: 20px; }
+.special-offer-home{
+	top: -10px;
+	left: -10px;
+}

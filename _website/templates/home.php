@@ -17,7 +17,7 @@ defined('DIR') OR exit;
             <div class="container">
                 <div class="row align-items-center justify-content-center quick-links">
                     <div class="col-4 quick-links__col text-center">
-                        <a href="https://tripplanner.ge/<?=l()?>/ongoing-tours/?page=1&pri=0&cat=&reg=" class="quick-links__item d-inline-block" target="_blank">
+                        <a href="https://beetrip.ge/<?=l()?>/ongoing-tours" class="quick-links__item d-inline-block">
                             <span class="quick-links__icon quick-links__icon--1 d-inline-block"></span>
                             <h2 class="quick-links__title"><?=menu_title(63)?></h2>
                         </a>
@@ -29,7 +29,7 @@ defined('DIR') OR exit;
                         </a>
                     </div>
                     <div class="col-4 quick-links__col text-center">
-                        <a href="https://tripplanner.ge/<?=l()?>/plan-your-trip" class="quick-links__item d-inline-block" target="_blank">
+                        <a href="#" class="quick-links__item d-inline-block" target="_blank">
                             <span class="quick-links__icon quick-links__icon--3 quick-links__icon--3-disabled d-inline-block" style="    background-image: url('/_website/images/trip-planner.svg');"></span><!-- for active color remove class quick-links__icon--3-disabled -->
                             <h2 class="quick-links__title"><?=menu_title(61)?></h2>
                         </a>
@@ -52,6 +52,9 @@ defined('DIR') OR exit;
                         $link = str_replace("https://tripplanner.ge","https://tripplanner.ge",href(63,array(), l(), $item['id']));
                     ?>
                     <a href="<?=$link?>" class="swiper-slide tours-carousel__item" style="background-image:url('<?=$item['image1']?>')">
+                        <?php if((int)$item["special_offer2"] > 0): ?>
+                          <div class="special-offer special-offer-home"><?=l("specialoffer")?></div>
+                          <?php endif; ?>
                         <div class="tours-carousel__item-details d-flex align-items-center">
                             <h2 class="tours-carousel__item-title" title="<?=htmlentities($item['title'])?>" style="max-width: 100%">
                                 <p class="tours-carousel__item-link"><?=$item['title']?></p>
